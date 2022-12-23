@@ -19,7 +19,7 @@ public class login extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		System.out.print("eness bey sistemdeeee");
+		System.out.print("Zeynep hanim sistemdeeee");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
