@@ -75,7 +75,6 @@ public class DoktorLogin extends JFrame {
 					ResultSet rs = st.executeQuery("SELECT * FROM user");
 					Doktor doktor = new Doktor();
 					while(rs.next()) {
-						System.out.println("test");
 						if(fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) ){
 							
 						doktor.setAd(rs.getString("ad"));
