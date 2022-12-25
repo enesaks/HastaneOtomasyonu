@@ -5,12 +5,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DataBase.Bashekim;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
 public class BHGenel extends JFrame {
 
 	private JPanel contentPane;
+	 static Bashekim bshekim = new Bashekim();
 
 	/**
 	 * Launch the application.
@@ -19,7 +23,7 @@ public class BHGenel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BHGenel frame = new BHGenel();
+					BHGenel frame = new BHGenel(bshekim);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +35,7 @@ public class BHGenel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BHGenel() {
+	public BHGenel(Bashekim bshekim) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

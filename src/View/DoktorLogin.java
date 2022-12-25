@@ -8,7 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 import DataBase.Doktor;
 import Helper.DBConnection;
-
+import Helper.Helper;
+import DataBase.Bashekim;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -68,20 +69,49 @@ public class DoktorLogin extends JFrame {
 		butonGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if(fldTC.getText().length() == 0 && fldSifre.getText().length() == 0) {
+					Helper.showMsg("fill");
+				}
+				
 				Statement st;
 				try {
 					Connection con = conn.connDb();
 					st = con.createStatement();
 					ResultSet rs = st.executeQuery("SELECT * FROM user");
 					Doktor doktor = new Doktor();
+					Bashekim bshekim = new DataBase.Bashekim();
 					while(rs.next()) {
 						
-						if(fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) ){
-							
-						doktor.setAd(rs.getString("ad"));
-						
-						
+						if(fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) && rs.getString("type").equals("bashekim")) {
+							bshekim.setId(rs.getInt("id"));
+							bshekim.setAd(rs.getString("ad"));
+							bshekim.setSoyad(rs.getString("soyad"));
+							bshekim.setSifre(rs.getString("sifre"));
+							bshekim.setTcno(rs.getString("tcno"));
+							bshekim.setType(rs.getString("type"));
+							bshekim.setDogumTarih(rs.getString("dogumTarihi"));
+							BHGenel bhGenel = new BHGenel(bshekim);
+							bhGenel.setVisible(true); //BAshekimin sayfası gözüksün diye true yapıldı.
+							dispose();//Açık olan gui sayfası kapansın diye yapıldı.
 						}
+						else if(fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) && rs.getString("type").equals("doktor") ) {
+							
+							doktor.setId(rs.getInt("id"));
+							doktor.setAd(rs.getString("ad"));
+							doktor.setSoyad(rs.getString("soyad"));
+							doktor.setSifre(rs.getString("sifre"));
+							doktor.setTcno(rs.getString("tcno"));
+							doktor.setType(rs.getString("type"));
+							doktor.setDogumTarih(rs.getString("dogumTarihi"));
+							DoktorGenel doktorGenel = new DoktorGenel(doktor);
+							doktorGenel.setVisible(true); //BAshekimin sayfası gözüksün diye true yapıldı.
+							dispose();//Açık olan gui sayfası kapansın diye yapıldı.
+						}
+						else{
+							Helper.showMsg("wrong");
+							break;
+						}
+					
 							
 						}
 				} catch (SQLException e1) {

@@ -5,12 +5,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DataBase.Doktor;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class DoktorGenel extends JFrame {
 
 	private JPanel contentPane;
+	private static Doktor doktor = new Doktor();
 
 	/**
 	 * Launch the application.
@@ -19,7 +23,7 @@ public class DoktorGenel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DoktorGenel frame = new DoktorGenel();
+					DoktorGenel frame = new DoktorGenel(doktor);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +35,7 @@ public class DoktorGenel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DoktorGenel() {
+	public DoktorGenel(Doktor doktor) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

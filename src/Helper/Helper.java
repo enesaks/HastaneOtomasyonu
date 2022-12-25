@@ -23,6 +23,9 @@ public class Helper {
 		case "success":
 			msg = "İşlem Başarılı";
 			break;
+		case "wrong":
+			msg = "T.C No veya Şifre Hatalı Lütfen Tekrar Deneyiniz.";
+			break;
 		default:
 			msg = str;
 
