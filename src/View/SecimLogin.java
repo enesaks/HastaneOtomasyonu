@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SecimLogin extends JFrame {
 
@@ -50,10 +52,27 @@ public class SecimLogin extends JFrame {
 		contentPane.add(hastaPhoto);
 		
 		JButton butonHastaGiris = new JButton("New button");
+		butonHastaGiris.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				HastaLogin hastalogin =new HastaLogin();
+				hastalogin.setVisible(true);  
+				
+				dispose();
+			}
+		});
 		butonHastaGiris.setBounds(80, 186, 89, 23);
 		contentPane.add(butonHastaGiris);
 		
 		JButton butonDoktorGiris = new JButton("New button");
+		butonDoktorGiris.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DoktorLogin doktorlogin =new DoktorLogin();
+				doktorlogin.setVisible(true);  
+				
+				dispose();
+			}
+		});
 		butonDoktorGiris.setBounds(259, 186, 89, 23);
 		contentPane.add(butonDoktorGiris);
 		
