@@ -42,11 +42,11 @@ public class HastaGenel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton butonHastaBilgisi = new JButton("hasta bilgisi");
+		JButton butonHastaBilgisi = new JButton("Hasta bilgisi");
 		butonHastaBilgisi.setBounds(38, 55, 108, 23);
 		contentPane.add(butonHastaBilgisi);
 		
-		JButton butonRandevuAl = new JButton("randevu al");
+		JButton butonRandevuAl = new JButton("Randevu al");
 		butonRandevuAl.setBounds(38, 89, 108, 23);
 		contentPane.add(butonRandevuAl);
 		

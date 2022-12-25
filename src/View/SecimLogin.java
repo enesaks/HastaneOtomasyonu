@@ -45,7 +45,7 @@ public class SecimLogin extends JFrame {
 		doktorPhoto.setBounds(271, 55, 77, 78);
 		contentPane.add(doktorPhoto);
 		
-		JLabel hastaPhoto = new JLabel("phptp");
+		JLabel hastaPhoto = new JLabel("Photo");
 		hastaPhoto.setBounds(92, 55, 77, 78);
 		contentPane.add(hastaPhoto);
 		

@@ -40,7 +40,7 @@ public class DoktorGenel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton butonHastalarimDr = new JButton("hasta");
+		JButton butonHastalarimDr = new JButton("Hasta");
 		butonHastalarimDr.setBounds(55, 76, 89, 23);
 		contentPane.add(butonHastalarimDr);
 		

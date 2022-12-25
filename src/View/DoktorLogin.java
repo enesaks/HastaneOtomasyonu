@@ -44,7 +44,7 @@ public class DoktorLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl_TC = new JLabel("tc");
+		JLabel lbl_TC = new JLabel("T.C");
 		lbl_TC.setBounds(85, 99, 46, 14);
 		contentPane.add(lbl_TC);
 		
