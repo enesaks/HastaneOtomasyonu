@@ -1,21 +1,24 @@
 package DataBase;
 
+
+
 public class User {
 	private int id;
-	private String tcno,name,password,type;
+	private String tcno,ad,soyad,sifre,type,dogumTarih;
 	
-	public User(int id, String tcno, String name, String password, String type) {
+	public User(int id, String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
 		super();
 		this.id = id;
 		this.tcno = tcno;
-		this.name = name;
-		this.password = password;
+		this.ad = ad;
+		this.soyad = soyad;
+		this.sifre = sifre;
 		this.type = type;
+		this.dogumTarih = dogumTarih;
 	}
 	public User() {
 		
 	}
-	
 	public int getId() {
 		return id;
 	}
@@ -28,17 +31,23 @@ public class User {
 	public void setTcno(String tcno) {
 		this.tcno = tcno;
 	}
-	public String getName() {
-		return name;
+	public String getAd() {
+		return ad;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAd(String ad) {
+		this.ad = ad;
 	}
-	public String getPassword() {
-		return password;
+	public String getSoyad() {
+		return soyad;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSoyad(String soyad) {
+		this.soyad = soyad;
+	}
+	public String getSifre() {
+		return sifre;
+	}
+	public void setSifre(String sifre) {
+		this.sifre = sifre;
 	}
 	public String getType() {
 		return type;
@@ -46,5 +55,14 @@ public class User {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public String getDogumTarih() {
+		return dogumTarih;
+	}
+	public void setDogumTarih(String dogumTarih) {
+		
+		this.dogumTarih = dogumTarih;
+	}
+	
+	
 
 }

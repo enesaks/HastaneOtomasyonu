@@ -5,16 +5,28 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DataBase.Doktor;
+import Helper.DBConnection;
+
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
 
 public class DoktorLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField fldTC;
 	private JPasswordField fldSifre;
+	private DBConnection conn = new DBConnection();
 
 	/**
 	 * Launch the application.
@@ -53,6 +65,32 @@ public class DoktorLogin extends JFrame {
 		contentPane.add(lblSifre);
 		
 		JButton butonGiris = new JButton("giris");
+		butonGiris.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Statement st;
+				try {
+					Connection con = conn.connDb();
+					st = con.createStatement();
+					ResultSet rs = st.executeQuery("SELECT * FROM user");
+					Doktor doktor = new Doktor();
+					while(rs.next()) {
+						System.out.println("test");
+						if(fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) ){
+							System.out.println("test1");
+						doktor.setAd(rs.getString("ad"));
+						System.out.println(doktor.getAd());
+						
+						}
+							
+						}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+		});
 		butonGiris.setBounds(175, 192, 89, 23);
 		contentPane.add(butonGiris);
 		
