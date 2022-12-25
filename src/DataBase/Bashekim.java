@@ -6,7 +6,7 @@ public class Bashekim extends User{
 		super(id, tcno, name, password, type);
 	}
 	public Bashekim() {
-		System.out.println("dsad");
+		
 	}
 	
 
