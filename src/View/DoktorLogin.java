@@ -77,7 +77,7 @@ public class DoktorLogin extends JFrame {
 					while(rs.next()) {
 						System.out.println("test");
 						if(fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) ){
-							System.out.println("test1");
+							
 						doktor.setAd(rs.getString("ad"));
 						
 						
