@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class HastaKayıtOl extends JFrame {
 	private JPasswordField passwordField;
@@ -43,7 +45,14 @@ public class HastaKayıtOl extends JFrame {
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
 		
-		JButton butonHastaKayit = new JButton("ksyit ol");
+		JButton butonHastaKayit = new JButton("Kayit ol");
+		butonHastaKayit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HastaGenel hGenel = new HastaGenel();
+				hGenel.setVisible(true);
+				dispose();
+			}
+		});
 		butonHastaKayit.setBounds(267, 205, 102, 27);
 		getContentPane().add(butonHastaKayit);
 		

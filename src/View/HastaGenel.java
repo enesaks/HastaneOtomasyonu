@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Font;
 
 public class HastaGenel extends JFrame {
 
@@ -58,12 +59,13 @@ public class HastaGenel extends JFrame {
 		butonReceteHasta.setBounds(38, 157, 108, 23);
 		contentPane.add(butonReceteHasta);
 		
-		JLabel baslik = new JLabel("hosgeldin ...");
-		baslik.setBounds(160, 24, 230, 14);
+		JLabel baslik = new JLabel("Hosgeldiniz");
+		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		baslik.setBounds(160, 24, 230, 21);
 		contentPane.add(baslik);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(156, 44, 268, 177);
+		panel.setBounds(156, 55, 268, 177);
 		contentPane.add(panel);
 	}
 
