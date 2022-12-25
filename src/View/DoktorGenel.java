@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class DoktorGenel extends JFrame {
 
@@ -36,6 +38,24 @@ public class DoktorGenel extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton butonHastalarimDr = new JButton("hasta");
+		butonHastalarimDr.setBounds(55, 76, 89, 23);
+		contentPane.add(butonHastalarimDr);
+		
+		JButton butonCalismaSaatleriDr = new JButton("calisma saatleri");
+		butonCalismaSaatleriDr.setBounds(55, 121, 89, 23);
+		contentPane.add(butonCalismaSaatleriDr);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(162, 31, 262, 192);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel baslik = new JLabel("hosgeldin dr  ...");
+		baslik.setBounds(10, 11, 126, 14);
+		panel.add(baslik);
 	}
 
 }
