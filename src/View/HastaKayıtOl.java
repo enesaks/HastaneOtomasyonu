@@ -43,7 +43,7 @@ public class HastaKayıtOl extends JFrame {
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
 		
-		JButton butonHastaKayit = new JButton("Ksyit ol");
+		JButton butonHastaKayit = new JButton("ksyit ol");
 		butonHastaKayit.setBounds(267, 205, 102, 27);
 		getContentPane().add(butonHastaKayit);
 		

@@ -46,7 +46,7 @@ public class HastaLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl_TCHastaGiris = new JLabel("T.C.");
+		JLabel lbl_TCHastaGiris = new JLabel("tc");
 		lbl_TCHastaGiris.setBounds(76, 74, 46, 14);
 		contentPane.add(lbl_TCHastaGiris);
 		

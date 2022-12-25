@@ -40,7 +40,7 @@ public class BHGenel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton butonDoktorBilgisiBHekim = new JButton("Doktor bilgisi");
+		JButton butonDoktorBilgisiBHekim = new JButton("doktor bilgisi");
 		butonDoktorBilgisiBHekim.setBounds(43, 78, 89, 23);
 		contentPane.add(butonDoktorBilgisiBHekim);
 		
