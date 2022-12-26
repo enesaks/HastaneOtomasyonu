@@ -5,14 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DataBase.Hasta;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class HastaGenel extends JFrame {
 
 	private JPanel contentPane;
+	static Hasta hasta;
 
 	/**
 	 * Launch the application.
@@ -44,6 +50,13 @@ public class HastaGenel extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton butonHastaBilgisi = new JButton("Hasta bilgisi");
+		// HastaGenel'den HastaBilgileri'ne geçiş sağlandı..
+		butonHastaBilgisi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HastaBilgileri hBilgi=new HastaBilgileri(hasta);
+				hBilgi.setVisible(true);
+			}
+		});
 		butonHastaBilgisi.setBounds(38, 55, 108, 23);
 		contentPane.add(butonHastaBilgisi);
 		

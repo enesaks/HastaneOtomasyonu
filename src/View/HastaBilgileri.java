@@ -5,18 +5,25 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DataBase.Hasta;
+import DataBase.User;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 
 public class HastaBilgileri extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField fld_HastaBilgiTC;
-	private JTextField fld_HastaBilgiAd;
-	private JTextField fld_HastaBilgiDogumTarihi;
-	private JTextField fld_HastalıkBilgisi;
-	private JTextField fld_HastaBilgiSoyad;
+	private JLabel lblNewLabel_6;
+	private JLabel lblNewLabel_7;
+	private JLabel lblNewLabel_8;
+	private JLabel lblNewLabel_9;
+	private JLabel lblNewLabel_10;
+	static Hasta hasta=new Hasta();
 
 	/**
 	 * Launch the application.
@@ -25,7 +32,7 @@ public class HastaBilgileri extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HastaBilgileri frame = new HastaBilgileri();
+					HastaBilgileri frame = new HastaBilgileri(hasta);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +44,7 @@ public class HastaBilgileri extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public HastaBilgileri() {
+	public HastaBilgileri(Hasta hasta) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 473, 329);
 		contentPane = new JPanel();
@@ -67,33 +74,28 @@ public class HastaBilgileri extends JFrame {
 		lblNewLabel_4.setBounds(10, 247, 71, 13);
 		contentPane.add(lblNewLabel_4);
 		
-		fld_HastaBilgiTC = new JTextField();
-		fld_HastaBilgiTC.setBounds(99, 89, 96, 19);
-		contentPane.add(fld_HastaBilgiTC);
-		fld_HastaBilgiTC.setColumns(10);
-		
-		fld_HastaBilgiAd = new JTextField();
-		fld_HastaBilgiAd.setBounds(99, 128, 96, 19);
-		contentPane.add(fld_HastaBilgiAd);
-		fld_HastaBilgiAd.setColumns(10);
-		
-		fld_HastaBilgiDogumTarihi = new JTextField();
-		fld_HastaBilgiDogumTarihi.setBounds(99, 207, 96, 19);
-		contentPane.add(fld_HastaBilgiDogumTarihi);
-		fld_HastaBilgiDogumTarihi.setColumns(10);
-		
-		fld_HastalıkBilgisi = new JTextField();
-		fld_HastalıkBilgisi.setBounds(99, 244, 96, 19);
-		contentPane.add(fld_HastalıkBilgisi);
-		fld_HastalıkBilgisi.setColumns(10);
-		
 		JLabel lblNewLabel_5 = new JLabel("Soyad");
 		lblNewLabel_5.setBounds(10, 175, 45, 13);
 		contentPane.add(lblNewLabel_5);
 		
-		fld_HastaBilgiSoyad = new JTextField();
-		fld_HastaBilgiSoyad.setBounds(99, 172, 96, 19);
-		contentPane.add(fld_HastaBilgiSoyad);
-		fld_HastaBilgiSoyad.setColumns(10);
+		lblNewLabel_6 = new JLabel("New label");
+		lblNewLabel_6.setBounds(109, 92, 79, 13);
+		contentPane.add(lblNewLabel_6);
+		
+		lblNewLabel_7 = new JLabel("New label");
+		lblNewLabel_7.setBounds(109, 131, 79, 13);
+		contentPane.add(lblNewLabel_7);
+		
+		lblNewLabel_8 = new JLabel("New label");
+		lblNewLabel_8.setBounds(109, 175, 79, 13);
+		contentPane.add(lblNewLabel_8);
+		
+		lblNewLabel_9 = new JLabel("New label");
+		lblNewLabel_9.setBounds(109, 210, 79, 13);
+		contentPane.add(lblNewLabel_9);
+		
+		lblNewLabel_10 = new JLabel("New label");
+		lblNewLabel_10.setBounds(109, 247, 79, 13);
+		contentPane.add(lblNewLabel_10);
 	}
 }

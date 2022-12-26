@@ -106,7 +106,6 @@ public class HastaLogin extends JFrame {
 							}
 						}
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					if (key) {

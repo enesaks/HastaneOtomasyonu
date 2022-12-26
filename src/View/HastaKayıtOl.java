@@ -5,20 +5,27 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DataBase.Hasta;
+import Helper.Helper;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class HastaKayıtOl extends JFrame {
-	private JPasswordField passwordField;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JPasswordField fld_kayıtSifre;
+	private JTextField fld_kayıtDG;
+	private JTextField fld_kayıtTC;
+	private JTextField fld_kayıtSoyad;
+	private JTextField fld_kayıtAd;
+	private Hasta hasta = new Hasta();
 
 	/**
 	 * Launch the application.
@@ -40,75 +47,116 @@ public class HastaKayıtOl extends JFrame {
 	 * Create the frame.
 	 */
 	public HastaKayıtOl() {
+		getContentPane().setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
 		
-		JButton butonHastaKayit = new JButton("Kayit ol");
+		//KayıtOl butonuna basınca olacak opsiyonlar buraya yazıldı..Neden veritabanına veri aktarılmıyor bilmiyorum.
+
+		JButton butonHastaKayit = new JButton("Kayıt ol");
 		butonHastaKayit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				HastaGenel hGenel = new HastaGenel();
-				hGenel.setVisible(true);
+				if (fld_kayıtAd.getText().length() == 0 || fld_kayıtSoyad.getText().length() == 0
+						|| fld_kayıtTC.getText().length() == 0 || fld_kayıtDG.getText().length() == 0
+						|| fld_kayıtSifre.getText().length() == 0) {
+					Helper.showMsg("fill");
+				} else {
+					try {
+						boolean control = hasta.kayıt(fld_kayıtAd.getText(), fld_kayıtSoyad.getText(),
+								fld_kayıtTC.getText(), fld_kayıtDG.getText(), fld_kayıtSifre.getText());
+						if (control) {
+							Helper.showMsg("success");
+							HastaLogin login = new HastaLogin();
+							login.setVisible(true);
+							dispose();
+						} else {
+							Helper.showMsg("error");
+						}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+
+			}
+		});
+		butonHastaKayit.setBounds(234, 226, 102, 27);
+		getContentPane().add(butonHastaKayit);
+
+		fld_kayıtSifre = new JPasswordField();
+		fld_kayıtSifre.setBounds(234, 185, 86, 20);
+		getContentPane().add(fld_kayıtSifre);
+
+		JLabel lblSifreHastaKayit = new JLabel("Sifre");
+		lblSifreHastaKayit.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblSifreHastaKayit.setBounds(67, 180, 112, 24);
+		getContentPane().add(lblSifreHastaKayit);
+
+		JLabel lblDogumTarihiHastaKayit = new JLabel("Doğum Tarihi");
+		lblDogumTarihiHastaKayit.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblDogumTarihiHastaKayit.setBounds(67, 149, 112, 27);
+		getContentPane().add(lblDogumTarihiHastaKayit);
+
+		JLabel lblAdHastaKayit = new JLabel("Ad");
+		lblAdHastaKayit.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblAdHastaKayit.setBounds(67, 63, 112, 14);
+		getContentPane().add(lblAdHastaKayit);
+
+		JLabel lblSoyadHastaKayit = new JLabel("Soyad");
+		lblSoyadHastaKayit.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblSoyadHastaKayit.setBounds(67, 88, 112, 23);
+		getContentPane().add(lblSoyadHastaKayit);
+
+		JLabel lbl_TCHastaKayit = new JLabel("TC Numaranız");
+		lbl_TCHastaKayit.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lbl_TCHastaKayit.setBounds(67, 118, 112, 21);
+		getContentPane().add(lbl_TCHastaKayit);
+
+		fld_kayıtDG = new JTextField();
+		fld_kayıtDG.setColumns(10);
+		fld_kayıtDG.setBounds(234, 155, 86, 20);
+		getContentPane().add(fld_kayıtDG);
+
+		fld_kayıtTC = new JTextField();
+		fld_kayıtTC.setColumns(10);
+		fld_kayıtTC.setBounds(234, 121, 86, 20);
+		getContentPane().add(fld_kayıtTC);
+
+		fld_kayıtSoyad = new JTextField();
+		fld_kayıtSoyad.setColumns(10);
+		fld_kayıtSoyad.setBounds(234, 92, 86, 20);
+		getContentPane().add(fld_kayıtSoyad);
+
+		fld_kayıtAd = new JTextField();
+		fld_kayıtAd.setColumns(10);
+		fld_kayıtAd.setBounds(234, 60, 86, 20);
+		getContentPane().add(fld_kayıtAd);
+
+		JLabel baslik = new JLabel("Hasta Kayıt Ekranı");
+		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		baslik.setHorizontalAlignment(SwingConstants.CENTER);
+		baslik.setBounds(113, 10, 223, 40);
+		getContentPane().add(baslik);
+
+		// Geri dön butonu oluşturup HastaLogine dönmesini sağladım..
+
+		JButton butonGeriDön = new JButton("Geri Dön");
+		butonGeriDön.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HastaLogin login = new HastaLogin();
+				login.setVisible(true);
 				dispose();
 			}
 		});
-		butonHastaKayit.setBounds(267, 205, 102, 27);
-		getContentPane().add(butonHastaKayit);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(234, 168, 86, 20);
-		getContentPane().add(passwordField);
-		
-		JLabel lblSifreHastaKayit = new JLabel("sifre");
-		lblSifreHastaKayit.setBounds(67, 171, 46, 14);
-		getContentPane().add(lblSifreHastaKayit);
-		
-		JLabel lblDogumTarihiHastaKayit = new JLabel("dg");
-		lblDogumTarihiHastaKayit.setBounds(67, 146, 46, 14);
-		getContentPane().add(lblDogumTarihiHastaKayit);
-		
-		JLabel lblAdHastaKayit = new JLabel("ad");
-		lblAdHastaKayit.setBounds(67, 63, 46, 14);
-		getContentPane().add(lblAdHastaKayit);
-		
-		JLabel lblSoyadHastaKayit = new JLabel("soyad");
-		lblSoyadHastaKayit.setBounds(67, 88, 46, 14);
-		getContentPane().add(lblSoyadHastaKayit);
-		
-		JLabel lbl_TCHastaKayit = new JLabel("tc");
-		lbl_TCHastaKayit.setBounds(67, 121, 46, 14);
-		getContentPane().add(lbl_TCHastaKayit);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(234, 143, 86, 20);
-		getContentPane().add(textField);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(234, 118, 86, 20);
-		getContentPane().add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(234, 85, 86, 20);
-		getContentPane().add(textField_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(234, 60, 86, 20);
-		getContentPane().add(textField_3);
-		
-		JLabel baslik = new JLabel("hasta kayit ekrani");
-		baslik.setHorizontalAlignment(SwingConstants.CENTER);
-		baslik.setBounds(112, 11, 223, 14);
-		getContentPane().add(baslik);
+		butonGeriDön.setBounds(66, 226, 102, 27);
+		getContentPane().add(butonGeriDön);
 	}
 
 	private static class __Tmp {
 		private static void __tmp() {
-			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
+			javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
 		}
 	}
 }
