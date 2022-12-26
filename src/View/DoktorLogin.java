@@ -28,7 +28,7 @@ public class DoktorLogin extends JFrame {
 	private JTextField fldTC;
 	private JPasswordField fldSifre;
 	private DBConnection conn = new DBConnection();
-
+	private boolean keyy =false;
 	/**
 	 * Launch the application.
 	 */
@@ -71,7 +71,10 @@ public class DoktorLogin extends JFrame {
 				
 				if(fldTC.getText().length() == 0 && fldSifre.getText().length() == 0) {
 					Helper.showMsg("fill");
-				}
+				}else {
+					 keyy = true;}
+					
+				
 				
 				Statement st;
 				try {
@@ -93,9 +96,11 @@ public class DoktorLogin extends JFrame {
 							BHGenel bhGenel = new BHGenel(bshekim);
 							bhGenel.setVisible(true); //BAshekimin sayfası gözüksün diye true yapıldı.
 							dispose();//Açık olan gui sayfası kapansın diye yapıldı.
-						}
-						else if(fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) && rs.getString("type").equals("doktor") ) {
+							keyy = false;
+							break;
 							
+						}
+						else if (fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) && rs.getString("type").equals("doktor") ) {
 							doktor.setId(rs.getInt("id"));
 							doktor.setAd(rs.getString("ad"));
 							doktor.setSoyad(rs.getString("soyad"));
@@ -106,20 +111,24 @@ public class DoktorLogin extends JFrame {
 							DoktorGenel doktorGenel = new DoktorGenel(doktor);
 							doktorGenel.setVisible(true); //BAshekimin sayfası gözüksün diye true yapıldı.
 							dispose();//Açık olan gui sayfası kapansın diye yapıldı.
-						}
-						else{
-							Helper.showMsg("wrong");
+							keyy = false;
 							break;
 						}
-					
+						
+						}
+						if(keyy) {
+							Helper.showMsg("wrong");
 							
 						}
-				} catch (SQLException e1) {
+					}
+				 
+				catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
-			}
+				}
+				
+			
 		});
 		butonGiris.setBounds(175, 192, 89, 23);
 		contentPane.add(butonGiris);
