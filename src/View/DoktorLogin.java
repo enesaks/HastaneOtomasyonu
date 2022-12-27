@@ -21,6 +21,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class DoktorLogin extends JFrame {
 
@@ -57,15 +59,18 @@ public class DoktorLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl_TC = new JLabel("tc");
-		lbl_TC.setBounds(85, 99, 46, 14);
+		JLabel lbl_TC = new JLabel("TC KİMLİK NO:\r\n");
+		lbl_TC.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lbl_TC.setBounds(74, 95, 128, 23);
 		contentPane.add(lbl_TC);
 		
-		JLabel lblSifre = new JLabel("sifre");
-		lblSifre.setBounds(85, 140, 46, 14);
+		JLabel lblSifre = new JLabel("ŞİFRE:");
+		lblSifre.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblSifre.setBounds(74, 140, 113, 14);
 		contentPane.add(lblSifre);
 		
-		JButton butonGiris = new JButton("giris");
+		JButton butonGiris = new JButton("GİRİŞ");
+		butonGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -130,7 +135,7 @@ public class DoktorLogin extends JFrame {
 				
 			
 		});
-		butonGiris.setBounds(175, 192, 89, 23);
+		butonGiris.setBounds(160, 203, 99, 23);
 		contentPane.add(butonGiris);
 		
 		fldTC = new JTextField();
@@ -142,8 +147,10 @@ public class DoktorLogin extends JFrame {
 		fldSifre.setBounds(223, 137, 89, 20);
 		contentPane.add(fldSifre);
 		
-		JLabel baslik = new JLabel("doktor girisi");
-		baslik.setBounds(62, 29, 286, 14);
+		JLabel baslik = new JLabel("DOKTOR GİRİŞİ");
+		baslik.setForeground(Color.BLUE);
+		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		baslik.setBounds(161, 24, 113, 31);
 		contentPane.add(baslik);
 	}
 }
