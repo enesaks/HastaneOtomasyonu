@@ -17,9 +17,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.JInternalFrame;
 
 public class HastaGenel extends JFrame {
+	JInternalFrame iFRecete = new JInternalFrame("E-Reçete");
+	JInternalFrame iFSonuclarim = new JInternalFrame("Sonuçlarım");
+	JInternalFrame iFRandevuAl = new JInternalFrame("Randevu Al");
+	JInternalFrame iFHastaBilgisi = new JInternalFrame("Hasta Bilgisi");
+
+
+
 
 	private JPanel contentPane;
-	static Hasta hasta;
+	static Hasta hasta=new Hasta();
 
 	/**
 	 * Launch the application.
@@ -28,7 +35,7 @@ public class HastaGenel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HastaGenel frame = new HastaGenel();
+					HastaGenel frame = new HastaGenel(hasta);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,9 +47,9 @@ public class HastaGenel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public HastaGenel() {
+	public HastaGenel(Hasta hasta) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1123, 723);
+		setBounds(100, 100, 648, 376);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -50,44 +57,73 @@ public class HastaGenel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton butonHastaBilgisi = new JButton("Hasta bilgisi");
-		// HastaGenel'den HastaBilgileri'ne geçiş sağlandı..
-		butonHastaBilgisi.addActionListener(new ActionListener() {
+		JButton butonHastaBilgileri = new JButton("Hasta Bilgileri");
+		butonHastaBilgileri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				HastaBilgileri hBilgi=new HastaBilgileri(hasta);
-				hBilgi.setVisible(true);
+				iFRecete.setVisible(false);
+				iFSonuclarim.setVisible(false);
+				iFRandevuAl.setVisible(false);
+				iFHastaBilgisi.setVisible(true);
 			}
 		});
-		butonHastaBilgisi.setBounds(38, 55, 108, 23);
-		contentPane.add(butonHastaBilgisi);
+		butonHastaBilgileri.setBounds(30, 88, 161, 39);
+		contentPane.add(butonHastaBilgileri);
 		
-		JButton butonRandevuAl = new JButton("randevu al");
-		butonRandevuAl.setBounds(38, 89, 108, 23);
+		JButton butonRandevuAl = new JButton("Randevu Al");
+		butonRandevuAl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iFRecete.setVisible(false);
+				iFSonuclarim.setVisible(false);
+				iFRandevuAl.setVisible(true);
+				iFHastaBilgisi.setVisible(false);
+			}
+		});
+		butonRandevuAl.setBounds(30, 148, 161, 44);
 		contentPane.add(butonRandevuAl);
 		
-		JButton butonSonuclarHasta = new JButton("sonuclarım");
-		butonSonuclarHasta.setBounds(38, 123, 108, 23);
-		contentPane.add(butonSonuclarHasta);
+		JButton butonSonuclarim = new JButton("Sonuçlarım");
+		butonSonuclarim.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iFRecete.setVisible(false);
+				iFSonuclarim.setVisible(true);
+				iFRandevuAl.setVisible(false);
+				iFHastaBilgisi.setVisible(false);
+			}
+		});
+		butonSonuclarim.setBounds(30, 218, 161, 44);
+		contentPane.add(butonSonuclarim);
 		
-		JButton butonReceteHasta = new JButton("e recete");
-		butonReceteHasta.setBounds(38, 157, 108, 23);
-		contentPane.add(butonReceteHasta);
+		JButton butonRecete = new JButton("E-Recete");
+		butonRecete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iFRecete.setVisible(true);
+				iFSonuclarim.setVisible(false);
+				iFRandevuAl.setVisible(false);
+				iFHastaBilgisi.setVisible(false);
+			}
+		});
+		butonRecete.setBounds(28, 277, 161, 49);
+		contentPane.add(butonRecete);
 		
-		JLabel baslik = new JLabel("Hosgeldiniz");
-		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		baslik.setBounds(160, 24, 230, 21);
+		iFHastaBilgisi.setBounds(221, 88, 401, 238);
+		contentPane.add(iFHastaBilgisi);
+		
+		iFRandevuAl.setBounds(221, 88, 401, 238);
+		contentPane.add(iFRandevuAl);
+		
+		iFSonuclarim.setBounds(221, 88, 401, 238);
+		contentPane.add(iFSonuclarim);
+		
+		
+		iFRecete.setBounds(221, 88, 401, 238);
+		contentPane.add(iFRecete);
+		
+		JLabel baslik = new JLabel("HOŞGELDİN "+hasta.getAd().toUpperCase());
+		baslik.setBounds(38, 10, 547, 50);
 		contentPane.add(baslik);
 		
-		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
-		internalFrame.setBorder(null);
-		internalFrame.setBounds(155, 62, 944, 602);
-		contentPane.add(internalFrame);
-		internalFrame.setVisible(true);
+		iFHastaBilgisi.setVisible(true);
 	}
 
-	private static class __Tmp {
-		private static void __tmp() {
-			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
-		}
-	}
+	
 }
