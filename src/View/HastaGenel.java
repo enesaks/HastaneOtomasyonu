@@ -71,7 +71,7 @@ public class HastaGenel extends JFrame {
 				iFRandevuAll.setVisible(false);
 			}
 		});
-		butonHastaBilgileri.setBounds(38, 120, 161, 39);
+		butonHastaBilgileri.setBounds(38, 118, 161, 39);
 		contentPane.add(butonHastaBilgileri);
 		
 		JButton butonRandevuAl = new JButton("Randevu Al");
