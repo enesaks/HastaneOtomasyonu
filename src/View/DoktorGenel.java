@@ -23,6 +23,8 @@ import javax.swing.UIManager;
 import javax.swing.JMenuBar;
 import java.awt.Canvas;
 import javax.swing.JList;
+import java.awt.Font;
+import java.awt.Color;
 
 public class DoktorGenel extends JFrame {
 	
@@ -65,35 +67,39 @@ public class DoktorGenel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel baslik = new JLabel("HOŞGELDİN DOKTOR "+doktor.getAd());
-		baslik.setBounds(61, 34, 673, 32);
+		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR <dynamic>");
+		baslik.setForeground(Color.BLUE);
+		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		baslik.setBounds(50, 23, 233, 32);
 		contentPane.add(baslik);
 		
 		JButton butonHastaBilgiler = new JButton("Hasta Bilgileri");
+		butonHastaBilgiler.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonHastaBilgiler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFCalismaSaatleri.setVisible(false);
 				iFHastaBilgileri.setVisible(true);
 			}
 		});
-		butonHastaBilgiler.setBounds(61, 149, 133, 38);
+		butonHastaBilgiler.setBounds(50, 93, 144, 38);
 		contentPane.add(butonHastaBilgiler);
 		
 		
 		
-		JButton butonCalismaSaatleri = new JButton("Çalışma Saatleri");
+		JButton butonCalismaSaatleri = new JButton("Çalışma\r\n Saatleri");
+		butonCalismaSaatleri.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonCalismaSaatleri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFCalismaSaatleri.setVisible(true);
 				iFHastaBilgileri.setVisible(false);
 			}
 		});
-		butonCalismaSaatleri.setBounds(61, 218, 133, 38);
+		butonCalismaSaatleri.setBounds(50, 167, 144, 38);
 		contentPane.add(butonCalismaSaatleri);
 		
 		
 		
-		iFHastaBilgileri.setBounds(215, 77, 559, 353);
+		iFHastaBilgileri.setBounds(215, 66, 559, 364);
 		contentPane.add(iFHastaBilgileri);
 		iFHastaBilgileri.getContentPane().setLayout(null);
 		
