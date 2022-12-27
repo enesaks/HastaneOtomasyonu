@@ -92,7 +92,7 @@ public class DoktorLogin extends JFrame {
 							bshekim.setSifre(rs.getString("sifre"));
 							bshekim.setTcno(rs.getString("tcno"));
 							bshekim.setType(rs.getString("type"));
-							bshekim.setDogumTarih(rs.getString("dogumTarihi"));
+							bshekim.setDogumTarih(rs.getString("dogumTarih"));
 							BHGenel bhGenel = new BHGenel(bshekim);
 							bhGenel.setVisible(true); //BAshekimin sayfası gözüksün diye true yapıldı.
 							dispose();//Açık olan gui sayfası kapansın diye yapıldı.
@@ -107,7 +107,7 @@ public class DoktorLogin extends JFrame {
 							doktor.setSifre(rs.getString("sifre"));
 							doktor.setTcno(rs.getString("tcno"));
 							doktor.setType(rs.getString("type"));
-							doktor.setDogumTarih(rs.getString("dogumTarihi"));
+							doktor.setDogumTarih(rs.getString("dogumTarih"));
 							DoktorGenel doktorGenel = new DoktorGenel(doktor);
 							doktorGenel.setVisible(true); //BAshekimin sayfası gözüksün diye true yapıldı.
 							dispose();//Açık olan gui sayfası kapansın diye yapıldı.
