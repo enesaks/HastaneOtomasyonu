@@ -57,7 +57,7 @@ public class HastaLogin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(null); 
 
 		JLabel lbl_TCHastaGiris = new JLabel("T.C Numaranız");
 		lbl_TCHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));

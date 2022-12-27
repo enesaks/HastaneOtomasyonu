@@ -8,7 +8,7 @@ public class User {
 	
 	public User( String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
 		super();
-		
+		 
 		this.tcno = tcno;
 		this.ad = ad;
 		this.soyad = soyad;

@@ -10,7 +10,7 @@ public class Doktor extends User{
 	}
 	public Doktor() {
 		
-	}
+	} 
 	
 	
 

@@ -28,7 +28,7 @@ public class Hasta extends User {
 	}
 
 	public String getHastaninDoktoru() {
-		return hastaninDoktoru;
+		return hastaninDoktoru; 
 	}
 
 	public void setHastaninDoktoru(String hastaninDoktoru) {
