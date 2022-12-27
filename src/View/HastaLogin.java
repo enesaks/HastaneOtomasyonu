@@ -88,7 +88,6 @@ public class HastaLogin extends JFrame {
 
 								if (rs.getString("type").equals("hasta")) {
 									Hasta hasta = new Hasta();
-									hasta.setId(rs.getInt("id"));
 									hasta.setAd(rs.getString("ad"));
 									hasta.setSoyad(rs.getString("soyad"));
 									hasta.setTcno(rs.getString("tcno"));

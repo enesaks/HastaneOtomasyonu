@@ -86,7 +86,6 @@ public class DoktorLogin extends JFrame {
 					while(rs.next()) {
 						
 						if(fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) && rs.getString("type").equals("bashekim")) {
-							bshekim.setId(rs.getInt("id"));
 							bshekim.setAd(rs.getString("ad"));
 							bshekim.setSoyad(rs.getString("soyad"));
 							bshekim.setSifre(rs.getString("sifre"));
@@ -101,7 +100,7 @@ public class DoktorLogin extends JFrame {
 							
 						}
 						else if (fldTC.getText().equals(rs.getString("tcno")) && fldSifre.getText().equals(rs.getString("sifre")) && rs.getString("type").equals("doktor") ) {
-							doktor.setId(rs.getInt("id"));
+							
 							doktor.setAd(rs.getString("ad"));
 							doktor.setSoyad(rs.getString("soyad"));
 							doktor.setSifre(rs.getString("sifre"));
