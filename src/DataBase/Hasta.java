@@ -20,7 +20,7 @@ public class Hasta extends User {
 	PreparedStatement preparedStatement = null;
 
 	public Hasta() {
-
+		//
 	}
 
 	public Hasta(int id, String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
