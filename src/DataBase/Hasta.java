@@ -27,9 +27,7 @@ public class Hasta extends User {
 		super(id, tcno, ad, soyad, sifre, type, dogumTarih);
 	}
 	
-		//	HastaKayıtOl panelinde alınacak bilgileri kayıt adı altında burada yazdım..Sorun şu kayıt edilen hastanın bilgileri
-		// 	veri tabanında gözükmüyor.Ve tekrar giriş ekranına gelince hasta bulunamıyor..
-	
+		
 
 	  
 	
