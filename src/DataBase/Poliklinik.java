@@ -15,6 +15,6 @@ private String polikliniIsmi;
 		this.polikliniIsmi = polikliniIsmi;
 	}  	
 	
-	
+	 
 	
 }
