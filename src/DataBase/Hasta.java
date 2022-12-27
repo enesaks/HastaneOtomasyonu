@@ -26,11 +26,7 @@ public class Hasta extends User {
 	public Hasta(int id, String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
 		super(id, tcno, ad, soyad, sifre, type, dogumTarih);
 	}
-	
-		
 
-	  
-	
 	public String getHastaninDoktoru() {
 		return hastaninDoktoru;
 	}
