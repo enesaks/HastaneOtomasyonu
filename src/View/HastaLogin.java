@@ -146,7 +146,7 @@ public class HastaLogin extends JFrame {
 		baslik.setBounds(140, 28, 175, 20);
 		contentPane.add(baslik);
 
-		fldSifreHastaGiris = new JPasswordField();
+		fldSifreHastaGiris = new JPasswordField(); 
 		fldSifreHastaGiris.setBounds(243, 124, 113, 19);
 		contentPane.add(fldSifreHastaGiris);
 		
