@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DataBase.Hasta;
+import Helper.DBConnection;
 import Helper.Helper;
 
 import javax.swing.JLabel;
@@ -15,17 +16,24 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 public class HastaKayıtOl extends JFrame {
+	protected static final String String = null;
 	private JPasswordField fld_kayıtSifre;
 	private JTextField fld_kayıtDG;
 	private JTextField fld_kayıtTC;
 	private JTextField fld_kayıtSoyad;
 	private JTextField fld_kayıtAd;
-	static Hasta hasta=new Hasta();
+	private DBConnection conn = new DBConnection();
+	static ResultSet rs;
+	static Hasta hasta = new Hasta();
 
 	/**
 	 * Launch the application.
@@ -51,18 +59,67 @@ public class HastaKayıtOl extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
-		getContentPane().setLayout(null); 
-		
-		//KayıtOl butonuna basınca olacak opsiyonlar buraya yazıldı..Neden veritabanına veri aktarılmıyor bilmiyorum.
+		getContentPane().setLayout(null);
+
+		// KayıtOl butonuna basınca olacak opsiyonlar buraya yazıldı..Neden veritabanına
+		// veri aktarılmıyor bilmiyorum.
 
 		JButton butonHastaKayit = new JButton("Kayıt ol");
 		butonHastaKayit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				HastaLogin login=new HastaLogin();
-				login.setVisible(true);
-				dispose();}
+				int c = 1;
+				if (fld_kayıtAd.getText().length() == 0 || fld_kayıtSoyad.getText().length() == 0
+						|| fld_kayıtTC.getText().length() == 0 || fld_kayıtDG.getText().length() == 0
+						|| fld_kayıtSifre.getText().length() == 0) {
+					Helper.showMsg("fill");
+				} else {
+					Connection con = conn.connDb();
+					try {
+						Statement st = con.createStatement();
+						ResultSet rs = st.executeQuery("SELECT * FROM user");
+						while (rs.next()) {
+							if (fld_kayıtTC.getText().equals(rs.getString("tcno"))) {
+								Helper.showMsg("Lütfen aynı kimlikle girme ");
+								c = 0;
+							}
 
-			
+						}
+
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					if (c == 1) {
+						
+						try {
+							Hasta hasta = new Hasta();
+							hasta.KayitOl(fld_kayıtTC.getText(), fld_kayıtAd.getText(), fld_kayıtSoyad.getText(),
+									fld_kayıtDG.getText(), fld_kayıtSifre.getText());
+							
+							HastaLogin hLog = new HastaLogin();
+							// DÜZELTİLECEK
+							hLog.setVisible(true);
+							// Diger panele taşımayı sağlar..
+							dispose();
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+						
+
+					}
+					fld_kayıtTC.setText(null);
+					fld_kayıtAd.setText(null);
+					fld_kayıtSoyad.setText(null);
+					fld_kayıtDG.setText(null);
+					fld_kayıtSifre.setText(null);
+					
+				}
+
+				
+			}
+
 		});
 		butonHastaKayit.setBounds(234, 226, 102, 27);
 		getContentPane().add(butonHastaKayit);
@@ -128,7 +185,7 @@ public class HastaKayıtOl extends JFrame {
 		butonGeriDön.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				HastaLogin login = new HastaLogin();
-				login.setVisible(true); 
+				login.setVisible(true);
 				dispose();
 			}
 		});
