@@ -247,7 +247,7 @@ public class HastaGenel extends JFrame {
 		iFRecete.setBounds(221, 70, 609, 359);
 		contentPane.add(iFRecete);
 		
-		JLabel baslik = new JLabel("HOŞGELDİN "+hasta.getAd());
+		JLabel baslik = new JLabel("HOŞGELDİN "+hasta.getAd().toUpperCase()+" "+hasta.getSoyad().toUpperCase());
 		baslik.setBounds(38, 10, 547, 50);
 		contentPane.add(baslik);
 		

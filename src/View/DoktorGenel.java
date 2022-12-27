@@ -67,7 +67,7 @@ public class DoktorGenel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd());
+		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd().toUpperCase()+" "+doktor.getSoyad().toUpperCase());
 		baslik.setForeground(Color.BLUE);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		baslik.setBounds(50, 23, 233, 32);
