@@ -12,8 +12,10 @@ import Helper.Helper;
 import DataBase.Bashekim;
 
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -21,6 +23,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class DoktorLogin extends JFrame {
 
@@ -57,15 +61,19 @@ public class DoktorLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl_TC = new JLabel("tc");
-		lbl_TC.setBounds(85, 99, 46, 14);
+		JLabel lbl_TC = new JLabel("TC KİMLİK NO:\r\n");
+		lbl_TC.setBounds(74, 95, 128, 23);
+		lbl_TC.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		contentPane.add(lbl_TC);
 		
-		JLabel lblSifre = new JLabel("sifre");
-		lblSifre.setBounds(85, 140, 46, 14);
+		JLabel lblSifre = new JLabel("ŞİFRE:");
+		lblSifre.setBounds(74, 140, 113, 14);
+		lblSifre.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		contentPane.add(lblSifre);
 		
-		JButton butonGiris = new JButton("giris");
+		JButton butonGiris = new JButton("GİRİŞ");
+		butonGiris.setBounds(160, 203, 99, 23);
+		butonGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -130,7 +138,6 @@ public class DoktorLogin extends JFrame {
 				
 			
 		});
-		butonGiris.setBounds(175, 192, 89, 23);
 		contentPane.add(butonGiris);
 		
 		fldTC = new JTextField();
@@ -142,8 +149,29 @@ public class DoktorLogin extends JFrame {
 		fldSifre.setBounds(223, 137, 89, 20);
 		contentPane.add(fldSifre);
 		
-		JLabel baslik = new JLabel("doktor girisi");
-		baslik.setBounds(62, 29, 286, 14);
+		JLabel baslik = new JLabel("DOKTOR GİRİŞİ");
+		baslik.setBounds(161, 24, 113, 31);
+		baslik.setForeground(Color.BLUE);
+		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		contentPane.add(baslik);
+		
+		JButton geri_buton = new JButton(new ImageIcon(this.getClass().getResource("return.png")));
+		geri_buton.setBorder(UIManager.getBorder("Tree.editorBorder"));
+		geri_buton.setBounds(10, 11, 34, 31);
+		contentPane.add(geri_buton);
+		
+		
+		
+		geri_buton.setBackground(Color.LIGHT_GRAY);
+		
+		
+		geri_buton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		
+		   
+		
+		});
 	}
 }

@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class SecimLogin extends JFrame {
 
@@ -47,7 +48,7 @@ public class SecimLogin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel doktorPhoto = new JLabel(new ImageIcon(getClass().getResource("doktor.png")));
-		doktorPhoto.setBounds(266, 60, 145, 165);
+		doktorPhoto.setBounds(284, 60, 145, 165);
 		contentPane.add(doktorPhoto);
 		
 		JLabel hastaLogo = new JLabel(new ImageIcon(getClass().getResource("hasta.png")));
@@ -57,7 +58,9 @@ public class SecimLogin extends JFrame {
 		
 		//JLabel lbl_logo = new JLabel(new ImageIcon(getClass().getResource("images.jpeg")));
 		
-		JButton butonHastaGiris = new JButton("Hasta Giriş");
+		JButton butonHastaGiris = new JButton("HASTA GİRİŞ");
+		butonHastaGiris.setForeground(new Color(0, 0, 0));
+		butonHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonHastaGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -66,10 +69,11 @@ public class SecimLogin extends JFrame {
 				dispose();
 			}
 		});
-		butonHastaGiris.setBounds(74, 235, 137, 39);
+		butonHastaGiris.setBounds(74, 236, 145, 39);
 		contentPane.add(butonHastaGiris);
 		
-		JButton butonDoktorGiris = new JButton("Doktor Giriş");
+		JButton butonDoktorGiris = new JButton("DOKTOR GİRİŞ");
+		butonDoktorGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonDoktorGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DoktorLogin doktorlogin =new DoktorLogin();
@@ -78,14 +82,14 @@ public class SecimLogin extends JFrame {
 				dispose();
 			}
 		});
-		butonDoktorGiris.setBounds(284, 235, 127, 39);
+		butonDoktorGiris.setBounds(284, 235, 150, 39);
 		contentPane.add(butonDoktorGiris);
 		
-		JLabel baslik = new JLabel("Medipol Hastanesine Hosgeldiniz");
-		baslik.setForeground(Color.RED);
+		JLabel baslik = new JLabel("MEDİPOL HASTANESİNE HOŞGELDİNİZ");
+		baslik.setForeground(Color.BLUE);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 20));
 		baslik.setHorizontalAlignment(SwingConstants.CENTER);
-		baslik.setBounds(88, 28, 346, 32);
+		baslik.setBounds(69, 31, 402, 32);
 		contentPane.add(baslik);
 	}
 }
