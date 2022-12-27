@@ -141,7 +141,7 @@ public class HastaLogin extends JFrame {
 		fldTCHastaGiris.setColumns(10);
 
 		JLabel baslik = new JLabel("HASTA GİRİŞ EKRANI");
-		baslik.setForeground(Color.RED);
+		baslik.setForeground(Color.BLUE);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
 		baslik.setBounds(140, 28, 175, 20);
 		contentPane.add(baslik);
@@ -165,7 +165,7 @@ public class HastaLogin extends JFrame {
 				
 			}
 		});
-		geri_butonu.setBounds(10, 11, 60, 61);
+		geri_butonu.setBounds(10, 11, 26, 20);
 		contentPane.add(geri_butonu);
 	}
 }
