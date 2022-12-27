@@ -6,9 +6,9 @@ public class User {
 	private int id;
 	private String tcno,ad,soyad,sifre,type,dogumTarih;
 	
-	public User(int id, String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
+	public User( String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
 		super();
-		this.id = id;
+		 
 		this.tcno = tcno;
 		this.ad = ad;
 		this.soyad = soyad;
@@ -19,12 +19,7 @@ public class User {
 	public User() {
 		
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getTcno() {
 		return tcno;
 	}

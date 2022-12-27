@@ -12,21 +12,24 @@ public class Helper {
 		UIManager.put("OptionPane.yesButtonText", "Evet");
 
 	}
-
+ 
 	public static void showMsg(String str) {
 		String msg;
 		optionPaneChangeButtonText();
 		switch (str) {
 		case "fill":
-			msg = "Lütfen tüm alanları doldurunuz";
+			msg = "Lütfen tüm alanları doldurunuz.";
 			break;
 		case "success":
-			msg = "İşlem Başarılı";
+			msg = "İşlem Başarılı.";
 			break;
 		case "wrong":
 			msg = "T.C No veya Şifre Hatalı Lütfen Tekrar Deneyiniz.";
 			break;
-		default:
+		case "exit":
+			msg="Sağlıklı günler dileriz";
+			break;
+		default: 
 			msg = str;
 
 		}
@@ -39,7 +42,7 @@ public class Helper {
 		switch (str) {
 		case "sure":
 			msg = "Bu işlemi gerçekleştirmek istiyor musun?";
-			break;
+			break; 
 		default:
 			msg = str;
 			break;
