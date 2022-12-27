@@ -29,7 +29,7 @@ public class SecimLogin extends JFrame {
 				}
 			}
 		});
-	}
+	}   
 
 	/**
 	 * Create the frame.
