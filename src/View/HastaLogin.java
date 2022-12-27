@@ -162,7 +162,9 @@ public class HastaLogin extends JFrame {
 		
 		geri_butonu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				SecimLogin hLogin=new SecimLogin();
+				hLogin.setVisible(true);
+				dispose();
 			}
 		});
 		geri_butonu.setBounds(10, 11, 26, 20);
