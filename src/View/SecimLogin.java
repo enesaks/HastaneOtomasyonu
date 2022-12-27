@@ -6,10 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class SecimLogin extends JFrame {
 
@@ -36,22 +39,25 @@ public class SecimLogin extends JFrame {
 	 */
 	public SecimLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 559, 379);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel doktorPhoto = new JLabel("New label");
-		doktorPhoto.setBounds(271, 55, 77, 78);
+		JLabel doktorPhoto = new JLabel(new ImageIcon(getClass().getResource("doktor.png")));
+		doktorPhoto.setBounds(266, 60, 145, 165);
 		contentPane.add(doktorPhoto);
 		
-		JLabel hastaPhoto = new JLabel("phptp");
-		hastaPhoto.setBounds(92, 55, 77, 78);
-		contentPane.add(hastaPhoto);
+		JLabel hastaLogo = new JLabel(new ImageIcon(getClass().getResource("hasta.png")));
+		hastaLogo.setBackground(Color.WHITE);
+		hastaLogo.setBounds(74, 60, 145, 165);
+		contentPane.add(hastaLogo);
 		
-		JButton butonHastaGiris = new JButton("New button");
+		//JLabel lbl_logo = new JLabel(new ImageIcon(getClass().getResource("images.jpeg")));
+		
+		JButton butonHastaGiris = new JButton("Hasta Giriş");
 		butonHastaGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -61,10 +67,10 @@ public class SecimLogin extends JFrame {
 				dispose();
 			}
 		});
-		butonHastaGiris.setBounds(80, 186, 89, 23);
+		butonHastaGiris.setBounds(74, 235, 137, 39);
 		contentPane.add(butonHastaGiris);
 		
-		JButton butonDoktorGiris = new JButton("New button");
+		JButton butonDoktorGiris = new JButton("Doktor Giriş");
 		butonDoktorGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DoktorLogin doktorlogin =new DoktorLogin();
@@ -73,12 +79,14 @@ public class SecimLogin extends JFrame {
 				dispose();
 			}
 		});
-		butonDoktorGiris.setBounds(259, 186, 89, 23);
+		butonDoktorGiris.setBounds(284, 235, 127, 39);
 		contentPane.add(butonDoktorGiris);
 		
-		JLabel baslik = new JLabel("hastaneye hosgeldiniz");
+		JLabel baslik = new JLabel("Medipol Hastanesine Hosgeldiniz");
+		baslik.setForeground(Color.RED);
+		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 20));
 		baslik.setHorizontalAlignment(SwingConstants.CENTER);
-		baslik.setBounds(74, 30, 285, 14);
+		baslik.setBounds(88, 28, 346, 32);
 		contentPane.add(baslik);
 	}
 }
