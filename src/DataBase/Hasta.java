@@ -31,7 +31,7 @@ public class Hasta extends User {
 		// 	veri tabanında gözükmüyor.Ve tekrar giriş ekranına gelince hasta bulunamıyor..
 	
 
-	
+	  
 	
 	public String getHastaninDoktoru() {
 		return hastaninDoktoru;
