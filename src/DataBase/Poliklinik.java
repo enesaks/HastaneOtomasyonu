@@ -13,9 +13,6 @@ private String polikliniIsmi;
 
 	public void setPolikliniIsmi(String polikliniIsmi) {
 		this.polikliniIsmi = polikliniIsmi;
-	}  	  
-	
-	 
-	
+	}  	 
 }
  
