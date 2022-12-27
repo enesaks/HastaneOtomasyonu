@@ -63,7 +63,6 @@ public class SecimLogin extends JFrame {
 			
 				HastaLogin hastalogin =new HastaLogin();
 				hastalogin.setVisible(true);  
-				
 				dispose();
 			}
 		});
