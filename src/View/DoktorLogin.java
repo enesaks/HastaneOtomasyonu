@@ -168,6 +168,9 @@ public class DoktorLogin extends JFrame {
 		geri_buton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				SecimLogin hLogin=new SecimLogin();
+				hLogin.setVisible(true);
+				dispose();
 			}
 		
 		   
