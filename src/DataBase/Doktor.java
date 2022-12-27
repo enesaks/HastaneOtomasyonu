@@ -17,7 +17,7 @@ public class Doktor extends User{
 		super( tcno, ad, soyad, sifre, type, dogumTarih);
 	
 	}
-	public Doktor() {
+	public Doktor() { 
 		
 	} 
 	
