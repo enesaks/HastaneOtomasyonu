@@ -25,6 +25,7 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.UIManager;
 
 public class HastaLogin extends JFrame {
 
@@ -151,17 +152,20 @@ public class HastaLogin extends JFrame {
 		
 		
 		//photo eklenecek
-		JButton geri_butonu = new JButton();
-		Icon geri= new ImageIcon(this.getClass().getResource("geri.jpg"));
-		geri_butonu.setRolloverIcon(geri);
-		  add(geri_butonu);   
+		JButton geri_butonu = new JButton(new ImageIcon(this.getClass().getResource("return.png")));
+		geri_butonu.setBorder(UIManager.getBorder("Tree.editorBorder"));
+		geri_butonu.setBackground(Color.LIGHT_GRAY);
+		
+		
+		
+		  getContentPane().add(geri_butonu);   
 		
 		geri_butonu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		geri_butonu.setBounds(10, 11, 33, 35);
+		geri_butonu.setBounds(10, 11, 60, 61);
 		contentPane.add(geri_butonu);
 	}
 }
