@@ -11,6 +11,8 @@ import Helper.DBConnection;
 import Helper.Helper;
 
 import javax.swing.JLabel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -23,6 +25,7 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.UIManager;
 
 public class HastaLogin extends JFrame {
 
@@ -59,12 +62,14 @@ public class HastaLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lbl_TCHastaGiris = new JLabel("T.C Numaranız");
+		JLabel lbl_TCHastaGiris = new JLabel("T.C NUMARASI:");
+		lbl_TCHastaGiris.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbl_TCHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lbl_TCHastaGiris.setBounds(76, 85, 113, 17);
 		contentPane.add(lbl_TCHastaGiris);
 
-		JLabel lblSifreHastaGiris = new JLabel("SİFRE");
+		JLabel lblSifreHastaGiris = new JLabel("ŞİFRE:");
+		lblSifreHastaGiris.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSifreHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblSifreHastaGiris.setBounds(76, 124, 99, 14);
 		contentPane.add(lblSifreHastaGiris);
@@ -114,7 +119,7 @@ public class HastaLogin extends JFrame {
 				}
 			}
 		});
-		butonGirisHastaGiris.setBounds(76, 187, 113, 46);
+		butonGirisHastaGiris.setBounds(104, 187, 99, 35);
 		contentPane.add(butonGirisHastaGiris);
 
 		JButton butonKayitOlHastaGiris = new JButton("Kayıt Ol");
@@ -127,22 +132,40 @@ public class HastaLogin extends JFrame {
 				dispose();				
 			}
 		});
-		butonKayitOlHastaGiris.setBounds(243, 187, 113, 46);
+		butonKayitOlHastaGiris.setBounds(230, 187, 99, 35);
 		contentPane.add(butonKayitOlHastaGiris);
 
 		fldTCHastaGiris = new JTextField();
-		fldTCHastaGiris.setBounds(243, 86, 99, 20);
+		fldTCHastaGiris.setBounds(243, 86, 113, 20);
 		contentPane.add(fldTCHastaGiris);
 		fldTCHastaGiris.setColumns(10);
 
-		JLabel baslik = new JLabel("Hasta Giris Ekranı");
+		JLabel baslik = new JLabel("HASTA GİRİŞ EKRANI");
 		baslik.setForeground(Color.RED);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
 		baslik.setBounds(140, 28, 175, 20);
 		contentPane.add(baslik);
 
 		fldSifreHastaGiris = new JPasswordField();
-		fldSifreHastaGiris.setBounds(243, 124, 99, 19);
+		fldSifreHastaGiris.setBounds(243, 124, 113, 19);
 		contentPane.add(fldSifreHastaGiris);
+		
+		
+		//photo eklenecek
+		JButton geri_butonu = new JButton(new ImageIcon(this.getClass().getResource("return.png")));
+		geri_butonu.setBorder(UIManager.getBorder("Tree.editorBorder"));
+		geri_butonu.setBackground(Color.LIGHT_GRAY);
+		
+		
+		
+		  getContentPane().add(geri_butonu);   
+		
+		geri_butonu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		geri_butonu.setBounds(10, 11, 60, 61);
+		contentPane.add(geri_butonu);
 	}
 }

@@ -18,6 +18,8 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import java.awt.BorderLayout;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class HastaGenel extends JFrame {
 	JInternalFrame iFRecete = new JInternalFrame("E-Reçete");
@@ -153,10 +155,12 @@ public class HastaGenel extends JFrame {
 		
 		iFHastaBilgisi.setBounds(221, 70, 609, 359);
 		contentPane.add(iFHastaBilgisi);
+		iFHastaBilgisi.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 593, 1);
 		panel.setLayout(null);
-		iFHastaBilgisi.getContentPane().add(panel, BorderLayout.NORTH);
+		iFHastaBilgisi.getContentPane().add(panel);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 33, 225, 228);
@@ -193,6 +197,48 @@ public class HastaGenel extends JFrame {
 		lblNewLabel_4.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel_4.setBounds(383, 12, 167, 13);
 		panel.add(lblNewLabel_4);
+		
+		JLabel lblAd = new JLabel("AD:");
+		lblAd.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAd.setBounds(175, 94, 97, 28);
+		iFHastaBilgisi.getContentPane().add(lblAd);
+		
+		JLabel lblNewLabel_5 = new JLabel("SOYAD:");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_5.setBounds(175, 133, 97, 28);
+		iFHastaBilgisi.getContentPane().add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("T.C. KİMLİK NO:");
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_6.setBounds(175, 177, 97, 28);
+		iFHastaBilgisi.getContentPane().add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("DOĞUM TARİHİ:");
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_7.setBounds(175, 223, 97, 28);
+		iFHastaBilgisi.getContentPane().add(lblNewLabel_7);
+		
+		JLabel baslik_hastaBilgileri = new JLabel("HASTA BİLGİLERİ");
+		baslik_hastaBilgileri.setFont(new Font("Tahoma", Font.BOLD, 14));
+		baslik_hastaBilgileri.setHorizontalAlignment(SwingConstants.CENTER);
+		baslik_hastaBilgileri.setBounds(20, 33, 563, 50);
+		iFHastaBilgisi.getContentPane().add(baslik_hastaBilgileri);
+		
+		JLabel lblNewLabel = new JLabel(hasta.getAd());
+		lblNewLabel.setBounds(308, 83, 200, 50);
+		iFHastaBilgisi.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_8 = new JLabel(hasta.getSoyad());
+		lblNewLabel_8.setBounds(308, 122, 200, 50);
+		iFHastaBilgisi.getContentPane().add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel(hasta.getTcno());
+		lblNewLabel_9.setBounds(308, 166, 200, 50);
+		iFHastaBilgisi.getContentPane().add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_10 = new JLabel(hasta.getDogumTarih());
+		lblNewLabel_10.setBounds(308, 212, 200, 50);
+		iFHastaBilgisi.getContentPane().add(lblNewLabel_10);
 		
 		iFSonuclarim.setBounds(221, 70, 609, 359);
 		contentPane.add(iFSonuclarim);

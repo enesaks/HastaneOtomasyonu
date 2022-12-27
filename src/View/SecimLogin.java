@@ -38,7 +38,7 @@ public class SecimLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SecimLogin() {
+	public SecimLogin() { 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 559, 379);
 		contentPane = new JPanel();
