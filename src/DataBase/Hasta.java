@@ -35,9 +35,9 @@ public class Hasta extends User {
 			preparedStatement.setString(1, tcno);
 			preparedStatement.setString(2, ad);
 			preparedStatement.setString(3, soyad);
-			preparedStatement.setString(4, dogumTarih);
+			preparedStatement.setString(4, sifre);
 			preparedStatement.setString(5, "hasta");
-			preparedStatement.setString(6, sifre);
+			preparedStatement.setString(6, dogumTarih);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
