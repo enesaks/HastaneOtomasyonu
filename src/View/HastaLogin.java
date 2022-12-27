@@ -95,7 +95,7 @@ public class HastaLogin extends JFrame {
 									hasta.setSifre(rs.getString("sifre"));
 									hasta.setType(rs.getString("type"));
 									System.out.println(hasta.getAd());
-									HastaGenel hGenel = new HastaGenel();
+									HastaGenel hGenel = new HastaGenel(hasta);
 									// DÜZELTİLECEK
 									hGenel.setVisible(true);
 									// Diger panele taşımayı sağlar..
