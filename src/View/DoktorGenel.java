@@ -10,12 +10,28 @@ import DataBase.Doktor;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JInternalFrame;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.border.BevelBorder;
+import javax.swing.JDesktopPane;
+import javax.swing.JToolBar;
+import java.awt.BorderLayout;
+import javax.swing.UIManager;
+import javax.swing.JMenuBar;
+import java.awt.Canvas;
 
 public class DoktorGenel extends JFrame {
-
+	
+	
+	
+	JInternalFrame iFHastaBilgileri = new JInternalFrame("HASTA BİLGİLERİ");
+	JInternalFrame iFCalismaSaatleri = new JInternalFrame("ÇALIŞMA SAATLERİ");
 	private JPanel contentPane;
+	
+	
+	
 	private static Doktor doktor = new Doktor();
-
 	/**
 	 * Launch the application.
 	 */
@@ -37,29 +53,58 @@ public class DoktorGenel extends JFrame {
 	 */
 	public DoktorGenel(Doktor doktor) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton butonHastalarimDr = new JButton("Hasta");
-		butonHastalarimDr.setBounds(55, 76, 89, 23);
-		contentPane.add(butonHastalarimDr);
+		JLabel baslik = new JLabel("HOŞGELDİN DOKTOR "+doktor.getAd());
+		baslik.setBounds(61, 34, 673, 32);
+		contentPane.add(baslik);
 		
-		JButton butonCalismaSaatleriDr = new JButton("calisma saatleri");
-		butonCalismaSaatleriDr.setBounds(55, 121, 89, 23);
-		contentPane.add(butonCalismaSaatleriDr);
+		JButton butonHastaBilgiler = new JButton("Hasta Bilgileri");
+		butonHastaBilgiler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iFCalismaSaatleri.setVisible(false);
+				iFHastaBilgileri.setVisible(true);
+			}
+		});
+		butonHastaBilgiler.setBounds(61, 149, 133, 38);
+		contentPane.add(butonHastaBilgiler);
+		
+		
+		
+		JButton butonCalismaSaatleri = new JButton("Çalışma Saatleri");
+		butonCalismaSaatleri.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iFCalismaSaatleri.setVisible(true);
+				iFHastaBilgileri.setVisible(false);
+			}
+		});
+		butonCalismaSaatleri.setBounds(61, 218, 133, 38);
+		contentPane.add(butonCalismaSaatleri);
+		
+		
+		
+		iFHastaBilgileri.setBounds(215, 77, 559, 353);
+		contentPane.add(iFHastaBilgileri);
+		iFHastaBilgileri.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(162, 31, 262, 192);
-		contentPane.add(panel);
+		panel.setBounds(0, 0, 543, 323);
+		iFHastaBilgileri.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel baslik = new JLabel("hosgeldin dr  ...");
-		baslik.setBounds(10, 11, 126, 14);
-		panel.add(baslik);
+		iFCalismaSaatleri.setBounds(215, 77, 559, 353);
+		contentPane.add(iFCalismaSaatleri);
+		
+		
+		
+		
+		
+		
+	}
 	}
 
-}
