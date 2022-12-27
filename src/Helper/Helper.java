@@ -42,7 +42,7 @@ public class Helper {
 		switch (str) {
 		case "sure":
 			msg = "Bu işlemi gerçekleştirmek istiyor musun?";
-			break;
+			break; 
 		default:
 			msg = str;
 			break;
