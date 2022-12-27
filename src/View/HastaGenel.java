@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JInternalFrame;
 
 public class HastaGenel extends JFrame {
 
@@ -41,7 +42,7 @@ public class HastaGenel extends JFrame {
 	 */
 	public HastaGenel() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1123, 723);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -77,9 +78,11 @@ public class HastaGenel extends JFrame {
 		baslik.setBounds(160, 24, 230, 21);
 		contentPane.add(baslik);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(156, 55, 268, 177);
-		contentPane.add(panel);
+		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
+		internalFrame.setBorder(null);
+		internalFrame.setBounds(155, 62, 944, 602);
+		contentPane.add(internalFrame);
+		internalFrame.setVisible(true);
 	}
 
 	private static class __Tmp {

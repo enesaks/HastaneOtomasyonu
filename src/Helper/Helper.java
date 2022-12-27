@@ -29,7 +29,7 @@ public class Helper {
 		case "exit":
 			msg="Sağlıklı günler dileriz..";
 			break;
-		default:
+		default: 
 			msg = str;
 
 		}
