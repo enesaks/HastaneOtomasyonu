@@ -23,6 +23,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.JList;
 import javax.swing.JProgressBar;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.TitledBorder;
+import javax.swing.JSpinner;
+import java.awt.Choice;
 
 
 public class BHGenel extends JFrame {
@@ -107,6 +111,8 @@ public class BHGenel extends JFrame {
 		iFDoktorBilgi.getContentPane().setLayout(null);
 		
 		JList<String> list = new JList<>(doktor.doktorList());
+		list.setBorder(new TitledBorder(null, "Doktorlar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		
 		
 		list.setBounds(10, 11, 227, 435);
 		iFDoktorBilgi.getContentPane().add(list);

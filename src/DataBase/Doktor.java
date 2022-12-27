@@ -21,7 +21,7 @@ public class Doktor extends User{
 		
 	} 
 	
-	public DefaultListModel<String>  doktorList() throws SQLException {
+	public DefaultListModel<String>  doktorList( ) throws SQLException {
 		
 		DefaultListModel<String> dflist= new DefaultListModel<String>();
 		
@@ -32,8 +32,8 @@ public class Doktor extends User{
 		ResultSet rs = st.executeQuery(query);
 		
 		while(rs.next()) {
-			dflist.addElement(rs.getString("ad"));
-			System.out.println(rs.getString("ad"));
+			dflist.addElement(rs.getString("ad").toUpperCase()+" "+rs.getString("soyad").toUpperCase());
+			
 		}
 		
 
