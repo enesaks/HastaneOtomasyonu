@@ -67,7 +67,7 @@ public class DoktorGenel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR <dynamic>");
+		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd());
 		baslik.setForeground(Color.BLUE);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		baslik.setBounds(50, 23, 233, 32);
@@ -108,7 +108,7 @@ public class DoktorGenel extends JFrame {
 		list.setBounds(55, 22, 432, 290);
 		iFHastaBilgileri.getContentPane().add(list);
 		
-		iFCalismaSaatleri.setBounds(215, 77, 559, 353);
+		iFCalismaSaatleri.setBounds(215, 66, 559, 364);
 		contentPane.add(iFCalismaSaatleri);
 		
 		
