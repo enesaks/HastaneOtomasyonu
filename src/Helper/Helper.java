@@ -12,7 +12,7 @@ public class Helper {
 		UIManager.put("OptionPane.yesButtonText", "Evet");
 
 	}
-
+ 
 	public static void showMsg(String str) {
 		String msg;
 		optionPaneChangeButtonText();
@@ -27,7 +27,7 @@ public class Helper {
 			msg = "T.C No veya Şifre Hatalı Lütfen Tekrar Deneyiniz.";
 			break;
 		case "exit":
-			msg="Sağlıklı günler dileriz..";
+			msg="Sağlıklı günler dileriz...";
 			break;
 		default:
 			msg = str;

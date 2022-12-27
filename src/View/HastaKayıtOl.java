@@ -25,7 +25,7 @@ public class HastaKayıtOl extends JFrame {
 	private JTextField fld_kayıtTC;
 	private JTextField fld_kayıtSoyad;
 	private JTextField fld_kayıtAd;
-	private Hasta hasta = new Hasta();
+	static Hasta hasta=new Hasta();
 
 	/**
 	 * Launch the application.
@@ -51,36 +51,18 @@ public class HastaKayıtOl extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
-		getContentPane().setLayout(null);
+		getContentPane().setLayout(null); 
 		
 		//KayıtOl butonuna basınca olacak opsiyonlar buraya yazıldı..Neden veritabanına veri aktarılmıyor bilmiyorum.
 
 		JButton butonHastaKayit = new JButton("Kayıt ol");
 		butonHastaKayit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (fld_kayıtAd.getText().length() == 0 || fld_kayıtSoyad.getText().length() == 0
-						|| fld_kayıtTC.getText().length() == 0 || fld_kayıtDG.getText().length() == 0
-						|| fld_kayıtSifre.getText().length() == 0) {
-					Helper.showMsg("fill");
-				} else {
-					try {
-						boolean control = hasta.kayıt(fld_kayıtAd.getText(), fld_kayıtSoyad.getText(),
-								fld_kayıtTC.getText(), fld_kayıtDG.getText(), fld_kayıtSifre.getText());
-						if (control) {
-							Helper.showMsg("success");
-							HastaLogin login = new HastaLogin();
-							login.setVisible(true);
-							dispose();
-						} else {
-							Helper.showMsg("error");
-						}
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
+				HastaLogin login=new HastaLogin();
+				login.setVisible(true);
+				dispose();}
 
-			}
+			
 		});
 		butonHastaKayit.setBounds(234, 226, 102, 27);
 		getContentPane().add(butonHastaKayit);
@@ -146,7 +128,7 @@ public class HastaKayıtOl extends JFrame {
 		butonGeriDön.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				HastaLogin login = new HastaLogin();
-				login.setVisible(true);
+				login.setVisible(true); 
 				dispose();
 			}
 		});
