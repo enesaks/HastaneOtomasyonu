@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+
 import Helper.DBConnection;
 import Helper.Helper;
 
@@ -21,7 +23,7 @@ public class Hasta extends User {
 
 
 	public Hasta() {
-		//
+		
 	}
 	
 	public static void KayitOl(String tcno, String ad, String soyad, String sifre, String dogumTarih) throws SQLException {
@@ -55,5 +57,25 @@ public class Hasta extends User {
 	public void setHastaninDoktoru(String hastaninDoktoru) {
 		this.hastaninDoktoru = hastaninDoktoru;
 	}
-
+	
+     public DefaultListModel<String>  hastaList() throws SQLException {
+		
+		DefaultListModel<String> dflist= new DefaultListModel<String>();
+		
+		
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query=("SELECT * FROM user "+" WHERE type='"+"hasta"+"' ");
+		ResultSet rs = st.executeQuery(query);
+		
+		while(rs.next()) {
+			
+			dflist.addElement(rs.getString("ad"));
+			System.out.println(rs.getString("ad"));
+		}
+		return dflist;
+     }
 }
+		
+
+

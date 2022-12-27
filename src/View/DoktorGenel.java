@@ -7,11 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DataBase.Doktor;
+import DataBase.Hasta;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JInternalFrame;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.JDesktopPane;
@@ -20,6 +22,7 @@ import java.awt.BorderLayout;
 import javax.swing.UIManager;
 import javax.swing.JMenuBar;
 import java.awt.Canvas;
+import javax.swing.JList;
 
 public class DoktorGenel extends JFrame {
 	
@@ -29,7 +32,7 @@ public class DoktorGenel extends JFrame {
 	JInternalFrame iFCalismaSaatleri = new JInternalFrame("ÇALIŞMA SAATLERİ");
 	private JPanel contentPane;
 	
-	
+	Hasta hasta=new Hasta();
 	
 	private static Doktor doktor = new Doktor();
 	/**
@@ -40,6 +43,7 @@ public class DoktorGenel extends JFrame {
 			public void run() {
 				try {
 					DoktorGenel frame = new DoktorGenel(doktor);
+					frame.setTitle("Doktor Sayfası");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,8 +54,9 @@ public class DoktorGenel extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
-	public DoktorGenel(Doktor doktor) {
+	public DoktorGenel(Doktor doktor) throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
@@ -92,17 +97,17 @@ public class DoktorGenel extends JFrame {
 		contentPane.add(iFHastaBilgileri);
 		iFHastaBilgileri.getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 543, 323);
-		iFHastaBilgileri.getContentPane().add(panel);
-		panel.setLayout(null);
+		JList<String> list = new JList<>(hasta.hastaList());
+
+		list.setBounds(55, 22, 432, 290);
+		iFHastaBilgileri.getContentPane().add(list);
 		
 		iFCalismaSaatleri.setBounds(215, 77, 559, 353);
 		contentPane.add(iFCalismaSaatleri);
 		
 		
 		
-		
+		iFHastaBilgileri.setVisible(true);
 		
 		
 	}
