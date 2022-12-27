@@ -27,7 +27,7 @@ public class Helper {
 			msg = "T.C No veya Şifre Hatalı Lütfen Tekrar Deneyiniz.";
 			break;
 		case "exit":
-			msg="Sağlıklı günler dileriz...";
+			msg="Sağlıklı günler dileriz";
 			break;
 		default: 
 			msg = str;
