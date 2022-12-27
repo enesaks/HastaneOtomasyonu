@@ -7,12 +7,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DataBase.Bashekim;
+import DataBase.Doktor;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
@@ -20,6 +22,7 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.JList;
+import javax.swing.JProgressBar;
 
 
 public class BHGenel extends JFrame {
@@ -27,6 +30,7 @@ public class BHGenel extends JFrame {
 	JInternalFrame iFDoktorBilgi = new JInternalFrame("DoktorBİlgisi");
 	JInternalFrame iFDoktorEkle = new JInternalFrame("Doktor Ekle");
 	JInternalFrame iFNobetSaati = new JInternalFrame(" nobet ayarla");
+	Doktor doktor = new Doktor();
 
 	private JPanel contentPane;
 	 static Bashekim bshekim = new Bashekim();
@@ -50,11 +54,13 @@ public class BHGenel extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
-	public BHGenel(Bashekim bshekim) {
+	public BHGenel(Bashekim bshekim) throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 204, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -92,27 +98,31 @@ public class BHGenel extends JFrame {
 		});
 		butonDoktorEkleBHekim.setBounds(21, 262, 156, 118);
 		contentPane.add(butonDoktorEkleBHekim);
-		iFDoktorBilgi.setBackground(new Color(4, 251, 220));
+		iFDoktorBilgi.setBackground(new Color(255, 255, 204));
 		iFDoktorBilgi.setEnabled(false);
 		iFDoktorBilgi.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 0, 128), null, null, null));
 		
 		iFDoktorBilgi.setBounds(187, 64, 687, 486);
 		contentPane.add(iFDoktorBilgi);
+		iFDoktorBilgi.getContentPane().setLayout(null);
 		
-		JList list = new JList();
-		iFDoktorBilgi.getContentPane().add(list, BorderLayout.WEST);
-		iFDoktorEkle.setBackground(new Color(4, 251, 220));
+		JList<String> list = new JList<>(doktor.doktorList());
+		
+		list.setBounds(10, 11, 227, 435);
+		iFDoktorBilgi.getContentPane().add(list);
+		iFDoktorEkle.setBorder(new EmptyBorder(0, 0, 0, 0));
+		iFDoktorEkle.setBackground(new Color(255, 255, 204));
 		
 		
 		iFDoktorEkle.setBounds(187, 64, 687, 486);
 		contentPane.add(iFDoktorEkle);
-		iFNobetSaati.setBackground(new Color(4, 251, 220));
+		iFNobetSaati.setBackground(new Color(255, 255, 204));
 		
 		iFNobetSaati.setBounds(187, 64, 687, 486);
 		contentPane.add(iFNobetSaati);
 		
 		iFNobetSaati.setVisible(false);
 		iFDoktorEkle.setVisible(false);
-		iFDoktorBilgi.setVisible(false);
+		iFDoktorBilgi.setVisible(true);
 	}
 }
