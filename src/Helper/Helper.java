@@ -18,10 +18,10 @@ public class Helper {
 		optionPaneChangeButtonText();
 		switch (str) {
 		case "fill":
-			msg = "Lütfen tüm alanları doldurunuz";
+			msg = "Lütfen tüm alanları doldurunuz.";
 			break;
 		case "success":
-			msg = "İşlem Başarılı";
+			msg = "İşlem Başarılı.";
 			break;
 		case "wrong":
 			msg = "T.C No veya Şifre Hatalı Lütfen Tekrar Deneyiniz.";
