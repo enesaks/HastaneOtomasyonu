@@ -70,8 +70,8 @@ public class Hasta extends User {
 		
 		while(rs.next()) {
 			
-			dflist.addElement(rs.getString("ad"));
-			System.out.println(rs.getString("ad"));
+			dflist.addElement(rs.getString("tcno"));
+			
 		}
 		return dflist;
      }

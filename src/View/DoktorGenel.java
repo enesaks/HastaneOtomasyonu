@@ -8,12 +8,16 @@ import javax.swing.border.EmptyBorder;
 
 import DataBase.Doktor;
 import DataBase.Hasta;
+import Helper.DBConnection;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JInternalFrame;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.JDesktopPane;
@@ -34,8 +38,10 @@ public class DoktorGenel extends JFrame {
 	JInternalFrame iFCalismaSaatleri = new JInternalFrame("ÇALIŞMA SAATLERİ");
 	JInternalFrame iFReceteOlustur = new JInternalFrame("REÇETE OLUŞTUR");
 	JInternalFrame iFHastaSonuclari = new JInternalFrame("HASTA SONUÇLARI");
-
+	
+	private DBConnection conn = new DBConnection();
 	private JPanel contentPane;
+	
 	
 	Hasta hasta=new Hasta();
 	
@@ -44,6 +50,7 @@ public class DoktorGenel extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -109,11 +116,73 @@ public class DoktorGenel extends JFrame {
 		iFHastaBilgileri.getContentPane().setLayout(null);
 		
 		JList<String> list = new JList<>(hasta.hastaList());
-
-		list.setBounds(55, 22, 432, 290);
+		list.setBounds(55, 22, 169, 290);
 		iFHastaBilgileri.getContentPane().add(list);
+		
+		JLabel lblAd = new JLabel("AD:");
+		lblAd.setBounds(234, 32, 81, 50);
+		iFHastaBilgileri.getContentPane().add(lblAd);
+		iFHastaBilgileri.getContentPane().add(lblAd);
+
+		
+		JLabel lblSoyad = new JLabel("SOYAD:");
+		lblSoyad.setBounds(230, 76, 85, 50);
+		iFHastaBilgileri.getContentPane().add(lblSoyad);
+		iFHastaBilgileri.getContentPane().add(lblSoyad);
+
+		
+		JLabel lblDogumTarih = new JLabel("DOĞUM TARİHİ:");
+		lblDogumTarih.setBounds(230, 120, 85, 50);
+		iFHastaBilgileri.getContentPane().add(lblDogumTarih);
+		iFHastaBilgileri.getContentPane().add(lblDogumTarih);
+		
+		JLabel lbAd = new JLabel("");
+		lbAd.setBounds(321, 32, 81, 50);
+		iFHastaBilgileri.getContentPane().add(lbAd);
+		
+		JLabel lbSoyad = new JLabel("");
+		lbSoyad.setBounds(321, 76, 81, 50);
+		iFHastaBilgileri.getContentPane().add(lbSoyad);
+		
+		JLabel lbDogumTarihi = new JLabel("");
+		lbDogumTarihi.setBounds(321, 120, 81, 50);
+		iFHastaBilgileri.getContentPane().add(lbDogumTarihi);
 		iFCalismaSaatleri.setBounds(215, 66, 559, 364);
 		contentPane.add(iFCalismaSaatleri);
+
+		
+		JButton butonBilgileriGöster = new JButton("BİLGİLERİ GÖSTER");
+		butonBilgileriGöster.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print(list.getSelectedValue());
+				try {
+					Connection con = conn.connDb();
+					Statement st = con.createStatement();
+					String query=("SELECT * FROM user "+" WHERE tcno='"+list.getSelectedValue()+"' ");
+					ResultSet rs;
+					rs = st.executeQuery(query);
+					rs.next();
+					lbAd.setText(rs.getString("ad").toUpperCase());
+					lbSoyad.setText(rs.getString("soyad").toUpperCase());
+					lbDogumTarihi.setText(rs.getString("dogumTarih"));
+					
+					
+					
+					
+					
+					
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		
+			}
+		});
+		butonBilgileriGöster.setBounds(333, 203, 169, 43);
+		iFHastaBilgileri.getContentPane().add(butonBilgileriGöster);
+		
+		
 		
 		JButton butonReceteYaz = new JButton("Reçete Oluştur");
 		butonReceteYaz.addActionListener(new ActionListener() {
@@ -138,6 +207,7 @@ public class DoktorGenel extends JFrame {
 		});
 		butonHastaSonuclari.setBounds(50, 304, 144, 38);
 		contentPane.add(butonHastaSonuclari);
+
 		
 		
 		iFReceteOlustur.setBounds(215, 66, 559, 364);
