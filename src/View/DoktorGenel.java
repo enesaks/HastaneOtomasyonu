@@ -112,7 +112,7 @@ public class DoktorGenel extends JFrame {
 			}
 		});
 		contentPane.add(butonCalismaSaatleri);
-		iFHastaBilgileri.setBounds(686, 356, 88, 74);
+		iFHastaBilgileri.setBounds(215, 83, 559, 347);
 		contentPane.add(iFHastaBilgileri);
 		iFHastaBilgileri.getContentPane().setLayout(null);
 		
@@ -148,7 +148,7 @@ public class DoktorGenel extends JFrame {
 		JLabel lbDogumTarihi = new JLabel("");
 		lbDogumTarihi.setBounds(321, 120, 81, 50);
 		iFHastaBilgileri.getContentPane().add(lbDogumTarihi);
-		iFCalismaSaatleri.setBounds(686, 356, 88, 74);
+		iFCalismaSaatleri.setBounds(215, 83, 559, 347);
 		contentPane.add(iFCalismaSaatleri);
 
 		
@@ -236,7 +236,7 @@ public class DoktorGenel extends JFrame {
 					Helper.showMsg("fill");
 				}
 				else{
-					
+					Helper.showMsg("Reçete başarıyla oluşturuldu.");
 					try {
 						Connection con = conn.connDb();
 						Statement st;
@@ -251,7 +251,7 @@ public class DoktorGenel extends JFrame {
 						e1.printStackTrace();
 					}
 					
-					
+					epRecete.setText(null);
 				}
 			}
 		});
