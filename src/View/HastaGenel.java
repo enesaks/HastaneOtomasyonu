@@ -79,7 +79,7 @@ public class HastaGenel extends JFrame {
 		butonHastaBilgileri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFRecete.setVisible(false);
-				iFSonuclarim.setVisible(false);
+				
 				iFHastaBilgisi.setVisible(true);
 				iFRandevuAll.setVisible(false);
 			}
@@ -91,7 +91,7 @@ public class HastaGenel extends JFrame {
 		butonRandevuAl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFRecete.setVisible(false);
-				iFSonuclarim.setVisible(false);
+				
 				iFHastaBilgisi.setVisible(false);
 				iFRandevuAll.setVisible(true);
 			}
@@ -103,7 +103,7 @@ public class HastaGenel extends JFrame {
 		butonRecete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFRecete.setVisible(true);
-				iFSonuclarim.setVisible(false);
+				
 				iFHastaBilgisi.setVisible(false);
 				iFRandevuAll.setVisible(false);
 			}
