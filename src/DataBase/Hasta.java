@@ -44,6 +44,23 @@ public class Hasta extends User {
 		}
 	}
 	
+	public static void receteEkle(String tcno,String recete) {
+		String query = "INSERT INTO receteyaz (tcno,recete)VALUES(?,?)";
+		try {
+			st = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, tcno);
+			preparedStatement.setString(2, recete);
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	
+	
 	
 
 	public Hasta(String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
