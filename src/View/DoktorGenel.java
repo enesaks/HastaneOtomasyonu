@@ -32,6 +32,9 @@ public class DoktorGenel extends JFrame {
 	
 	JInternalFrame iFHastaBilgileri = new JInternalFrame("HASTA BİLGİLERİ");
 	JInternalFrame iFCalismaSaatleri = new JInternalFrame("ÇALIŞMA SAATLERİ");
+	JInternalFrame iFReceteOlustur = new JInternalFrame("REÇETE OLUŞTUR");
+	JInternalFrame iFHastaSonuclari = new JInternalFrame("HASTA SONUÇLARI");
+
 	private JPanel contentPane;
 	
 	Hasta hasta=new Hasta();
@@ -67,38 +70,40 @@ public class DoktorGenel extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd().toUpperCase()+" "+doktor.getSoyad().toUpperCase());
+		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd()+" "+doktor.getSoyad());
+		baslik.setBounds(50, 23, 233, 32);
 		baslik.setForeground(Color.BLUE);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		baslik.setBounds(50, 23, 233, 32);
 		contentPane.add(baslik);
 		
 		JButton butonHastaBilgiler = new JButton("Hasta Bilgileri");
+		butonHastaBilgiler.setBounds(50, 93, 144, 38);
 		butonHastaBilgiler.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonHastaBilgiler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFCalismaSaatleri.setVisible(false);
 				iFHastaBilgileri.setVisible(true);
+				iFHastaSonuclari.setVisible(false);
+				iFReceteOlustur.setVisible(false);
 			}
 		});
-		butonHastaBilgiler.setBounds(50, 93, 144, 38);
 		contentPane.add(butonHastaBilgiler);
 		
 		
 		
 		JButton butonCalismaSaatleri = new JButton("Çalışma\r\n Saatleri");
+		butonCalismaSaatleri.setBounds(50, 167, 144, 38);
 		butonCalismaSaatleri.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonCalismaSaatleri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFCalismaSaatleri.setVisible(true);
 				iFHastaBilgileri.setVisible(false);
+				iFHastaSonuclari.setVisible(false);
+				iFReceteOlustur.setVisible(false);
+
 			}
 		});
-		butonCalismaSaatleri.setBounds(50, 167, 144, 38);
 		contentPane.add(butonCalismaSaatleri);
-		
-		
-		
 		iFHastaBilgileri.setBounds(215, 66, 559, 364);
 		contentPane.add(iFHastaBilgileri);
 		iFHastaBilgileri.getContentPane().setLayout(null);
@@ -107,9 +112,40 @@ public class DoktorGenel extends JFrame {
 
 		list.setBounds(55, 22, 432, 290);
 		iFHastaBilgileri.getContentPane().add(list);
-		
 		iFCalismaSaatleri.setBounds(215, 66, 559, 364);
 		contentPane.add(iFCalismaSaatleri);
+		
+		JButton butonReceteYaz = new JButton("Reçete Oluştur");
+		butonReceteYaz.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iFCalismaSaatleri.setVisible(false);
+				iFHastaBilgileri.setVisible(false);
+				iFHastaSonuclari.setVisible(false);
+				iFReceteOlustur.setVisible(true);
+			}
+		});
+		butonReceteYaz.setBounds(50, 238, 144, 38);
+		contentPane.add(butonReceteYaz);
+		
+		JButton butonHastaSonuclari = new JButton("Hasta Sonuçları");
+		butonHastaSonuclari.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iFCalismaSaatleri.setVisible(false);
+				iFHastaBilgileri.setVisible(false);
+				iFHastaSonuclari.setVisible(true);
+				iFReceteOlustur.setVisible(false);
+			}
+		});
+		butonHastaSonuclari.setBounds(50, 304, 144, 38);
+		contentPane.add(butonHastaSonuclari);
+		
+		
+		iFReceteOlustur.setBounds(215, 66, 559, 364);
+		contentPane.add(iFReceteOlustur);
+		
+		iFHastaSonuclari.setBounds(215, 66, 559, 364);
+		contentPane.add(iFHastaSonuclari);
+		
 		
 		
 		
