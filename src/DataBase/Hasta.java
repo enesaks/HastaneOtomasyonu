@@ -14,7 +14,7 @@ import Helper.DBConnection;
 import Helper.Helper;
 
 public class Hasta extends User {
-	private String hastaninDoktoru;
+	
 	private static DBConnection conn = new DBConnection();
 	static Statement st = null;
 	static ResultSet rs = null;
@@ -50,13 +50,6 @@ public class Hasta extends User {
 		super(tcno, ad, soyad, sifre, type, dogumTarih);
 	}
 
-	public String getHastaninDoktoru() {
-		return hastaninDoktoru; 
-	}
-
-	public void setHastaninDoktoru(String hastaninDoktoru) {
-		this.hastaninDoktoru = hastaninDoktoru;
-	}
 	
      public DefaultListModel<String>  hastaList() throws SQLException {
 		
