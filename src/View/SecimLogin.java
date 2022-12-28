@@ -104,5 +104,5 @@ public class SecimLogin extends JFrame {
 		JLabel lblNewLabel = new JLabel("Giriş Tarihi: "+dtf.format(tarih));
 		lblNewLabel.setBounds(10, 319, 189, 13);
 		contentPane.add(lblNewLabel);
-	}
+	} 
 }
