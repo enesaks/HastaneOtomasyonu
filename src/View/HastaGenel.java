@@ -26,6 +26,10 @@ import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class HastaGenel extends JFrame {
 	JInternalFrame iFRecete = new JInternalFrame("E-Reçete");
@@ -129,16 +133,18 @@ public class HastaGenel extends JFrame {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Doktor Listesi");
 		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(10, 10, 127, 13);
+		lblNewLabel_1_1.setBounds(10, 164, 127, 13);
 		panel_1.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Polikinlik Adı");
 		lblNewLabel_2_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_2_1.setBounds(51, 153, 92, 27);
+		lblNewLabel_2_1.setBounds(10, 13, 92, 27);
 		panel_1.add(lblNewLabel_2_1);
 		
 		JComboBox secimPoliklinik = new JComboBox();
-		secimPoliklinik.setBounds(51, 190, 133, 27);
+		
+		secimPoliklinik.setBounds(10, 50, 133, 27);
+		
 		for(int i=0;i<poliklinik.getList().size();i++) {
 			secimPoliklinik.addItem(poliklinik.getList().get(i).getName());
 		}
@@ -147,9 +153,21 @@ public class HastaGenel extends JFrame {
 		JButton btnNewButton_1_1 = new JButton("Seç");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(secimPoliklinik.getSelectedIndex());
+				
+				try {
+					JList<String> list = new JList<String>(doktor.doktorList2(secimPoliklinik.getSelectedIndex()));
+					list.setBounds(20, 195, 156, 125);
+					panel_1.add(list);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				// JOptionPane.showMessageDialog(null,"Butona Tıklandı","Bilgi",JOptionPane.INFORMATION_MESSAGE);
+				
 			}
 		});
-		btnNewButton_1_1.setBounds(51, 253, 98, 44);
+		btnNewButton_1_1.setBounds(10, 84, 127, 36);
 		panel_1.add(btnNewButton_1_1);
 		
 		JScrollPane scrollPane_1_1 = new JScrollPane();
@@ -161,10 +179,14 @@ public class HastaGenel extends JFrame {
 		lblNewLabel_4_1.setBounds(383, 12, 167, 13);
 		panel_1.add(lblNewLabel_4_1);
 		
-		JList<String> list = new JList<>(doktor.doktorList());
-		list.setBounds(20, 33, 201, 110);
+		JList list = new JList();
+		list.setBounds(20, 195, 156, 125);
 		panel_1.add(list);
 		
+		/*JList<String> list = new JList<>(doktor.doktorList());
+		list.setBounds(10, 186, 201, 110);
+		panel_1.add(list);
+		*/
 		iFHastaBilgisi.setBounds(221, 70, 609, 359);
 		contentPane.add(iFHastaBilgisi);
 		iFHastaBilgisi.getContentPane().setLayout(null);
