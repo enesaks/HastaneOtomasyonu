@@ -210,8 +210,8 @@ public class DoktorGenel extends JFrame {
 		iFReceteOlustur.getContentPane().setLayout(null);
 		
 		//BURAYLA UĞRASICAKSI LİSTE BURDA
-		JList receteHastaList = new JList();
-		receteHastaList.setBounds(194, 298, -165, -235);
+		JList receteHastaList = new JList(hasta.hastaList());
+		receteHastaList.setBounds(55, 44, 159, 262);
 		iFReceteOlustur.getContentPane().add(receteHastaList);
 		//
 		RecetetextField = new JTextField();
