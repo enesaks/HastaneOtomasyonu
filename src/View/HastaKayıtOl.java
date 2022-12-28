@@ -80,7 +80,11 @@ public class HastaKayıtOl extends JFrame {
 						while (rs.next()) {
 							if (fld_kayıtTC.getText().equals(rs.getString("tcno"))) {
 								Helper.showMsg("Lütfen aynı kimlikle girme ");
+								
+							} else if (fld_kayıtTC.getText().length() != 11) {
+								Helper.showMsg("Lütfen 11 hane giriniz");
 								c = 0;
+								break;
 							}
 
 						}
@@ -90,12 +94,12 @@ public class HastaKayıtOl extends JFrame {
 						e1.printStackTrace();
 					}
 					if (c == 1) {
-						
+
 						try {
 							Hasta hasta = new Hasta();
 							hasta.KayitOl(fld_kayıtTC.getText(), fld_kayıtAd.getText(), fld_kayıtSoyad.getText(),
 									fld_kayıtDG.getText(), fld_kayıtSifre.getText());
-							
+
 							HastaLogin hLog = new HastaLogin();
 							// DÜZELTİLECEK
 							hLog.setVisible(true);
@@ -106,18 +110,15 @@ public class HastaKayıtOl extends JFrame {
 							e1.printStackTrace();
 						}
 
-						
-
 					}
 					fld_kayıtTC.setText(null);
 					fld_kayıtAd.setText(null);
 					fld_kayıtSoyad.setText(null);
 					fld_kayıtDG.setText(null);
 					fld_kayıtSifre.setText(null);
-					
+
 				}
 
-				
 			}
 
 		});
