@@ -50,7 +50,7 @@ public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 
 		Connection con = conn.connDb();
 		Statement st = con.createStatement();
-		String query=("SELECT * FROM user "+" WHERE polkilinik='"+id+"' ");
+		String query=("SELECT * FROM user "+" WHERE poliklinik='"+id+"' ");
 		ResultSet rs = st.executeQuery(query);
 		
 		while(rs.next()) {
