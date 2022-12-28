@@ -30,10 +30,11 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.AbstractListModel;
+import javax.swing.DefaultComboBoxModel;
 
 public class HastaGenel extends JFrame {
 	JInternalFrame iFRecete = new JInternalFrame("E-Reçete");
-	JInternalFrame iFSonuclarim = new JInternalFrame("Sonuçlarım");
 	JInternalFrame iFHastaBilgisi = new JInternalFrame("Hasta Bilgisi");
 	JInternalFrame iFRandevuAll = new JInternalFrame("Randevu Al");
 
@@ -83,7 +84,7 @@ public class HastaGenel extends JFrame {
 				iFRandevuAll.setVisible(false);
 			}
 		});
-		butonHastaBilgileri.setBounds(38, 118, 161, 39);
+		butonHastaBilgileri.setBounds(38, 118, 161, 44);
 		contentPane.add(butonHastaBilgileri);
 
 		JButton butonRandevuAl = new JButton("Randevu Al");
@@ -98,18 +99,6 @@ public class HastaGenel extends JFrame {
 		butonRandevuAl.setBounds(38, 180, 161, 44);
 		contentPane.add(butonRandevuAl);
 
-		JButton butonSonuclarim = new JButton("Sonuçlarım");
-		butonSonuclarim.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				iFRecete.setVisible(false);
-				iFSonuclarim.setVisible(true);
-				iFHastaBilgisi.setVisible(false);
-				iFRandevuAll.setVisible(false);
-			}
-		});
-		butonSonuclarim.setBounds(38, 250, 161, 44);
-		contentPane.add(butonSonuclarim);
-
 		JButton butonRecete = new JButton("E-Recete");
 		butonRecete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -119,28 +108,27 @@ public class HastaGenel extends JFrame {
 				iFRandevuAll.setVisible(false);
 			}
 		});
-		butonRecete.setBounds(36, 309, 161, 49);
+		butonRecete.setBounds(38, 250, 161, 49);
 		contentPane.add(butonRecete);
 
 		iFRandevuAll.setBounds(221, 70, 609, 359);
 		contentPane.add(iFRandevuAll);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
 		iFRandevuAll.getContentPane().add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(null);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Doktor Listesi");
-		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel_1_1.setBounds(10, 130, 127, 13);
+		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_1_1);
 
 		JLabel lblNewLabel_2_1 = new JLabel("Polikinlik Adı");
-		lblNewLabel_2_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel_2_1.setBounds(10, 13, 92, 27);
+		lblNewLabel_2_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_2_1);
 
 		JComboBox secimPoliklinik = new JComboBox();
-
 		secimPoliklinik.setBounds(10, 50, 133, 27);
 
 		for (int i = 0; i < poliklinik.getList().size(); i++) {
@@ -149,6 +137,7 @@ public class HastaGenel extends JFrame {
 		panel_1.add(secimPoliklinik);
 
 		JButton btnNewButton_1_1 = new JButton("Seç");
+		btnNewButton_1_1.setBounds(10, 84, 127, 36);
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -176,25 +165,20 @@ public class HastaGenel extends JFrame {
 
 			}
 		});
-		btnNewButton_1_1.setBounds(10, 84, 127, 36);
 		panel_1.add(btnNewButton_1_1);
 
-		JScrollPane scrollPane_1_1 = new JScrollPane();
-		scrollPane_1_1.setBounds(381, 33, 184, 228);
-		panel_1.add(scrollPane_1_1);
-
 		JLabel lblNewLabel_4_1 = new JLabel("Randevu Gün ve Saatleri");
-		lblNewLabel_4_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel_4_1.setBounds(383, 12, 167, 13);
+		lblNewLabel_4_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_4_1);
 
 		JButton btnNewButton = new JButton("Onayla");
+		btnNewButton.setBounds(10, 287, 127, 33);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
-		btnNewButton.setBounds(10, 287, 127, 33);
 		panel_1.add(btnNewButton);
 
 		JList<String> list1 = new JList<>(doktor.doktorList());
@@ -202,15 +186,27 @@ public class HastaGenel extends JFrame {
 		panel_1.add(list1);
 
 		JLabel lblNewLabel_11 = new JLabel("Doktor Listesi");
-		lblNewLabel_11.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel_11.setBounds(170, 15, 156, 27);
+		lblNewLabel_11.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_11);
 
 	
-		  JComboBox secimDoktor = new JComboBox(); secimDoktor.setBounds(10, 166, 133,27); 
+		  JComboBox secimDoktor = new JComboBox();
+		  secimDoktor.setBounds(10, 166, 133, 27);
 		  for(int i=0;i<doktor.doktorList2(secimPoliklinik.getSelectedIndex()).size();i++) {
 		  secimDoktor.addItem(doktor.doktorList2(i).get(i)); }
 		  panel_1.add(secimDoktor);
+		  
+		  JComboBox comboBox_2 = new JComboBox();
+		  comboBox_2.setBounds(383, 84, 182, 22);
+		  comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00"}));
+		  panel_1.add(comboBox_2);
+		  
+		  JComboBox comboBox_1 = new JComboBox();
+		  comboBox_1.setBounds(383, 53, 182, 20);
+		  comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1 Ocak 2023", "2 Ocak 2023", "3 Ocak 2023"}));
+		  panel_1.add(comboBox_1);
+		  
 		 
 
 		iFHastaBilgisi.setBounds(221, 70, 609, 359);
@@ -299,9 +295,6 @@ public class HastaGenel extends JFrame {
 		JLabel lblNewLabel_10 = new JLabel(hasta.getDogumTarih());
 		lblNewLabel_10.setBounds(308, 212, 200, 50);
 		iFHastaBilgisi.getContentPane().add(lblNewLabel_10);
-
-		iFSonuclarim.setBounds(221, 70, 609, 359);
-		contentPane.add(iFSonuclarim);
 
 		iFRecete.setBounds(221, 70, 609, 359);
 		contentPane.add(iFRecete);
