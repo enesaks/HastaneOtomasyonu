@@ -32,6 +32,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
+import javax.swing.JEditorPane;
 
 public class DoktorGenel extends JFrame {
 	
@@ -48,7 +49,6 @@ public class DoktorGenel extends JFrame {
 	Hasta hasta=new Hasta();
 	
 	private static Doktor doktor = new Doktor();
-	private JTextField RecetetextField;
 	/**
 	 * Launch the application.
 	 */
@@ -213,11 +213,6 @@ public class DoktorGenel extends JFrame {
 		JList receteHastaList = new JList(hasta.hastaList());
 		receteHastaList.setBounds(55, 44, 159, 262);
 		iFReceteOlustur.getContentPane().add(receteHastaList);
-		//
-		RecetetextField = new JTextField();
-		RecetetextField.setBounds(220, 94, 239, 49);
-		iFReceteOlustur.getContentPane().add(RecetetextField);
-		RecetetextField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Reçeteyi Yazınız.");
 		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
@@ -226,17 +221,44 @@ public class DoktorGenel extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Lütfen bir hasta seçiniz.");
 		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(22, 28, 218, 14);
+		lblNewLabel_1.setBounds(55, 19, 169, 14);
 		iFReceteOlustur.getContentPane().add(lblNewLabel_1);
 		
-		JButton receteGondermeButton = new JButton("Gönder");
-		receteGondermeButton.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		receteGondermeButton.addActionListener(new ActionListener() {
+		JEditorPane epRecete = new JEditorPane();
+		epRecete.setBounds(230, 112, 303, 90);
+		iFReceteOlustur.getContentPane().add(epRecete);
+		
+		JButton btnReceteGonder = new JButton("Gönder");
+		btnReceteGonder.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		btnReceteGonder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(epRecete.getText().length() == 0) {
+					Helper.showMsg("fill");
+				}
+				else{
+					Helper.showMsg("Reçete başarıyla oluşturuldu.");
+					try {
+						Connection con = conn.connDb();
+						Statement st;
+						st = con.createStatement();
+						String query=("SELECT * FROM user "+" WHERE tcno='"+receteHastaList.getSelectedValue()+"' ");
+						ResultSet rs;
+						rs = st.executeQuery(query);
+						rs.next();
+						Hasta.receteEkle(rs.getString("tcno"), epRecete.getText());
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					epRecete.setText(null);
+				}
 			}
 		});
-		receteGondermeButton.setBounds(287, 213, 89, 23);
-		iFReceteOlustur.getContentPane().add(receteGondermeButton);
+		btnReceteGonder.setBounds(287, 213, 89, 23);
+		iFReceteOlustur.getContentPane().add(btnReceteGonder);
+		
+		
 		
 		JButton CikisButton = new JButton("Çıkış Yap");
 		CikisButton.addActionListener(new ActionListener() {
