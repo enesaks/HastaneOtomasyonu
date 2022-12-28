@@ -6,13 +6,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import DataBase.Bashekim;
+import DataBase.Doktor;
 import DataBase.Hasta;
+import DataBase.Poliklinik;
+import Helper.Helper;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
@@ -20,6 +25,7 @@ import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.JList;
 
 public class HastaGenel extends JFrame {
 	JInternalFrame iFRecete = new JInternalFrame("E-Reçete");
@@ -32,6 +38,9 @@ public class HastaGenel extends JFrame {
 
 	private JPanel contentPane;
 	static Hasta hasta=new Hasta();
+	static Doktor doktor=new Doktor();
+	static Bashekim bashekim=new Bashekim();
+	static Poliklinik poliklinik=new Poliklinik();
 
 	/**
 	 * Launch the application.
@@ -51,8 +60,9 @@ public class HastaGenel extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
-	public HastaGenel(Hasta hasta) {
+	public HastaGenel(Hasta hasta) throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 854, 486);
 		contentPane = new JPanel();
@@ -117,10 +127,6 @@ public class HastaGenel extends JFrame {
 		panel_1.setLayout(null);
 		iFRandevuAll.getContentPane().add(panel_1, BorderLayout.CENTER);
 		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(10, 33, 225, 228);
-		panel_1.add(scrollPane_2);
-		
 		JLabel lblNewLabel_1_1 = new JLabel("Doktor Listesi");
 		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel_1_1.setBounds(10, 10, 127, 13);
@@ -128,20 +134,22 @@ public class HastaGenel extends JFrame {
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Polikinlik Adı");
 		lblNewLabel_2_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_2_1.setBounds(245, 49, 92, 27);
+		lblNewLabel_2_1.setBounds(51, 153, 92, 27);
 		panel_1.add(lblNewLabel_2_1);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(245, 91, 98, 27);
-		panel_1.add(comboBox_1);
-		
-		JLabel lblNewLabel_3_1 = new JLabel("Doktor Adı");
-		lblNewLabel_3_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_3_1.setBounds(245, 152, 92, 13);
-		panel_1.add(lblNewLabel_3_1);
+		JComboBox secimPoliklinik = new JComboBox();
+		secimPoliklinik.setBounds(51, 190, 133, 27);
+		for(int i=0;i<poliklinik.getList().size();i++) {
+			secimPoliklinik.addItem(poliklinik.getList().get(i).getName());
+		}
+		panel_1.add(secimPoliklinik);
 		
 		JButton btnNewButton_1_1 = new JButton("Seç");
-		btnNewButton_1_1.setBounds(245, 189, 98, 32);
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1_1.setBounds(51, 253, 98, 44);
 		panel_1.add(btnNewButton_1_1);
 		
 		JScrollPane scrollPane_1_1 = new JScrollPane();
@@ -152,6 +160,10 @@ public class HastaGenel extends JFrame {
 		lblNewLabel_4_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel_4_1.setBounds(383, 12, 167, 13);
 		panel_1.add(lblNewLabel_4_1);
+		
+		JList<String> list = new JList<>(doktor.doktorList());
+		list.setBounds(20, 33, 201, 110);
+		panel_1.add(list);
 		
 		iFHastaBilgisi.setBounds(221, 70, 609, 359);
 		contentPane.add(iFHastaBilgisi);
@@ -247,9 +259,19 @@ public class HastaGenel extends JFrame {
 		iFRecete.setBounds(221, 70, 609, 359);
 		contentPane.add(iFRecete);
 		
-		JLabel baslik = new JLabel("HOŞGELDİN "+hasta.getAd().toUpperCase()+" "+hasta.getSoyad().toUpperCase());
+		JLabel baslik = new JLabel("HOŞGELDİN "+hasta.getAd()+" "+hasta.getSoyad());
 		baslik.setBounds(38, 10, 547, 50);
 		contentPane.add(baslik);
+		
+		JButton CikisYap = new JButton("Çıkış Yap");
+		CikisYap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Helper.showMsg("Sağlıklı günler dileriz "+hasta.getAd()+" "+hasta.getSoyad());
+				setVisible(false);
+			}
+		});
+		CikisYap.setBounds(638, 25, 148, 35);
+		contentPane.add(CikisYap);
 		
 		iFHastaBilgisi.setVisible(true);
 	}

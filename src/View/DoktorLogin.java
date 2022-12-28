@@ -43,7 +43,7 @@ public class DoktorLogin extends JFrame {
 					DoktorLogin frame = new DoktorLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					e.printStackTrace();  
 				}
 			}
 		});
@@ -134,7 +134,10 @@ public class DoktorLogin extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				fldTC.setText(null);
+				fldSifre.setText(null);
 				}
+			
 				
 			
 		});

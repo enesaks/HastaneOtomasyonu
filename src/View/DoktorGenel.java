@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import DataBase.Doktor;
 import DataBase.Hasta;
 import Helper.DBConnection;
+import Helper.Helper;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -78,7 +79,7 @@ public class DoktorGenel extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd()+" "+doktor.getSoyad());
-		baslik.setBounds(50, 23, 669, 32);
+		baslik.setBounds(50, 23, 547, 32);
 		baslik.setForeground(Color.BLUE);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		contentPane.add(baslik);
@@ -215,6 +216,16 @@ public class DoktorGenel extends JFrame {
 		
 		iFHastaSonuclari.setBounds(215, 66, 559, 364);
 		contentPane.add(iFHastaSonuclari);
+		
+		JButton CikisButton = new JButton("Çıkış Yap");
+		CikisButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Helper.showMsg("İyi günler dileriz sayın "+doktor.getAd() + " " +doktor.getSoyad());
+				setVisible(false);
+			}
+		});
+		CikisButton.setBounds(617, 23, 125, 29);
+		contentPane.add(CikisButton);
 		
 		
 		

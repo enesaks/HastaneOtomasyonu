@@ -67,7 +67,7 @@ public class HastaKayıtOl extends JFrame {
 		JButton butonHastaKayit = new JButton("Kayıt ol");
 		butonHastaKayit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int c = 1;
+				int c=1;
 				if (fld_kayıtAd.getText().length() == 0 || fld_kayıtSoyad.getText().length() == 0
 						|| fld_kayıtTC.getText().length() == 0 || fld_kayıtDG.getText().length() == 0
 						|| fld_kayıtSifre.getText().length() == 0) {
@@ -93,13 +93,14 @@ public class HastaKayıtOl extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					if (c == 1) {
+					
+					if(c==1) {
 
 						try {
 							Hasta hasta = new Hasta();
 							hasta.KayitOl(fld_kayıtTC.getText(), fld_kayıtAd.getText(), fld_kayıtSoyad.getText(),
 									fld_kayıtDG.getText(), fld_kayıtSifre.getText());
-
+							Helper.showMsg("success");
 							HastaLogin hLog = new HastaLogin();
 							// DÜZELTİLECEK
 							hLog.setVisible(true);

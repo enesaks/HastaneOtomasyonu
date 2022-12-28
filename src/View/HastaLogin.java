@@ -116,6 +116,9 @@ public class HastaLogin extends JFrame {
 					if (key) {
 						Helper.showMsg("Böyle bir hasta bulunamadı lütfen kayıt olunuz");
 					}
+					fldTCHastaGiris.setText(null);
+					fldSifreHastaGiris.setText(null);
+					
 				}
 			}
 		});
