@@ -219,7 +219,7 @@ public class DoktorGenel extends JFrame {
 		iFReceteOlustur.getContentPane().add(RecetetextField);
 		RecetetextField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Reçeteyi Yazınız:");
+		JLabel lblNewLabel = new JLabel("Reçeteyi Yazınız.");
 		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel.setBounds(220, 65, 236, 36);
 		iFReceteOlustur.getContentPane().add(lblNewLabel);
