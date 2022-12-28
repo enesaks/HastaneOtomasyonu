@@ -238,6 +238,7 @@ public class BHGenel extends JFrame {
 		list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list1.setBorder(new TitledBorder(null, "Doktorlar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		list1.setBounds(10, 11, 227, 403);
+		
 		iFDoktorEkle.getContentPane().add(list1);
 		
 		JPanel panel = new JPanel();
@@ -320,7 +321,7 @@ public class BHGenel extends JFrame {
 				int c=1;
 				if(tfAd.getText().length() == 0 || tfSoyad.getText().length() ==0 || tfDogumTarih.getText().length()==0 || 
 						tfSifre.getText().length() == 0 || tfTcno.getText().length()==0||tfPoliklinik.getText().length()==0) {
-					Helper.showMsg("fiil");	
+					Helper.showMsg("fill");	
 				}
 				else {
 					Connection con = conn.connDb();
@@ -365,7 +366,7 @@ public class BHGenel extends JFrame {
 					tfSoyad.setText(null);
 					tfTcno.setText(null);
 					
-
+					list1.updateUI();
 				}
 				
 				

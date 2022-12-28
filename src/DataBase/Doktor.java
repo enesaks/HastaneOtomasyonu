@@ -80,4 +80,6 @@ public DefaultListModel<String>  doktorList2(int id) throws SQLException {
         
 	}
 
+	
+
 }
