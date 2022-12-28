@@ -79,6 +79,20 @@ public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 		}
         
 	}
+	public static void DoktorKaldir() {
+		
+		try {
+			Connection con = conn.connDb();
+			Statement st;
+			st = con.createStatement();
+			String query=("");
+			ResultSet rs = st.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	
 

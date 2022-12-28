@@ -379,6 +379,13 @@ public class BHGenel extends JFrame {
 		});
 		
 		JButton btnKaldir = new JButton("Doktor Çıkar");
+		btnKaldir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
 		btnKaldir.setBounds(117, 425, 110, 23);
 		iFDoktorEkle.getContentPane().add(btnKaldir);
 		iFNobetSaati.setBounds(794, 488, 80, 62);
