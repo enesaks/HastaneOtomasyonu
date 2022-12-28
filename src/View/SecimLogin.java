@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
@@ -33,12 +35,19 @@ public class SecimLogin extends JFrame {
 				}
 			}
 		});
-	}   
+		
+	} 
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public SecimLogin() { 
+		LocalDateTime tarih = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm");
+		
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 559, 379);
 		contentPane = new JPanel();
@@ -91,5 +100,9 @@ public class SecimLogin extends JFrame {
 		baslik.setHorizontalAlignment(SwingConstants.CENTER);
 		baslik.setBounds(69, 31, 402, 32);
 		contentPane.add(baslik);
+		
+		JLabel lblNewLabel = new JLabel("Giriş Tarihi: "+dtf.format(tarih));
+		lblNewLabel.setBounds(10, 319, 189, 13);
+		contentPane.add(lblNewLabel);
 	}
 }
