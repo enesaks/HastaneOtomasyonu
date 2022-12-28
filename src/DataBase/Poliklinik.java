@@ -37,11 +37,11 @@ public class Poliklinik {
 		try {
 
 			st = con.createStatement();
-			rs = st.executeQuery("SELECT * FROM clinic");
+			rs = st.executeQuery("SELECT * FROM poliklinik");
 			while (rs.next()) {
 				obj = new Poliklinik();
 				obj.setId(rs.getInt("id"));
-				obj.setName(rs.getString("name"));
+				obj.setName(rs.getString("ad"));
 				list.add(obj);
 			}
 		} catch (SQLException e) {
