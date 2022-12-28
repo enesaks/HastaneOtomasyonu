@@ -133,7 +133,7 @@ public class HastaGenel extends JFrame {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Doktor Listesi");
 		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(10, 164, 127, 13);
+		lblNewLabel_1_1.setBounds(10, 130, 127, 13);
 		panel_1.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Polikinlik Adı");
@@ -153,12 +153,22 @@ public class HastaGenel extends JFrame {
 		JButton btnNewButton_1_1 = new JButton("Seç");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 				System.out.println(secimPoliklinik.getSelectedIndex());
 				
 				try {
+					/*
 					JList<String> list = new JList<String>(doktor.doktorList2(secimPoliklinik.getSelectedIndex()));
 					list.setBounds(20, 195, 156, 125);
-					panel_1.add(list);
+					panel_1.add(list);*/
+					JComboBox secimDoktor = new JComboBox();
+					secimDoktor.setBounds(10, 166, 133, 27);
+					for(int i=0;i<doktor.doktorList2(secimPoliklinik.getSelectedIndex()).size();i++) {
+						secimDoktor.addItem(doktor.doktorList2(i).get(i));
+					}
+					panel_1.add(secimDoktor);
+
+					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -179,14 +189,31 @@ public class HastaGenel extends JFrame {
 		lblNewLabel_4_1.setBounds(383, 12, 167, 13);
 		panel_1.add(lblNewLabel_4_1);
 		
-		JList list = new JList();
-		list.setBounds(20, 195, 156, 125);
-		panel_1.add(list);
+		JButton btnNewButton = new JButton("Onayla");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnNewButton.setBounds(10, 287, 127, 33);
+		panel_1.add(btnNewButton);
 		
-		/*JList<String> list = new JList<>(doktor.doktorList());
-		list.setBounds(10, 186, 201, 110);
-		panel_1.add(list);
-		*/
+		JList<String> list1 = new JList<>(doktor.doktorList());
+		list1.setBounds(170, 45, 201, 83);
+		panel_1.add(list1);
+		
+		JLabel lblNewLabel_11 = new JLabel("Doktor Listesi");
+		lblNewLabel_11.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblNewLabel_11.setBounds(170, 15, 156, 27);
+		panel_1.add(lblNewLabel_11);
+		
+		/*JComboBox secimDoktor = new JComboBox();
+		secimDoktor.setBounds(10, 166, 133, 27);
+		for(int i=0;i<doktor.doktorList2(secimPoliklinik.getSelectedIndex()).size();i++) {
+			secimDoktor.addItem(doktor.doktorList2(i).get(i));
+		}
+		panel_1.add(secimDoktor);*/
+		
 		iFHastaBilgisi.setBounds(221, 70, 609, 359);
 		contentPane.add(iFHastaBilgisi);
 		iFHastaBilgisi.getContentPane().setLayout(null);
