@@ -83,7 +83,7 @@ public class HastaKayıtOl extends JFrame {
 								
 							} else if (fld_kayıtTC.getText().length() != 11) {
 								Helper.showMsg("Lütfen 11 hane giriniz");
-								c = 0;
+								c = 0; 
 								break;
 							}
 
