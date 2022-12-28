@@ -1,6 +1,7 @@
 package DataBase;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,7 +12,12 @@ import javax.swing.DefaultListModel;
 import Helper.DBConnection;
 
 public class Doktor extends User{
-	private DBConnection conn = new DBConnection();
+	private static DBConnection conn = new DBConnection();
+	static PreparedStatement preparedStatement = null;
+	
+	static Statement st = null;
+	static ResultSet rs = null;
+	static Connection con = conn.connDb();
 
 	public Doktor(String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
 		super( tcno, ad, soyad, sifre, type, dogumTarih);
@@ -34,13 +40,44 @@ public class Doktor extends User{
 		while(rs.next()) {
 			dflist.addElement(rs.getString("ad"));
 		}
+
+		return dflist;
+	}
+public DefaultListModel<String>  doktorList2(int id) throws SQLException {
+		
+		DefaultListModel<String> dflist= new DefaultListModel<String>();
 		
 
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query=("SELECT * FROM user "+" WHERE polkilinik='"+id+"' ");
+		ResultSet rs = st.executeQuery(query);
 		
-		
-		
-		
+		while(rs.next()) {
+			dflist.addElement(rs.getString("ad"));
+		}
+
 		return dflist;
+	}
+	
+	public static void KayitOl(String tcno, String ad, String soyad, String sifre, String dogumTarih,int poliklinik) throws SQLException {
+		String query = "INSERT INTO user (tcno,ad,soyad,dogumTarih,type,sifre,poliklinik)VALUES(?,?,?,?,?,?,?)";
+        
+        try {
+        	st = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, tcno);
+			preparedStatement.setString(2, ad);
+			preparedStatement.setString(3, soyad);
+			preparedStatement.setString(4, sifre);
+			preparedStatement.setString(5, "doktor");
+			preparedStatement.setString(6, dogumTarih);
+			preparedStatement.setInt(7, poliklinik);
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
 	}
 
 }

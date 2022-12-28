@@ -8,7 +8,9 @@ import javax.swing.border.EmptyBorder;
 
 import DataBase.Bashekim;
 import DataBase.Doktor;
+import DataBase.Hasta;
 import Helper.DBConnection;
+import Helper.Helper;
 
 import javax.swing.JLabel;
 import javax.swing.DefaultListModel;
@@ -39,6 +41,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ListModel;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import javax.swing.JPasswordField;
 
 
 public class BHGenel extends JFrame {
@@ -53,9 +56,10 @@ public class BHGenel extends JFrame {
 	 static Bashekim bshekim = new Bashekim();
 	 private JTextField tfAd;
 	 private JTextField tfSoyad;
-	 private JTextField tdTcno;
-	 private JTextField tfSifre;
+	 private JTextField tfTcno;
 	 private JTextField tfDogumTarih;
+	 private JTextField tfPoliklinik;
+	 private JPasswordField tfSifre;
 
 	/**
 	 * Launch the application.
@@ -236,71 +240,142 @@ public class BHGenel extends JFrame {
 		list1.setBounds(10, 11, 227, 403);
 		iFDoktorEkle.getContentPane().add(list1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ad : ");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1.setBounds(301, 93, 145, 36);
-		iFDoktorEkle.getContentPane().add(lblNewLabel_1);
-		
-		tfAd = new JTextField();
-		tfAd.setBounds(456, 104, 119, 20);
-		iFDoktorEkle.getContentPane().add(tfAd);
-		tfAd.setColumns(10);
-		
-		tfSoyad = new JTextField();
-		tfSoyad.setColumns(10);
-		tfSoyad.setBounds(456, 151, 119, 20);
-		iFDoktorEkle.getContentPane().add(tfSoyad);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Soyad : ");
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1_1.setBounds(301, 140, 145, 36);
-		iFDoktorEkle.getContentPane().add(lblNewLabel_1_1);
-		
-		tdTcno = new JTextField();
-		tdTcno.setColumns(10);
-		tdTcno.setBounds(456, 198, 119, 20);
-		iFDoktorEkle.getContentPane().add(tdTcno);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("T.C. No : ");
-		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1_2.setBounds(301, 187, 145, 36);
-		iFDoktorEkle.getContentPane().add(lblNewLabel_1_2);
-		
-		tfSifre = new JTextField();
-		tfSifre.setColumns(10);
-		tfSifre.setBounds(456, 240, 119, 20);
-		iFDoktorEkle.getContentPane().add(tfSifre);
-		
-		JLabel lblNewLabel_1_3 = new JLabel("Sifre : ");
-		lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1_3.setBounds(301, 229, 145, 36);
-		iFDoktorEkle.getContentPane().add(lblNewLabel_1_3);
-		
-		tfDogumTarih = new JTextField();
-		tfDogumTarih.setColumns(10);
-		tfDogumTarih.setBounds(456, 282, 119, 20);
-		iFDoktorEkle.getContentPane().add(tfDogumTarih);
-		
-		JLabel lblNewLabel_1_4 = new JLabel("DogumTarihi :");
-		lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1_4.setBounds(301, 271, 145, 36);
-		iFDoktorEkle.getContentPane().add(lblNewLabel_1_4);
-		
-		JButton btnEkle = new JButton("Doktor Ekle");
-		btnEkle.setBounds(515, 313, 110, 23);
-		iFDoktorEkle.getContentPane().add(btnEkle);
-		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		panel.setBackground(new Color(255, 255, 204));
-		panel.setBounds(287, 82, 374, 272);
+		panel.setBounds(284, 47, 374, 304);
 		iFDoktorEkle.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Ad : ");
+		lblNewLabel_1.setBounds(10, 0, 145, 36);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Soyad : ");
+		lblNewLabel_1_1.setBounds(10, 47, 145, 36);
+		panel.add(lblNewLabel_1_1);
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel lblNewLabel_1_2 = new JLabel("T.C. No : ");
+		lblNewLabel_1_2.setBounds(10, 94, 145, 36);
+		panel.add(lblNewLabel_1_2);
+		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel lblNewLabel_1_3 = new JLabel("Sifre : ");
+		lblNewLabel_1_3.setBounds(10, 136, 145, 36);
+		panel.add(lblNewLabel_1_3);
+		lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel lblNewLabel_1_4 = new JLabel("DogumTarihi :");
+		lblNewLabel_1_4.setBounds(10, 178, 145, 36);
+		panel.add(lblNewLabel_1_4);
+		lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		tfDogumTarih = new JTextField();
+		tfDogumTarih.setBounds(165, 189, 119, 20);
+		panel.add(tfDogumTarih);
+		tfDogumTarih.setColumns(10);
+		
+		tfTcno = new JTextField();
+		tfTcno.setBounds(165, 105, 119, 20);
+		panel.add(tfTcno);
+		tfTcno.setColumns(10);
+		
+		tfSoyad = new JTextField();
+		tfSoyad.setBounds(165, 58, 119, 20);
+		panel.add(tfSoyad);
+		tfSoyad.setColumns(10);
+		
+		tfAd = new JTextField();
+		tfAd.setBounds(165, 11, 119, 20);
+		panel.add(tfAd);
+		tfAd.setColumns(10);
+		
+		JButton btnEkle = new JButton("Doktor Ekle");
+		btnEkle.setBounds(254, 270, 110, 23);
+		panel.add(btnEkle);
+		
+		tfPoliklinik = new JTextField();
+		tfPoliklinik.setColumns(10);
+		tfPoliklinik.setBounds(165, 236, 119, 20);
+		panel.add(tfPoliklinik);
+		
+		JLabel lblNewLabel_1_4_1 = new JLabel("Polklinik Id :");
+		lblNewLabel_1_4_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_4_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_1_4_1.setBounds(10, 225, 145, 36);
+		panel.add(lblNewLabel_1_4_1);
+		
+		tfSifre = new JPasswordField();
+		tfSifre.setBounds(165, 147, 119, 20);
+		panel.add(tfSifre);
+		btnEkle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int c=1;
+				if(tfAd.getText().length() == 0 || tfSoyad.getText().length() ==0 || tfDogumTarih.getText().length()==0 || 
+						tfSifre.getText().length() == 0 || tfTcno.getText().length()==0||tfPoliklinik.getText().length()==0) {
+					Helper.showMsg("fiil");	
+				}
+				else {
+					Connection con = conn.connDb();
+					try {
+						Statement st = con.createStatement();
+						ResultSet rs = st.executeQuery("SELECT * FROM user");
+						while (rs.next()) {
+							if (tfTcno.getText().equals(rs.getString("tcno"))) {
+								Helper.showMsg("Aynı Kimlikle Başka Bir Kulanıcı var.");
+								
+							} else if (tfTcno.getText().length() != 11) {
+								Helper.showMsg("Lütfen 11 hane giriniz.");
+								c = 0; 
+								break;
+							}
+
+						}
+
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					if(c==1) {
+
+						try {
+							Hasta hasta = new Hasta();
+							doktor.KayitOl(tfTcno.getText(), tfAd.getText(), tfSoyad.getText(),
+									tfDogumTarih.getText(), tfSifre.getText(),Integer.parseInt(tfPoliklinik.getText()));
+							Helper.showMsg("success");
+						
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+					tfAd.setText(null);
+					tfDogumTarih.setText(null);
+					tfPoliklinik.setText(null);
+					tfSifre.setText(null);
+					tfSoyad.setText(null);
+					tfTcno.setText(null);
+					
+
+				}
+				
+				
+				
+				
+			}
+			
+			
+			
+		});
 		
 		JButton btnKaldir = new JButton("Doktor Çıkar");
 		btnKaldir.setBounds(117, 425, 110, 23);
