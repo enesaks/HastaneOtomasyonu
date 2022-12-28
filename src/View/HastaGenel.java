@@ -307,7 +307,7 @@ public class HastaGenel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Helper.showMsg("Sağlıklı günler dileriz " + hasta.getAd() + " " + hasta.getSoyad());
 				setVisible(false);
-			} 
+			}  
 		});
 		CikisYap.setBounds(638, 25, 148, 35);
 		contentPane.add(CikisYap);
