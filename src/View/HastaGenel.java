@@ -79,7 +79,7 @@ public class HastaGenel extends JFrame {
 		butonHastaBilgileri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFRecete.setVisible(false);
-				
+
 				iFHastaBilgisi.setVisible(true);
 				iFRandevuAll.setVisible(false);
 			}
@@ -91,7 +91,7 @@ public class HastaGenel extends JFrame {
 		butonRandevuAl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFRecete.setVisible(false);
-				
+
 				iFHastaBilgisi.setVisible(false);
 				iFRandevuAll.setVisible(true);
 			}
@@ -103,7 +103,7 @@ public class HastaGenel extends JFrame {
 		butonRecete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFRecete.setVisible(true);
-				
+
 				iFHastaBilgisi.setVisible(false);
 				iFRandevuAll.setVisible(false);
 			}
@@ -190,24 +190,23 @@ public class HastaGenel extends JFrame {
 		lblNewLabel_11.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		panel_1.add(lblNewLabel_11);
 
-	
-		  JComboBox secimDoktor = new JComboBox();
-		  secimDoktor.setBounds(10, 166, 133, 27);
-		  for(int i=0;i<doktor.doktorList2(secimPoliklinik.getSelectedIndex()).size();i++) {
-		  secimDoktor.addItem(doktor.doktorList2(i).get(i)); }
-		  panel_1.add(secimDoktor);
-		  
-		  JComboBox comboBox_2 = new JComboBox();
-		  comboBox_2.setBounds(383, 84, 182, 22);
-		  comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00"}));
-		  panel_1.add(comboBox_2);
-		  
-		  JComboBox comboBox_1 = new JComboBox();
-		  comboBox_1.setBounds(383, 53, 182, 20);
-		  comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1 Ocak 2023", "2 Ocak 2023", "3 Ocak 2023"}));
-		  panel_1.add(comboBox_1);
-		  
-		 
+		JComboBox secimDoktor = new JComboBox();
+		secimDoktor.setBounds(10, 166, 133, 27);
+		for (int i = 0; i < doktor.doktorList2(secimPoliklinik.getSelectedIndex()).size(); i++) {
+			secimDoktor.addItem(doktor.doktorList2(i).get(i));
+		}
+		panel_1.add(secimDoktor);
+
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setBounds(383, 84, 182, 22);
+		comboBox_2.setModel(new DefaultComboBoxModel(
+				new String[] { "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00" }));
+		panel_1.add(comboBox_2);
+
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(383, 53, 182, 20);
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "1 Ocak 2023", "2 Ocak 2023", "3 Ocak 2023" }));
+		panel_1.add(comboBox_1);
 
 		iFHastaBilgisi.setBounds(221, 70, 609, 359);
 		contentPane.add(iFHastaBilgisi);
@@ -308,7 +307,7 @@ public class HastaGenel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Helper.showMsg("Sağlıklı günler dileriz " + hasta.getAd() + " " + hasta.getSoyad());
 				setVisible(false);
-			}
+			} 
 		});
 		CikisYap.setBounds(638, 25, 148, 35);
 		contentPane.add(CikisYap);
