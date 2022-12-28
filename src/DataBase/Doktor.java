@@ -32,7 +32,7 @@ public class Doktor extends User{
 		ResultSet rs = st.executeQuery(query);
 		
 		while(rs.next()) {
-			dflist.addElement(rs.getString("ad").toUpperCase()+" "+rs.getString("soyad").toUpperCase());
+			dflist.addElement(rs.getString("ad"));
 			
 		}
 		
