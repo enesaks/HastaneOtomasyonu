@@ -79,14 +79,13 @@ public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 		}
         
 	}
-	public static void DoktorKaldir() {
+	public static void DoktorKaldir(String tcno) {
 		
 		try {
+			String query = "DELETE FROM `hospital`.`user` WHERE (`tcno` = '2')";
 			Connection con = conn.connDb();
-			Statement st;
-			st = con.createStatement();
-			String query=("");
-			ResultSet rs = st.executeQuery(query);
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

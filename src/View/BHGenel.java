@@ -16,31 +16,26 @@ import javax.swing.JLabel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
-import java.awt.BorderLayout;
+
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
-import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
+
 import javax.swing.JList;
-import javax.swing.JProgressBar;
+
 import javax.swing.ListSelectionModel;
 import javax.swing.border.TitledBorder;
-import javax.swing.JSpinner;
-import java.awt.Choice;
+
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.ListModel;
 import javax.swing.JTextField;
-import java.awt.FlowLayout;
+
 import javax.swing.JPasswordField;
 
 
@@ -60,6 +55,7 @@ public class BHGenel extends JFrame {
 	 private JTextField tfDogumTarih;
 	 private JTextField tfPoliklinik;
 	 private JPasswordField tfSifre;
+
 
 	/**
 	 * Launch the application.
@@ -138,12 +134,9 @@ public class BHGenel extends JFrame {
 		JList<String> list = new JList<>(doktor.doktorList());
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBorder(new TitledBorder(null, "Doktorlar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		
-		
-		
-		
 		list.setBounds(10, 11, 227, 435);
 		iFDoktorBilgi.getContentPane().add(list);
+	
 		
 		JLabel lblNewLabel = new JLabel("Ad Soyad : ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -234,7 +227,9 @@ public class BHGenel extends JFrame {
 		contentPane.add(iFDoktorEkle);
 		iFDoktorEkle.getContentPane().setLayout(null);
 		
-		JList<String> list1 = new JList<String>(doktor.doktorList());
+		DefaultListModel<String> DLmodel =new DefaultListModel<String>();
+		DLmodel = doktor.doktorList();
+		JList<String> list1 = new JList<String>(DLmodel);
 		list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list1.setBorder(new TitledBorder(null, "Doktorlar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		list1.setBounds(10, 11, 227, 403);
@@ -318,6 +313,7 @@ public class BHGenel extends JFrame {
 		panel.add(tfSifre);
 		btnEkle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int c=1;
 				if(tfAd.getText().length() == 0 || tfSoyad.getText().length() ==0 || tfDogumTarih.getText().length()==0 || 
 						tfSifre.getText().length() == 0 || tfTcno.getText().length()==0||tfPoliklinik.getText().length()==0) {
@@ -352,6 +348,7 @@ public class BHGenel extends JFrame {
 							doktor.KayitOl(tfTcno.getText(), tfAd.getText(), tfSoyad.getText(),
 									tfDogumTarih.getText(), tfSifre.getText(),Integer.parseInt(tfPoliklinik.getText()));
 							Helper.showMsg("success");
+							
 						
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
@@ -359,6 +356,8 @@ public class BHGenel extends JFrame {
 						}
 
 					}
+				
+					
 					tfAd.setText(null);
 					tfDogumTarih.setText(null);
 					tfPoliklinik.setText(null);
@@ -367,22 +366,39 @@ public class BHGenel extends JFrame {
 					tfTcno.setText(null);
 					
 					list1.updateUI();
+					try {
+						list1.setModel(doktor.doktorList());
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
 				}
-				
-				
-				
-				
+		
 			}
 			
-			
-			
+
 		});
 		
 		JButton btnKaldir = new JButton("Doktor Çıkar");
 		btnKaldir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				System.out.println("hello");
+				try {
+					Connection con = conn.connDb();
+					Statement st;
+					st = con.createStatement();
+					String query=("SELECT * FROM user "+" WHERE ad='"+list.getSelectedValue()+"' ");
+					ResultSet rs;
+					rs = st.executeQuery(query);
+					rs.next();
+					System.out.println(rs.getString("tcno"));
+					System.out.println("hello");
+					doktor.DoktorKaldir(rs.getString("tcno"));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -400,4 +416,5 @@ public class BHGenel extends JFrame {
 		iFDoktorEkle.setVisible(false);
 		iFDoktorBilgi.setVisible(true);
 	}
+	
 }
