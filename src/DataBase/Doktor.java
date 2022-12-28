@@ -33,7 +33,6 @@ public class Doktor extends User{
 		
 		while(rs.next()) {
 			dflist.addElement(rs.getString("ad"));
-			
 		}
 		
 
