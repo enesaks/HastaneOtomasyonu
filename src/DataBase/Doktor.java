@@ -11,60 +11,61 @@ import javax.swing.DefaultListModel;
 
 import Helper.DBConnection;
 
-public class Doktor extends User{
+public class Doktor extends User {
 	private static DBConnection conn = new DBConnection();
 	static PreparedStatement preparedStatement = null;
-	
+
 	static Statement st = null;
 	static ResultSet rs = null;
 	static Connection con = conn.connDb();
 
 	public Doktor(String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {
-		super( tcno, ad, soyad, sifre, type, dogumTarih);
-	
+		super(tcno, ad, soyad, sifre, type, dogumTarih);
+
 	}
-	public Doktor() {  
-		
-	} 
-	
-	public DefaultListModel<String>  doktorList( ) throws SQLException {
-		
-		DefaultListModel<String> dflist= new DefaultListModel<String>();
-		
-		
+
+	public Doktor() {
+
+	}
+
+	public DefaultListModel<String> doktorList() throws SQLException {
+
+		DefaultListModel<String> dflist = new DefaultListModel<String>();
+
 		Connection con = conn.connDb();
 		Statement st = con.createStatement();
-		String query=("SELECT * FROM user "+" WHERE type='"+"doktor"+"' ");
+		String query = ("SELECT * FROM user " + " WHERE type='" + "doktor" + "' ");
 		ResultSet rs = st.executeQuery(query);
-		
-		while(rs.next()) {
+
+		while (rs.next()) {
 			dflist.addElement(rs.getString("ad"));
 		}
 
 		return dflist;
 	}
-public DefaultListModel<String>  doktorList2(int id) throws SQLException {
-		
-		DefaultListModel<String> dflist= new DefaultListModel<String>();
-		
+
+	public DefaultListModel<String> doktorList2(int id) throws SQLException {
+
+		DefaultListModel<String> dflist = new DefaultListModel<String>();
 
 		Connection con = conn.connDb();
 		Statement st = con.createStatement();
-		String query=("SELECT * FROM user "+" WHERE polkilinik='"+id+"' ");
+		String query = ("SELECT * FROM user " + " WHERE poliklinik='" + id + "' ");
 		ResultSet rs = st.executeQuery(query);
-		
-		while(rs.next()) {
+
+		while (rs.next()) {
 			dflist.addElement(rs.getString("ad"));
 		}
 
 		return dflist;
 	}
-	
-	public static void KayitOl(String tcno, String ad, String soyad, String sifre, String dogumTarih,int poliklinik) throws SQLException {
+
+	public static void KayitOl(String tcno, String ad, String soyad, String sifre, String dogumTarih, int poliklinik)
+			throws SQLException {
 		String query = "INSERT INTO user (tcno,ad,soyad,dogumTarih,type,sifre,poliklinik)VALUES(?,?,?,?,?,?,?)";
-        
-        try {
-        	st = con.createStatement();
+
+		try {
+			st = con.createStatement();
 			preparedStatement = con.prepareStatement(query);
 			preparedStatement.setString(1, tcno);
 			preparedStatement.setString(2, ad);
@@ -77,7 +78,11 @@ public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        
+
 	}
+	
+	
+	
+	
 
 }
