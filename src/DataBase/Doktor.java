@@ -45,6 +45,16 @@ public class Doktor extends User{
 
 		return dflist;
 	}
+	public void DoktorGuncelleme(String Stcno,String tcno,String ad,String soyad,String Sifre,String DogumTarih,String Poliklinik) throws SQLException {
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query = "UPDATE `hospital`.`user` SET `tcno` = '"+tcno+"', `ad` = '"+ad+"', `soyad` = '"+soyad+"', `sifre` = '"+Sifre+"', `dogumTarih` = '"+DogumTarih+"', `poliklinik` = '"+Poliklinik+"' WHERE (`tcno` = '"+Stcno+"')";
+		preparedStatement = con.prepareStatement(query);
+		
+		preparedStatement.executeUpdate();
+		
+		
+	}
 public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 		
 		DefaultListModel<String> dflist= new DefaultListModel<String>();
