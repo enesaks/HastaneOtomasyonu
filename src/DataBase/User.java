@@ -3,7 +3,7 @@ package DataBase;
 
 
 public class User {
-	private int id;
+	protected int id;
 	private String tcno,ad,soyad,sifre,type,dogumTarih;
 	
 	public User( String tcno, String ad, String soyad, String sifre, String type, String dogumTarih) {

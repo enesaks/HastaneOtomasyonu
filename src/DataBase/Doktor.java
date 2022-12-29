@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
@@ -13,6 +14,7 @@ import Helper.DBConnection;
 
 public class Doktor extends User{
 	private static DBConnection conn = new DBConnection();
+	private String name;
 	static PreparedStatement preparedStatement = null;
 	
 	static Statement st = null;
@@ -92,6 +94,79 @@ public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 		}
 		
 	}
+	
+	public static void CalismaSaatleri(int doktor_id,String doktor_ad,String date) {
+		try {
+			String query="INSERT INTO calismasaatleri(doktor_id,doktor_ad,date) VALUES(?,?,?)";
+			Connection con = conn.connDb();
+			Statement st = con.createStatement();
+			preparedStatement=con.prepareStatement(query);
+			preparedStatement.setInt(1,doktor_id);
+			preparedStatement.setString(2, doktor_ad);
+			preparedStatement.setString(3, date);
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public ArrayList<Doktor> doktorListe() throws SQLException {
+		ArrayList<Doktor> list = new ArrayList<>();
+		Doktor obj;
+		Connection con = conn.connDb();
+		try {
+
+			st = con.createStatement();
+			
+			rs = st.executeQuery("SELECT * FROM user WHERE type='"+"doktor"+"' ");
+			while (rs.next()) {
+				obj = new Doktor();
+				obj.setName(rs.getString("ad"));
+				list.add(obj);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			st.close();
+			rs.close();
+			con.close();
+		}
+		return list;
+
+	}
+	
+	
+	public static void Randevu(String tcno, String ad, String soyad, String sifre, String dogumTarih) throws SQLException {
+		String query = "INSERT INTO user (tcno,ad,soyad,dogumTarih,type,sifre)VALUES(?,?,?,?,?,?)";
+        
+        try {
+        	st = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, tcno);
+			preparedStatement.setString(2, ad);
+			preparedStatement.setString(3, soyad);
+			preparedStatement.setString(4, sifre);
+			preparedStatement.setString(5, "hasta");
+			preparedStatement.setString(6, dogumTarih);
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	
 
