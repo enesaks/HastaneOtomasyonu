@@ -29,6 +29,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.border.EtchedBorder;
@@ -41,7 +42,7 @@ public class BHGenel extends JFrame {
 	JInternalFrame iFDoktorBilgi = new JInternalFrame("DoktorBİlgisi");
 	JInternalFrame iFDoktorEkle = new JInternalFrame("Doktor Ekle Çıkar");
 	Doktor doktor = new Doktor();
-	Poliklinik polkilinik =new Poliklinik();
+	Poliklinik polikilinik =new Poliklinik();
 			
 	private DBConnection conn = new DBConnection();
 	private JPanel contentPane;
@@ -80,7 +81,7 @@ public class BHGenel extends JFrame {
 	 */
 	public BHGenel(Bashekim bshekim) throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1348, 746);
+		setBounds(100, 100, 1350, 750);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(204, 255, 255));
 		contentPane.setBackground(new Color(255, 204, 102));
@@ -220,8 +221,7 @@ public class BHGenel extends JFrame {
 		contentPane.add(iFDoktorEkle);
 		iFDoktorEkle.getContentPane().setLayout(null);
 		
-		DefaultListModel<String> DLmodel =new DefaultListModel<String>();
-		DLmodel = doktor.doktorList();
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -329,7 +329,7 @@ public class BHGenel extends JFrame {
 						while (rs.next()) {
 							if (tfTcno.getText().equals(rs.getString("tcno"))) {
 								Helper.showMsg("Aynı Kimlikle Başka Bir Kulanıcı var.");
-								
+								c = 0;
 							} else if (tfTcno.getText().length() != 11) {
 								Helper.showMsg("Lütfen 11 hane giriniz.");
 								c = 0; 
@@ -396,7 +396,8 @@ public class BHGenel extends JFrame {
 		JButton btnEkle_1 = new JButton("Poliklinik Ekle");
 		btnEkle_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				polkilinik.polkilinikEkle(tfPoliklinikAd.getText(),Integer.parseInt(tfPoliklinikId.getText()));
+			
+				polikilinik.polkilinikEkle(tfPoliklinikAd.getText(),Integer.parseInt(tfPoliklinikId.getText()));
 				
 			}
 		});
@@ -414,12 +415,15 @@ public class BHGenel extends JFrame {
 		lblNewLabel_1_4_1_1.setBounds(10, 145, 145, 36);
 		panel_1.add(lblNewLabel_1_4_1_1);
 		
-		JList listid = new JList();
+		
+		JList<String> listid = new JList(polikilinik.poliklinikListId());
+		listid.setEnabled(false);
 		listid.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "iD", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		listid.setBounds(10, 47, 47, 548);
 		iFDoktorEkle.getContentPane().add(listid);
 		
-		JList listPoliklinik = new JList();
+		JList<String> listPoliklinik = new JList(polikilinik.poliklinikListAD());
+		listPoliklinik.setEnabled(false);
 		listPoliklinik.setBorder(new TitledBorder(null, "Poliklinikler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		listPoliklinik.setBounds(67, 47, 164, 548);
 		iFDoktorEkle.getContentPane().add(listPoliklinik);

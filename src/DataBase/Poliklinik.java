@@ -67,6 +67,22 @@ public class Poliklinik {
 		return dflist;
 	}
 		
+	public DefaultListModel<String>  poliklinikListId( ) throws SQLException {
+		
+		DefaultListModel<String> dflist= new DefaultListModel<String>();
+		
+		
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query=("SELECT * FROM poliklinik "+" WHERE id");
+		ResultSet rs = st.executeQuery(query);
+		
+		while(rs.next()) {
+			dflist.addElement(rs.getString("id"));
+		}
+
+		return dflist;
+	}
 	
 
 	public ArrayList<Poliklinik> getList() throws SQLException {
