@@ -161,7 +161,7 @@ public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 	
 	
 	public static void Randevu(String poliklinik, String doktor_ad, String gun, String saat) throws SQLException {
-		String query = "INSERT INTO user (tcno,ad,soyad,dogumTarih,type,sifre)VALUES(?,?,?,?,?,?)";
+		String query = "INSERT INTO randevu (poliklinik,doktor_ad,gun,saat,type)VALUES(?,?,?,?,?)";
         
         try {
         	st = con.createStatement();

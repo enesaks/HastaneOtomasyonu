@@ -38,6 +38,7 @@ import java.awt.Dimension;
 import javax.swing.UIManager;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.border.LineBorder;
 
 
 public class BHGenel extends JFrame {
@@ -100,7 +101,7 @@ public class BHGenel extends JFrame {
 		
 		JButton butonDoktorBilgisiBHekim = new JButton("Doktor bilgisi");
 		butonDoktorBilgisiBHekim.setFont(new Font("Arial", Font.BOLD, 12));
-		butonDoktorBilgisiBHekim.setBounds(21, 95, 167, 104);
+		butonDoktorBilgisiBHekim.setBounds(21, 95, 174, 104);
 		butonDoktorBilgisiBHekim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFDoktorBilgi.setVisible(true);
@@ -110,12 +111,12 @@ public class BHGenel extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(butonDoktorBilgisiBHekim);
 		
-		JButton butonDoktorEkleBHekim = new JButton("Doktor ve Poliklinik\r\nEkle Çıkar");
+		JButton butonDoktorEkleBHekim = new JButton("Doktor ve Poliklinik\r\nEkle");
 		butonDoktorEkleBHekim.setFont(new Font("Arial", Font.BOLD, 12));
 		butonDoktorEkleBHekim.setMinimumSize(new Dimension(30, 15));
 		butonDoktorEkleBHekim.setMaximumSize(new Dimension(30, 15));
 		butonDoktorEkleBHekim.setIconTextGap(0);
-		butonDoktorEkleBHekim.setBounds(21, 238, 167, 104);
+		butonDoktorEkleBHekim.setBounds(21, 238, 170, 104);
 		butonDoktorEkleBHekim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFDoktorEkle.setVisible(true);
@@ -124,13 +125,13 @@ public class BHGenel extends JFrame {
 			}
 		});
 		contentPane.add(butonDoktorEkleBHekim);
-		iFDoktorBilgi.setBounds(220, 65, 941, 589);
+		iFDoktorBilgi.setBounds(221, 67, 940, 587);
 		iFDoktorBilgi.addMouseListener(new MouseAdapter() {
 			
 		});
 		iFDoktorBilgi.setBackground(new Color(255, 255, 255));
 		iFDoktorBilgi.setEnabled(false);
-		iFDoktorBilgi.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 0, 128), null, null, null));
+		iFDoktorBilgi.setBorder(new LineBorder(new Color(0, 0, 0), 0));
 		contentPane.add(iFDoktorBilgi);
 		iFDoktorBilgi.getContentPane().setLayout(null);
 		
@@ -138,7 +139,7 @@ public class BHGenel extends JFrame {
 		JList<String> list = new JList<>(doktor.doktorList());
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBorder(new TitledBorder(null, "Doktorlar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		list.setBounds(10, 11, 228, 583);
+		list.setBounds(10, 11, 228, 538);
 		iFDoktorBilgi.getContentPane().add(list);
 	
 		
@@ -285,7 +286,7 @@ public class BHGenel extends JFrame {
 		btnBilgileriGncelle.setBounds(752, 444, 176, 54);
 		iFDoktorBilgi.getContentPane().add(btnBilgileriGncelle);
 		iFDoktorEkle.setBounds(220, 65, 941, 589);
-		iFDoktorEkle.setBorder(new EmptyBorder(0, 0, 0, 0));
+		iFDoktorEkle.setBorder(new LineBorder(new Color(0, 0, 0), 0));
 		iFDoktorEkle.setBackground(new Color(255, 255, 255));
 		contentPane.add(iFDoktorEkle);
 		iFDoktorEkle.getContentPane().setLayout(null);
@@ -295,7 +296,7 @@ public class BHGenel extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(597, 47, 321, 385);
+		panel.setBounds(597, 90, 321, 342);
 		iFDoktorEkle.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -367,21 +368,6 @@ public class BHGenel extends JFrame {
 		tfSifre = new JPasswordField();
 		tfSifre.setBounds(165, 147, 119, 20);
 		panel.add(tfSifre);
-		
-		JLabel lbDoktorTc = new JLabel("Doktor T.C. :");
-		lbDoktorTc.setBounds(10, 302, 145, 36);
-		panel.add(lbDoktorTc);
-		lbDoktorTc.setHorizontalAlignment(SwingConstants.RIGHT);
-		lbDoktorTc.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		
-		JTextField textField = new JTextField();
-		textField.setBounds(165, 313, 119, 20);
-		panel.add(textField);
-		textField.setColumns(10);
-		
-		JButton btnDoktorCıkar = new JButton("Doktor Cıkar");
-		btnDoktorCıkar.setBounds(174, 351, 110, 23);
-		panel.add(btnDoktorCıkar);
 		btnEkle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -448,7 +434,7 @@ public class BHGenel extends JFrame {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel_1.setBackground(new Color(255, 255, 255));
-		panel_1.setBounds(252, 47, 321, 385);
+		panel_1.setBounds(252, 90, 321, 342);
 		iFDoktorEkle.getContentPane().add(panel_1);
 		
 		JLabel lblNewLabel_1_5 = new JLabel("Poliklinik Adi");
@@ -497,6 +483,7 @@ public class BHGenel extends JFrame {
 					}
 					tfPoliklinikAd.setText(null);
 					tfPoliklinikId.setText(null);
+					
 
 				
 				}
@@ -517,6 +504,8 @@ public class BHGenel extends JFrame {
 		panel_1.add(lblNewLabel_1_4_1_1);
 		
 		JLabel arkaplan = new JLabel(new ImageIcon(this.getClass().getResource("arka2.png")));
+		arkaplan.setFont(new Font("Tahoma", Font.BOLD, 16));
+		arkaplan.setText("Hoşgeldiniz Başhekim :");
 		arkaplan.setBackground(new Color(255, 255, 255));
 		arkaplan.setBounds(0, 0, 1184, 711);
 		contentPane.add(arkaplan);
@@ -526,14 +515,19 @@ public class BHGenel extends JFrame {
 		JList<String> listid = new JList(polikilinik.poliklinikListId());
 		listid.setEnabled(false);
 		listid.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "iD", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		listid.setBounds(10, 47, 47, 548);
+		listid.setBounds(10, 47, 47, 505);
 		iFDoktorEkle.getContentPane().add(listid);
 		
 		JList<String> listPoliklinik = new JList(polikilinik.poliklinikListAD());
 		listPoliklinik.setEnabled(false);
 		listPoliklinik.setBorder(new TitledBorder(null, "Poliklinikler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		listPoliklinik.setBounds(67, 47, 164, 548);
+		listPoliklinik.setBounds(67, 47, 164, 507);
 		iFDoktorEkle.getContentPane().add(listPoliklinik);
+		
+		JLabel lblNewLabel_2 = new JLabel("Hoşgeldiniz BaşHekim ");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_2.setBounds(34, 21, 354, 35);
+		contentPane.add(lblNewLabel_2);
 		iFDoktorEkle.setVisible(false);
 		iFDoktorBilgi.setVisible(true);
 	}

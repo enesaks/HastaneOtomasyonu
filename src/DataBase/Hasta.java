@@ -59,6 +59,16 @@ public class Hasta extends User {
 
 		
 	}
+	public void HastaGuncelleme(String Stcno,String tcno,String ad,String soyad,String Sifre,String DogumTarih) throws SQLException {
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query = "UPDATE `hospital`.`user` SET `tcno` = '"+tcno+"', `ad` = '"+ad+"', `soyad` = '"+soyad+"', `sifre` = '"+Sifre+"', `dogumTarih` = '"+DogumTarih+"' WHERE (`tcno` = '"+Stcno+"')";
+		preparedStatement = con.prepareStatement(query);
+		
+		preparedStatement.executeUpdate();
+		
+		
+	}
 
 	
 	

@@ -100,6 +100,7 @@ public class HastaLogin extends JFrame {
 									hasta.setTcno(rs.getString("tcno"));
 									hasta.setSifre(rs.getString("sifre"));
 									hasta.setType(rs.getString("type"));
+									hasta.setDogumTarih(rs.getString("dogumTarih"));
 									System.out.println(hasta.getAd());
 									HastaGenel hGenel = new HastaGenel(hasta);
 									// DÜZELTİLECEK

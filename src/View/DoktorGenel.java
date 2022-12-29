@@ -34,6 +34,7 @@ import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import javax.swing.JEditorPane;
+import javax.swing.SwingConstants;
 
 public class DoktorGenel extends JFrame {
 	
@@ -82,8 +83,8 @@ public class DoktorGenel extends JFrame {
 		
 		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd()+" "+doktor.getSoyad());
 		baslik.setBounds(62, 55, 547, 46);
-		baslik.setForeground(Color.BLUE);
-		baslik.setFont(new Font("Segoe Print", Font.BOLD, 17));
+		baslik.setForeground(Color.BLACK);
+		baslik.setFont(new Font("Arial", Font.BOLD, 17));
 		contentPane.add(baslik);
 		
 		JButton butonHastaBilgiler = new JButton("Hasta Bilgileri");
@@ -97,16 +98,18 @@ public class DoktorGenel extends JFrame {
 			}
 		});
 		contentPane.add(butonHastaBilgiler);
-		iFHastaBilgileri.setBounds(472, 100, 702, 531);
+		iFHastaBilgileri.setBounds(394, 112, 702, 535);
 		contentPane.add(iFHastaBilgileri);
 		iFHastaBilgileri.getContentPane().setLayout(null);
 		
 		JList<String> list = new JList<>(hasta.hastaList());
+		list.setBackground(Color.LIGHT_GRAY);
 		list.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		list.setBounds(51, 120, 169, 262);
+		list.setBounds(51, 120, 169, 294);
 		iFHastaBilgileri.getContentPane().add(list);
 		
 		JLabel lblAd = new JLabel("AD:");
+		lblAd.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblAd.setFont(new Font("Arial", Font.BOLD, 14));
 		lblAd.setBounds(303, 120, 113, 50);
 		iFHastaBilgileri.getContentPane().add(lblAd);
@@ -114,6 +117,7 @@ public class DoktorGenel extends JFrame {
 
 		
 		JLabel lblSoyad = new JLabel("SOYAD:");
+		lblSoyad.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSoyad.setFont(new Font("Arial", Font.BOLD, 14));
 		lblSoyad.setBounds(303, 181, 113, 50);
 		iFHastaBilgileri.getContentPane().add(lblSoyad);
@@ -121,6 +125,7 @@ public class DoktorGenel extends JFrame {
 
 		
 		JLabel lblDogumTarih = new JLabel("DOĞUM TARİHİ:");
+		lblDogumTarih.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDogumTarih.setFont(new Font("Arial", Font.BOLD, 14));
 		lblDogumTarih.setBounds(303, 242, 113, 50);
 		iFHastaBilgileri.getContentPane().add(lblDogumTarih);
@@ -172,8 +177,8 @@ public class DoktorGenel extends JFrame {
 		iFHastaBilgileri.getContentPane().add(butonBilgileriGöster);
 		
 		JLabel lblNewLabel_2 = new JLabel("Lütfen bir hasta seçiniz.");
-		lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(51, 95, 169, 14);
+		lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(51, 79, 188, 20);
 		iFHastaBilgileri.getContentPane().add(lblNewLabel_2);
 		
 		
@@ -193,27 +198,29 @@ public class DoktorGenel extends JFrame {
 
 		
 		
-		iFReceteOlustur.setBounds(472, 100, 702, 531);
+		iFReceteOlustur.setBounds(394, 116, 702, 531);
 		contentPane.add(iFReceteOlustur);
 		iFReceteOlustur.getContentPane().setLayout(null);
 		
 		//BURAYLA UĞRASICAKSI LİSTE BURDA
 		JList receteHastaList = new JList(hasta.hastaList());
+		receteHastaList.setBackground(Color.LIGHT_GRAY);
 		receteHastaList.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		receteHastaList.setBounds(51, 120, 169, 262);
 		iFReceteOlustur.getContentPane().add(receteHastaList);
 		
 		JLabel lblNewLabel = new JLabel("Reçeteyi Yazınız.");
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 13));
+		lblNewLabel.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 14));
 		lblNewLabel.setBounds(255, 120, 236, 36);
 		iFReceteOlustur.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Lütfen bir hasta seçiniz.");
-		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 13));
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(51, 95, 169, 14);
 		iFReceteOlustur.getContentPane().add(lblNewLabel_1);
 		
 		JEditorPane epRecete = new JEditorPane();
+		epRecete.setBackground(Color.LIGHT_GRAY);
 		epRecete.setBounds(252, 169, 388, 103);
 		iFReceteOlustur.getContentPane().add(epRecete);
 		
