@@ -122,7 +122,7 @@ public class HastaLogin extends JFrame {
 				}
 			}
 		});
-		butonGirisHastaGiris.setBounds(104, 187, 99, 35);
+		butonGirisHastaGiris.setBounds(100, 187, 99, 35);
 		contentPane.add(butonGirisHastaGiris);
 
 		JButton butonKayitOlHastaGiris = new JButton("Kayıt Ol");
