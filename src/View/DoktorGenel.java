@@ -127,15 +127,15 @@ public class DoktorGenel extends JFrame {
 		iFHastaBilgileri.getContentPane().add(lblDogumTarih);
 		
 		JLabel lbAd = new JLabel("");
-		lbAd.setBounds(321, 32, 81, 50);
+		lbAd.setBounds(478, 120, 81, 50);
 		iFHastaBilgileri.getContentPane().add(lbAd);
 		
 		JLabel lbSoyad = new JLabel("");
-		lbSoyad.setBounds(321, 76, 81, 50);
+		lbSoyad.setBounds(478, 181, 81, 50);
 		iFHastaBilgileri.getContentPane().add(lbSoyad);
 		
 		JLabel lbDogumTarihi = new JLabel("");
-		lbDogumTarihi.setBounds(321, 120, 81, 50);
+		lbDogumTarihi.setBounds(478, 242, 81, 50);
 		iFHastaBilgileri.getContentPane().add(lbDogumTarihi);
 
 		
