@@ -503,7 +503,7 @@ public class BHGenel extends JFrame {
 		panel_1.add(btnEkle_1);
 		
 		tfPoliklinikId = new JTextField();
-		tfPoliklinikId.setColumns(10);
+		tfPoliklinikId.setColumns(10); 
 		tfPoliklinikId.setBounds(165, 156, 119, 20);
 		panel_1.add(tfPoliklinikId);
 		
