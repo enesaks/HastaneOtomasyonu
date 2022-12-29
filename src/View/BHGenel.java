@@ -35,6 +35,9 @@ import javax.swing.JComboBox;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
+import javax.swing.UIManager;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class BHGenel extends JFrame {
@@ -55,7 +58,14 @@ public class BHGenel extends JFrame {
 	 private JPasswordField tfSifre;
 	 private JTextField tfPoliklinikAd;
 	 private JTextField tfPoliklinikId;
-	 private JTextField textField;
+	 private JTextField tSoyad;
+	 private JTextField tTCNO;
+	 private JTextField tSifre;
+	 private JTextField tPoliklinik;
+	 private JTextField tDogumTarihi;
+	 private JTextField tAd;
+	 private JTable table;
+	
 
 
 	/**
@@ -114,7 +124,7 @@ public class BHGenel extends JFrame {
 			}
 		});
 		contentPane.add(butonDoktorEkleBHekim);
-		iFDoktorBilgi.setBounds(924, 639, 402, 59);
+		iFDoktorBilgi.setBounds(1085, 576, 241, 122);
 		iFDoktorBilgi.addMouseListener(new MouseAdapter() {
 			
 		});
@@ -128,70 +138,49 @@ public class BHGenel extends JFrame {
 		JList<String> list = new JList<>(doktor.doktorList());
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBorder(new TitledBorder(null, "Doktorlar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		list.setBounds(10, 11, 227, 435);
+		list.setBounds(10, 11, 228, 583);
 		iFDoktorBilgi.getContentPane().add(list);
 	
 		
-		JLabel lblNewLabel = new JLabel("Ad Soyad : ");
+		JLabel lblNewLabel = new JLabel("Soyad : ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setBounds(248, 72, 206, 27);
+		lblNewLabel.setBounds(248, 85, 206, 27);
 		iFDoktorBilgi.getContentPane().add(lblNewLabel);
 		
 		JLabel lblTcNo = new JLabel("T.C. No : ");
 		lblTcNo.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblTcNo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTcNo.setBounds(258, 110, 196, 27);
+		lblTcNo.setBounds(258, 142, 196, 27);
 		iFDoktorBilgi.getContentPane().add(lblTcNo);
 		
 		JLabel lblPoliklinik = new JLabel("Poliklinik : ");
 		lblPoliklinik.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblPoliklinik.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPoliklinik.setBounds(278, 186, 176, 27);
+		lblPoliklinik.setBounds(278, 268, 176, 27);
 		iFDoktorBilgi.getContentPane().add(lblPoliklinik);
 		
 		JLabel lblifre = new JLabel("Şifre : ");
 		lblifre.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblifre.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblifre.setBounds(268, 148, 186, 27);
+		lblifre.setBounds(268, 204, 186, 27);
 		iFDoktorBilgi.getContentPane().add(lblifre);
 		
 		JLabel lblDogumTarihi = new JLabel("Dogum Tarihi : ");
 		lblDogumTarihi.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblDogumTarihi.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDogumTarihi.setBounds(278, 224, 176, 27);
+		lblDogumTarihi.setBounds(278, 330, 176, 27);
 		iFDoktorBilgi.getContentPane().add(lblDogumTarihi);
 		
-	
-		
-		JLabel nlTc = new JLabel();
-		nlTc.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		nlTc.setBounds(450, 110, 195, 27);
-		iFDoktorBilgi.getContentPane().add(nlTc);
-		
-		JLabel nlSifre = new JLabel();
-		nlSifre.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		nlSifre.setBounds(450, 154, 195, 27);
-		iFDoktorBilgi.getContentPane().add(nlSifre);
-		
-		JLabel nlPolkilinik = new JLabel();
-		nlPolkilinik.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		nlPolkilinik.setBounds(450, 192, 195, 21);
-		iFDoktorBilgi.getContentPane().add(nlPolkilinik);
-		
-		JLabel nldDogumtarihi = new JLabel();
-		nldDogumtarihi.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		nldDogumtarihi.setBounds(450, 224, 195, 27);
-		iFDoktorBilgi.getContentPane().add(nldDogumtarihi);
-		
-		JLabel nlAdSoyad = new JLabel();
-		nlAdSoyad.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		nlAdSoyad.setBounds(450, 72, 195, 27);
-		iFDoktorBilgi.getContentPane().add(nlAdSoyad);
-		
 		JButton btnbilgiler = new JButton("Bilgileri Göster");
+		btnbilgiler.setBorder(UIManager.getBorder("Button.border"));
+		btnbilgiler.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnbilgiler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(list.getSelectedValue().equals(null))
+				{
+					Helper.showMsg("Öncelikle Doktor Seçmelisiniz !!");
+				}else {
 				
 				try {
 					Connection con = conn.connDb();
@@ -200,21 +189,98 @@ public class BHGenel extends JFrame {
 					ResultSet rs;
 					rs = st.executeQuery(query);
 					rs.next();
-					nlAdSoyad.setText(rs.getString("ad").toUpperCase()+" "+rs.getString("soyad").toUpperCase());
-					nlTc.setText(rs.getString("tcno"));
-					nldDogumtarihi.setText(rs.getString("dogumTarih"));
-					nlPolkilinik.setText(rs.getString("Poliklinik"));
-					nlSifre.setText(rs.getString("sifre"));
+					
+					tAd.setText(rs.getString("ad").toUpperCase());
+					tSoyad.setText(rs.getString("soyad").toUpperCase());
+					tTCNO.setText(rs.getString("tcno"));
+					tDogumTarihi.setText(rs.getString("dogumTarih"));
+					tPoliklinik.setText(rs.getString("Poliklinik"));
+					tSifre.setText(rs.getString("sifre"));
+				
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}}
+		
+			}
+		});
+		btnbilgiler.setBounds(464, 391, 176, 54);
+		iFDoktorBilgi.getContentPane().add(btnbilgiler);
+		
+		tSoyad = new JTextField();
+		tSoyad.setBounds(464, 85, 378, 27);
+		iFDoktorBilgi.getContentPane().add(tSoyad);
+		tSoyad.setColumns(10);
+		
+		tTCNO = new JTextField();
+		tTCNO.setColumns(10);
+		tTCNO.setBounds(464, 142, 378, 27);
+		iFDoktorBilgi.getContentPane().add(tTCNO);
+		
+		tSifre = new JTextField();
+		tSifre.setColumns(10);
+		tSifre.setBounds(464, 204, 378, 27);
+		iFDoktorBilgi.getContentPane().add(tSifre);
+		
+		tPoliklinik = new JTextField();
+		tPoliklinik.setColumns(10);
+		tPoliklinik.setBounds(464, 268, 378, 27);
+		iFDoktorBilgi.getContentPane().add(tPoliklinik);
+		
+		tDogumTarihi = new JTextField();
+		tDogumTarihi.setColumns(10);
+		tDogumTarihi.setBounds(464, 330, 378, 27);
+		iFDoktorBilgi.getContentPane().add(tDogumTarihi);
+		
+		JLabel lblAd = new JLabel(" Ad : ");
+		lblAd.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAd.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblAd.setBounds(248, 38, 206, 27);
+		iFDoktorBilgi.getContentPane().add(lblAd);
+		
+		tAd = new JTextField();
+		tAd.setColumns(10);
+		tAd.setBounds(464, 38, 378, 27);
+		iFDoktorBilgi.getContentPane().add(tAd);
+		
+		JButton btnBilgileriGncelle = new JButton("Bilgileri Güncelle");
+		btnBilgileriGncelle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(tAd.getText().length() == 0 || tSoyad.getText().length() ==0 || tDogumTarihi.getText().length()==0 || 
+							tSifre.getText().length() == 0 || tTCNO.getText().length()==0||tPoliklinik.getText().length()==0) {
+						Helper.showMsg("fill");	
+					}
+					Connection con = conn.connDb();
+					Statement st = con.createStatement();
+					String query=("SELECT * FROM user "+" WHERE ad='"+list.getSelectedValue()+"' ");
+					ResultSet rs;
+					rs = st.executeQuery(query);
+					rs.next();
+					doktor.DoktorGuncelleme(rs.getString("tcno"),tTCNO.getText(), tAd.getText(),tSoyad.getText(), tSifre.getText(), tDogumTarihi.getText(), tPoliklinik.getText());
+					
+					String query2=("SELECT * FROM user "+" WHERE ad='"+tAd.getText()+"' ");
+				
+					rs = st.executeQuery(query2);
+					rs.next();
+					tAd.setText(rs.getString("ad").toUpperCase());
+					tSoyad.setText(rs.getString("soyad").toUpperCase());
+					tTCNO.setText(rs.getString("tcno"));
+					tDogumTarihi.setText(rs.getString("dogumTarih"));
+					tPoliklinik.setText(rs.getString("Poliklinik"));
+					tSifre.setText(rs.getString("sifre").toUpperCase());
 				
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-		
+				
 			}
 		});
-		btnbilgiler.setBounds(524, 262, 121, 23);
-		iFDoktorBilgi.getContentPane().add(btnbilgiler);
+		btnBilgileriGncelle.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnBilgileriGncelle.setBorder(UIManager.getBorder("Button.border"));
+		btnBilgileriGncelle.setBounds(666, 391, 176, 54);
+		iFDoktorBilgi.getContentPane().add(btnBilgileriGncelle);
 		iFDoktorEkle.setBounds(188, 65, 1138, 633);
 		iFDoktorEkle.setBorder(new EmptyBorder(0, 0, 0, 0));
 		iFDoktorEkle.setBackground(new Color(255, 255, 204));
@@ -226,7 +292,7 @@ public class BHGenel extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(new Color(255, 255, 204));
-		panel.setBounds(688, 47, 321, 385);
+		panel.setBounds(793, 47, 321, 385);
 		iFDoktorEkle.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -305,7 +371,7 @@ public class BHGenel extends JFrame {
 		lbDoktorTc.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbDoktorTc.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.setBounds(165, 313, 119, 20);
 		panel.add(textField);
 		textField.setColumns(10);
@@ -379,7 +445,7 @@ public class BHGenel extends JFrame {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel_1.setBackground(new Color(255, 255, 204));
-		panel_1.setBounds(308, 47, 321, 304);
+		panel_1.setBounds(462, 47, 321, 385);
 		iFDoktorEkle.getContentPane().add(panel_1);
 		
 		JLabel lblNewLabel_1_5 = new JLabel("Poliklinik Adi");
@@ -396,9 +462,41 @@ public class BHGenel extends JFrame {
 		JButton btnEkle_1 = new JButton("Poliklinik Ekle");
 		btnEkle_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-				polikilinik.polkilinikEkle(tfPoliklinikAd.getText(),Integer.parseInt(tfPoliklinikId.getText()));
+				if(tfPoliklinikAd.getText().length() == 0 || tfPoliklinikId.getText().length() == 0) {
+					Helper.showMsg("fill");
+				}
+				else {
+					int q=1;
+					try {
+						Connection con = conn.connDb();
+						Statement st;
+						st = con.createStatement();
+						String query=("SELECT * FROM poliklinik "+" WHERE id");
+						ResultSet rs = st.executeQuery(query);
+						while(rs.next()) {
+							System.out.println(rs.getString("id"));
+						if(tfPoliklinikId.getText().equals(rs.getString("id"))) {
+						Helper.showMsg("Aynı id'ye Sahip Polklinik Zaten var!!");
+						tfPoliklinikAd.setText(null);
+						tfPoliklinikId.setText(null);
+						q=0;
+						break;
+							}
+						}
+						if(q == 1) {
+								polikilinik.polkilinikEkle(tfPoliklinikAd.getText(),Integer.parseInt(tfPoliklinikId.getText()));
+								Helper.showMsg("success");
+						}
+						
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					tfPoliklinikAd.setText(null);
+					tfPoliklinikId.setText(null);
+
 				
+				}
 			}
 		});
 		btnEkle_1.setBounds(201, 270, 110, 23);
@@ -427,6 +525,19 @@ public class BHGenel extends JFrame {
 		listPoliklinik.setBorder(new TitledBorder(null, "Poliklinikler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		listPoliklinik.setBounds(67, 47, 164, 548);
 		iFDoktorEkle.getContentPane().add(listPoliklinik);
+		
+		table = new JTable();
+		
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+			},
+			new String[] {
+				"Poliklinikler", "New column"
+			}
+		));
+		table.setBounds(241, 47, 185, 306);
+		iFDoktorEkle.getContentPane().add(table);
 		iFDoktorEkle.setVisible(false);
 		iFDoktorBilgi.setVisible(true);
 	}
