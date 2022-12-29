@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -56,44 +58,6 @@ public class SecimLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel doktorPhoto = new JLabel(new ImageIcon(getClass().getResource("doktor.png")));
-		doktorPhoto.setBounds(284, 60, 145, 165);
-		contentPane.add(doktorPhoto);
-		
-		JLabel hastaLogo = new JLabel(new ImageIcon(getClass().getResource("hasta.png")));
-		hastaLogo.setBackground(Color.WHITE);
-		hastaLogo.setBounds(74, 60, 145, 165);
-		contentPane.add(hastaLogo);
-		
-		//JLabel lbl_logo = new JLabel(new ImageIcon(getClass().getResource("images.jpeg")));
-		
-		JButton butonHastaGiris = new JButton("HASTA GİRİŞ");
-		butonHastaGiris.setForeground(new Color(0, 0, 0));
-		butonHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		butonHastaGiris.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				HastaLogin hastalogin =new HastaLogin();
-				hastalogin.setVisible(true);  
-				dispose();
-			}
-		});
-		butonHastaGiris.setBounds(74, 236, 145, 39);
-		contentPane.add(butonHastaGiris);
-		
-		JButton butonDoktorGiris = new JButton("DOKTOR GİRİŞ");
-		butonDoktorGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		butonDoktorGiris.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DoktorLogin doktorlogin =new DoktorLogin();
-				doktorlogin.setVisible(true);  
-				
-				dispose();
-			}
-		});
-		butonDoktorGiris.setBounds(284, 235, 150, 39);
-		contentPane.add(butonDoktorGiris);
-		
 		JLabel baslik = new JLabel("MEDİPOL HASTANESİNE HOŞGELDİNİZ");
 		baslik.setForeground(Color.BLUE);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 20));
@@ -104,5 +68,49 @@ public class SecimLogin extends JFrame {
 		JLabel lblNewLabel = new JLabel("Giriş Tarihi: "+dtf.format(tarih));
 		lblNewLabel.setBounds(10, 319, 189, 13);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnhastaGiris  = new JButton(new ImageIcon(this.getClass().getResource("hasta.png")));
+		btnhastaGiris.setBorder(UIManager.getBorder("Tree.editorBorder"));
+		btnhastaGiris.setBackground(Color.LIGHT_GRAY);
+		
+		
+		
+		  getContentPane().add(btnhastaGiris); 
+		btnhastaGiris.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HastaLogin hastalogin =new HastaLogin();
+				hastalogin.setVisible(true);  
+				dispose();
+			}
+		});
+		btnhastaGiris.setBounds(98, 104, 101, 108);
+		contentPane.add(btnhastaGiris);
+		
+		JButton btnDoktorGiris  = new JButton(new ImageIcon(this.getClass().getResource("doktor.png")));
+		btnDoktorGiris.setBorder(UIManager.getBorder("Tree.editorBorder"));
+		btnDoktorGiris.setBackground(Color.LIGHT_GRAY);
+		
+		getContentPane().add(btnDoktorGiris);
+		
+		btnDoktorGiris.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DoktorLogin doktorlogin =new DoktorLogin();
+				doktorlogin.setVisible(true);  
+				
+				dispose();
+			}
+		});
+		btnDoktorGiris.setBounds(295, 104, 101, 108);
+		contentPane.add(btnDoktorGiris);
+		
+		JLabel lblHastaGiris = new JLabel("HASTA GİRİŞ");
+		lblHastaGiris.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHastaGiris.setBounds(102, 249, 89, 14);
+		contentPane.add(lblHastaGiris);
+		
+		JLabel lblDoktorGiris = new JLabel("DOKTOR GİRİŞ");
+		lblDoktorGiris.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDoktorGiris.setBounds(307, 249, 89, 14);
+		contentPane.add(lblDoktorGiris);
 	} 
 }
