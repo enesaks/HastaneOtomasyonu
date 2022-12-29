@@ -86,7 +86,7 @@ public class HastaGenel extends JFrame {
 	 */
 	public HastaGenel(Hasta hasta) throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 854, 486);
+		setBounds(100, 100, 1350, 750);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
