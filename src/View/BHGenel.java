@@ -93,13 +93,14 @@ public class BHGenel extends JFrame {
 		setBounds(100, 100, 1200, 750);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(204, 255, 255));
-		contentPane.setBackground(new Color(255, 204, 102));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		
 		JButton butonDoktorBilgisiBHekim = new JButton("Doktor bilgisi");
-		butonDoktorBilgisiBHekim.setBounds(21, 64, 156, 104);
+		butonDoktorBilgisiBHekim.setFont(new Font("Arial", Font.BOLD, 12));
+		butonDoktorBilgisiBHekim.setBounds(21, 95, 167, 104);
 		butonDoktorBilgisiBHekim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFDoktorBilgi.setVisible(true);
@@ -110,11 +111,11 @@ public class BHGenel extends JFrame {
 		contentPane.add(butonDoktorBilgisiBHekim);
 		
 		JButton butonDoktorEkleBHekim = new JButton("Doktor ve Poliklinik\r\nEkle Çıkar");
+		butonDoktorEkleBHekim.setFont(new Font("Arial", Font.BOLD, 12));
 		butonDoktorEkleBHekim.setMinimumSize(new Dimension(30, 15));
 		butonDoktorEkleBHekim.setMaximumSize(new Dimension(30, 15));
 		butonDoktorEkleBHekim.setIconTextGap(0);
-		butonDoktorEkleBHekim.setIcon(new ImageIcon(BHGenel.class.getResource("/View/doktor.png")));
-		butonDoktorEkleBHekim.setBounds(21, 190, 156, 104);
+		butonDoktorEkleBHekim.setBounds(21, 238, 167, 104);
 		butonDoktorEkleBHekim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iFDoktorEkle.setVisible(true);
@@ -123,11 +124,11 @@ public class BHGenel extends JFrame {
 			}
 		});
 		contentPane.add(butonDoktorEkleBHekim);
-		iFDoktorBilgi.setBounds(187, 64, 1139, 634);
+		iFDoktorBilgi.setBounds(220, 65, 941, 589);
 		iFDoktorBilgi.addMouseListener(new MouseAdapter() {
 			
 		});
-		iFDoktorBilgi.setBackground(new Color(255, 255, 204));
+		iFDoktorBilgi.setBackground(new Color(255, 255, 255));
 		iFDoktorBilgi.setEnabled(false);
 		iFDoktorBilgi.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 0, 128), null, null, null));
 		contentPane.add(iFDoktorBilgi);
@@ -142,33 +143,33 @@ public class BHGenel extends JFrame {
 	
 		
 		JLabel lblNewLabel = new JLabel("Soyad : ");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 24));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setBounds(338, 138, 224, 27);
+		lblNewLabel.setBounds(281, 134, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblNewLabel);
 		
 		JLabel lblTcNo = new JLabel("T.C. No : ");
-		lblTcNo.setFont(new Font("Arial", Font.PLAIN, 24));
+		lblTcNo.setFont(new Font("Arial", Font.BOLD, 24));
 		lblTcNo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTcNo.setBounds(338, 195, 224, 27);
+		lblTcNo.setBounds(281, 191, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblTcNo);
 		
 		JLabel lblPoliklinik = new JLabel("Poliklinik : ");
-		lblPoliklinik.setFont(new Font("Arial", Font.PLAIN, 24));
+		lblPoliklinik.setFont(new Font("Arial", Font.BOLD, 24));
 		lblPoliklinik.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPoliklinik.setBounds(338, 321, 224, 27);
+		lblPoliklinik.setBounds(281, 317, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblPoliklinik);
 		
 		JLabel lblifre = new JLabel("Şifre : ");
-		lblifre.setFont(new Font("Arial", Font.PLAIN, 24));
+		lblifre.setFont(new Font("Arial", Font.BOLD, 24));
 		lblifre.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblifre.setBounds(338, 257, 224, 27);
+		lblifre.setBounds(281, 253, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblifre);
 		
 		JLabel lblDogumTarihi = new JLabel("Dogum Tarihi : ");
-		lblDogumTarihi.setFont(new Font("Arial", Font.PLAIN, 24));
+		lblDogumTarihi.setFont(new Font("Arial", Font.BOLD, 24));
 		lblDogumTarihi.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDogumTarihi.setBounds(338, 383, 224, 27);
+		lblDogumTarihi.setBounds(281, 379, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblDogumTarihi);
 		
 		JButton btnbilgiler = new JButton("Bilgileri Göster");
@@ -203,43 +204,43 @@ public class BHGenel extends JFrame {
 		
 			}
 		});
-		btnbilgiler.setBounds(572, 444, 176, 54);
+		btnbilgiler.setBounds(541, 444, 176, 54);
 		iFDoktorBilgi.getContentPane().add(btnbilgiler);
 		
 		tSoyad = new JTextField();
-		tSoyad.setBounds(572, 138, 378, 27);
+		tSoyad.setBounds(515, 134, 378, 27);
 		iFDoktorBilgi.getContentPane().add(tSoyad);
 		tSoyad.setColumns(10);
 		
 		tTCNO = new JTextField();
 		tTCNO.setColumns(10);
-		tTCNO.setBounds(572, 195, 378, 27);
+		tTCNO.setBounds(515, 191, 378, 27);
 		iFDoktorBilgi.getContentPane().add(tTCNO);
 		
 		tSifre = new JTextField();
 		tSifre.setColumns(10);
-		tSifre.setBounds(572, 257, 378, 27);
+		tSifre.setBounds(515, 253, 378, 27);
 		iFDoktorBilgi.getContentPane().add(tSifre);
 		
 		tPoliklinik = new JTextField();
 		tPoliklinik.setColumns(10);
-		tPoliklinik.setBounds(572, 321, 378, 27);
+		tPoliklinik.setBounds(515, 317, 378, 27);
 		iFDoktorBilgi.getContentPane().add(tPoliklinik);
 		
 		tDogumTarihi = new JTextField();
 		tDogumTarihi.setColumns(10);
-		tDogumTarihi.setBounds(572, 383, 378, 27);
+		tDogumTarihi.setBounds(515, 379, 378, 27);
 		iFDoktorBilgi.getContentPane().add(tDogumTarihi);
 		
 		JLabel lblAd = new JLabel(" Ad : ");
 		lblAd.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAd.setFont(new Font("Arial", Font.PLAIN, 24));
-		lblAd.setBounds(334, 91, 228, 27);
+		lblAd.setFont(new Font("Arial", Font.BOLD, 24));
+		lblAd.setBounds(277, 87, 228, 27);
 		iFDoktorBilgi.getContentPane().add(lblAd);
 		
 		tAd = new JTextField();
 		tAd.setColumns(10);
-		tAd.setBounds(572, 91, 378, 27);
+		tAd.setBounds(515, 87, 378, 27);
 		iFDoktorBilgi.getContentPane().add(tAd);
 		
 		JButton btnBilgileriGncelle = new JButton("Bilgileri Güncelle");
@@ -281,11 +282,11 @@ public class BHGenel extends JFrame {
 		});
 		btnBilgileriGncelle.setFont(new Font("Segoe Print", Font.BOLD, 16));
 		btnBilgileriGncelle.setBorder(UIManager.getBorder("Button.border"));
-		btnBilgileriGncelle.setBounds(774, 444, 176, 54);
+		btnBilgileriGncelle.setBounds(752, 444, 176, 54);
 		iFDoktorBilgi.getContentPane().add(btnBilgileriGncelle);
-		iFDoktorEkle.setBounds(188, 65, 1138, 633);
+		iFDoktorEkle.setBounds(220, 65, 941, 589);
 		iFDoktorEkle.setBorder(new EmptyBorder(0, 0, 0, 0));
-		iFDoktorEkle.setBackground(new Color(255, 255, 204));
+		iFDoktorEkle.setBackground(new Color(255, 255, 255));
 		contentPane.add(iFDoktorEkle);
 		iFDoktorEkle.getContentPane().setLayout(null);
 		
@@ -293,8 +294,8 @@ public class BHGenel extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel.setBackground(new Color(255, 255, 204));
-		panel.setBounds(684, 47, 321, 385);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(597, 47, 321, 385);
 		iFDoktorEkle.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -305,7 +306,7 @@ public class BHGenel extends JFrame {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Soyad : ");
-		lblNewLabel_1_1.setBounds(10, 47, 145, 36);
+		lblNewLabel_1_1.setBounds(20, 47, 145, 36);
 		panel.add(lblNewLabel_1_1);
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -446,8 +447,8 @@ public class BHGenel extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel_1.setBackground(new Color(255, 255, 204));
-		panel_1.setBounds(275, 47, 321, 385);
+		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1.setBounds(252, 47, 321, 385);
 		iFDoktorEkle.getContentPane().add(panel_1);
 		
 		JLabel lblNewLabel_1_5 = new JLabel("Poliklinik Adi");
