@@ -239,7 +239,7 @@ public class HastaGenel extends JFrame {
 		
 		JLabel lblNewLabel_14 = new JLabel("New label");
 		lblNewLabel_14.setBounds(35, 210, 92, 33);
-		panel_1.add(lblNewLabel_14);
+		panel_1.add(lblNewLabel_14); 
 		
 		
 		

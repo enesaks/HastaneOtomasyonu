@@ -45,6 +45,16 @@ public class Doktor extends User{
 
 		return dflist;
 	}
+	public void DoktorGuncelleme(String Stcno,String tcno,String ad,String soyad,String Sifre,String DogumTarih,String Poliklinik) throws SQLException {
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query = "UPDATE `hospital`.`user` SET `tcno` = '"+tcno+"', `ad` = '"+ad+"', `soyad` = '"+soyad+"', `sifre` = '"+Sifre+"', `dogumTarih` = '"+DogumTarih+"', `poliklinik` = '"+Poliklinik+"' WHERE (`tcno` = '"+Stcno+"')";
+		preparedStatement = con.prepareStatement(query);
+		
+		preparedStatement.executeUpdate();
+		
+		
+	}
 public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 		
 		DefaultListModel<String> dflist= new DefaultListModel<String>();
@@ -140,18 +150,17 @@ public DefaultListModel<String>  doktorList2(int id) throws SQLException {
 	}
 	
 	
-	public static void Randevu(String tcno, String ad, String soyad, String sifre, String dogumTarih) throws SQLException {
+	public static void Randevu(String poliklinik, String doktor_ad, String gun, String saat) throws SQLException {
 		String query = "INSERT INTO user (tcno,ad,soyad,dogumTarih,type,sifre)VALUES(?,?,?,?,?,?)";
         
         try {
         	st = con.createStatement();
 			preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1, tcno);
-			preparedStatement.setString(2, ad);
-			preparedStatement.setString(3, soyad);
-			preparedStatement.setString(4, sifre);
+			preparedStatement.setString(1, poliklinik);
+			preparedStatement.setString(2, doktor_ad);
+			preparedStatement.setString(3, gun);
+			preparedStatement.setString(4, saat);
 			preparedStatement.setString(5, "hasta");
-			preparedStatement.setString(6, dogumTarih);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
