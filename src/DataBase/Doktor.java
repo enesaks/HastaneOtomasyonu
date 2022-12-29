@@ -28,6 +28,16 @@ public class Doktor extends User{
 	public Doktor() {  
 		
 	} 
+	public void DoktorGuncelleme(String Stcno,String tcno,String ad,String soyad,String Sifre,String type,String DogumTarih,String Poliklinik) throws SQLException {
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query = "UPDATE `hospital`.`user` SET `tcno` = '"+tcno+"', `ad` = '"+ad+"', `soyad` = '"+soyad+"', `sifre` = '"+Sifre+"', `dogumTarih` = '"+DogumTarih+"', `poliklinik` = '"+Poliklinik+"' WHERE (`tcno` = '"+Stcno+"')";
+		preparedStatement = con.prepareStatement(query);
+		ResultSet rs = st.executeQuery(query);
+		preparedStatement.executeUpdate();
+		
+		
+	}
 	
 	public DefaultListModel<String>  doktorList( ) throws SQLException {
 		

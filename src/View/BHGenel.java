@@ -124,7 +124,7 @@ public class BHGenel extends JFrame {
 			}
 		});
 		contentPane.add(butonDoktorEkleBHekim);
-		iFDoktorBilgi.setBounds(1085, 576, 241, 122);
+		iFDoktorBilgi.setBounds(187, 64, 1139, 634);
 		iFDoktorBilgi.addMouseListener(new MouseAdapter() {
 			
 		});
@@ -251,6 +251,7 @@ public class BHGenel extends JFrame {
 							tSifre.getText().length() == 0 || tTCNO.getText().length()==0||tPoliklinik.getText().length()==0) {
 						Helper.showMsg("fill");	
 					}
+					
 					Connection con = conn.connDb();
 					Statement st = con.createStatement();
 					String query=("SELECT * FROM user "+" WHERE ad='"+list.getSelectedValue()+"' ");
@@ -263,12 +264,14 @@ public class BHGenel extends JFrame {
 				
 					rs = st.executeQuery(query2);
 					rs.next();
-					tAd.setText(rs.getString("ad").toUpperCase());
-					tSoyad.setText(rs.getString("soyad").toUpperCase());
-					tTCNO.setText(rs.getString("tcno"));
-					tDogumTarihi.setText(rs.getString("dogumTarih"));
-					tPoliklinik.setText(rs.getString("Poliklinik"));
-					tSifre.setText(rs.getString("sifre").toUpperCase());
+					Helper.showMsg("Bilgiker Güncellendi.");
+					tAd.setText(null);
+					tSoyad.setText(null);
+					tTCNO.setText(null);
+					tDogumTarihi.setText(null);
+					tPoliklinik.setText(null);
+					tSifre.setText(null);
+					
 				
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
