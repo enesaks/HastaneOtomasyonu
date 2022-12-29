@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+
 import Helper.DBConnection;
 
 public class Poliklinik {
@@ -14,10 +16,12 @@ public class Poliklinik {
 	private String polikliniIsmi;
 	private int id;
 	private String name;
-	DBConnection conn = new DBConnection();
+	static DBConnection conn = new DBConnection();
+	static Statement st = null;
+	static ResultSet rs = null;
+	static Connection con = conn.connDb();
 
-	Statement st = null;
-	ResultSet rs = null;
+
 	PreparedStatement preparedStatement = null;
 
 	public Poliklinik(String polikliniIsmi, int id, String name) {
@@ -29,6 +33,57 @@ public class Poliklinik {
 
 	public Poliklinik() {
 	}
+	
+	public void polkilinikEkle(String adi,int id) {
+		
+			String query = "INSERT INTO poliklinik (id,ad)VALUES(?,?)";
+	        
+	        try {
+	        	st = con.createStatement();
+				preparedStatement = con.prepareStatement(query);
+				preparedStatement.setInt(1, id);
+				preparedStatement.setString(2, adi);
+				
+				preparedStatement.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	        
+		}
+	public DefaultListModel<String>  poliklinikListAD( ) throws SQLException {
+		
+		DefaultListModel<String> dflist= new DefaultListModel<String>();
+		
+		
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query=("SELECT * FROM poliklinik "+" WHERE id");
+		ResultSet rs = st.executeQuery(query);
+		
+		while(rs.next()) {
+			dflist.addElement(rs.getString("ad"));
+		}
+
+		return dflist;
+	}
+		
+	public DefaultListModel<String>  poliklinikListId( ) throws SQLException {
+		
+		DefaultListModel<String> dflist= new DefaultListModel<String>();
+		
+		
+		Connection con = conn.connDb();
+		Statement st = con.createStatement();
+		String query=("SELECT * FROM poliklinik "+" WHERE id");
+		ResultSet rs = st.executeQuery(query);
+		
+		while(rs.next()) {
+			dflist.addElement(rs.getString("id"));
+		}
+
+		return dflist;
+	}
+	
 
 	public ArrayList<Poliklinik> getList() throws SQLException {
 		ArrayList<Poliklinik> list = new ArrayList<>();
