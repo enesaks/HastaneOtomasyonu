@@ -25,6 +25,8 @@ import java.awt.Dimension;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.BevelBorder;
 
 public class SecimLogin extends JFrame {
 
@@ -63,7 +65,7 @@ public class SecimLogin extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1350, 750);
+		setBounds(100, 100, 1200, 750);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -72,19 +74,19 @@ public class SecimLogin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel baslik = new JLabel("HASTANEMİZE HOŞGELDİNİZ");
-		baslik.setForeground(Color.BLUE);
-		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 20));
+		baslik.setForeground(new Color(0, 51, 102));
+		baslik.setFont(new Font("Segoe Print", Font.BOLD, 27));
 		baslik.setHorizontalAlignment(SwingConstants.CENTER);
-		baslik.setBounds(454, 77, 417, 32);
+		baslik.setBounds(-17, 51, 515, 96);
 		contentPane.add(baslik);
 		
 		JLabel lblNewLabel = new JLabel("Giriş Tarihi: "+dtf.format(tarih));
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
-		lblNewLabel.setBounds(1043, 25, 189, 13);
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 19));
+		lblNewLabel.setBounds(959, 11, 296, 48);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnhastaGiris  = new JButton(new ImageIcon(this.getClass().getResource("hasta.png")));
-		btnhastaGiris.setBorder(UIManager.getBorder("Tree.editorBorder"));
+		btnhastaGiris.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnhastaGiris.setBackground(new Color(255, 255, 255));
 		
 		
@@ -97,7 +99,7 @@ public class SecimLogin extends JFrame {
 				dispose();
 			}
 		});
-		btnhastaGiris.setBounds(493, 181, 121, 135);
+		btnhastaGiris.setBounds(390, 235, 121, 135);
 		contentPane.add(btnhastaGiris);
 		
 		JButton btnDoktorGiris  = new JButton(new ImageIcon(this.getClass().getResource("doktor.png")));
@@ -114,20 +116,27 @@ public class SecimLogin extends JFrame {
 				dispose();
 			}
 		});
-		btnDoktorGiris.setBounds(735, 181, 121, 135);
+		btnDoktorGiris.setBounds(693, 235, 121, 135);
 		contentPane.add(btnDoktorGiris);
 		
 		JLabel lblHastaGiris = new JLabel("HASTA GİRİŞ");
-		lblHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblHastaGiris.setForeground(new Color(0, 0, 102));
+		lblHastaGiris.setFont(new Font("Arial", Font.BOLD, 26));
 		lblHastaGiris.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHastaGiris.setBounds(493, 349, 121, 14);
+		lblHastaGiris.setBounds(337, 381, 231, 48);
 		contentPane.add(lblHastaGiris);
 		
-		JLabel lblDoktorGiris = new JLabel("DOKTOR GİRİŞ");
-		lblDoktorGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblDoktorGiris.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDoktorGiris.setBounds(735, 349, 136, 14);
-		contentPane.add(lblDoktorGiris);
+		JLabel lblDoktorGiri = new JLabel("DOKTOR GİRİŞ");
+		lblDoktorGiri.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDoktorGiri.setForeground(new Color(0, 0, 102));
+		lblDoktorGiri.setFont(new Font("Arial", Font.BOLD, 26));
+		lblDoktorGiri.setBounds(638, 381, 231, 48);
+		contentPane.add(lblDoktorGiri);
+		
+		JLabel arkaplan = new JLabel(new ImageIcon(this.getClass().getResource("arka.jpg")));
+		arkaplan.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(102, 204, 255), null, null, null));
+		arkaplan.setBounds(-91, 0, 1427, 740);
+		contentPane.add(arkaplan);
 		
 	
 		

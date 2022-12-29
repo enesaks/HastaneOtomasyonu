@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
 import DataBase.Hasta;
@@ -55,7 +56,7 @@ public class HastaLogin extends JFrame {
 	 */
 	public HastaLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1350, 750);
+		setBounds(100, 100, 1200, 750);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -173,5 +174,11 @@ public class HastaLogin extends JFrame {
 		});
 		geri_butonu.setBounds(10, 11, 26, 20);
 		contentPane.add(geri_butonu);
+		
+		JLabel arkaplan = new JLabel(new ImageIcon(this.getClass().getResource("arka2.png")));
+		arkaplan.setBounds(0, 0, 1184, 711);
+		contentPane.add(arkaplan);
+		
+		
 	}
 }
