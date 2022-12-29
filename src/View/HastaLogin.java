@@ -55,7 +55,7 @@ public class HastaLogin extends JFrame {
 	 */
 	public HastaLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1350, 750);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -65,13 +65,13 @@ public class HastaLogin extends JFrame {
 		JLabel lbl_TCHastaGiris = new JLabel("T.C NUMARASI:");
 		lbl_TCHastaGiris.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbl_TCHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lbl_TCHastaGiris.setBounds(76, 85, 113, 17);
+		lbl_TCHastaGiris.setBounds(499, 186, 113, 35);
 		contentPane.add(lbl_TCHastaGiris);
 
 		JLabel lblSifreHastaGiris = new JLabel("ŞİFRE:");
 		lblSifreHastaGiris.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSifreHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblSifreHastaGiris.setBounds(76, 124, 99, 14);
+		lblSifreHastaGiris.setBounds(499, 218, 113, 35);
 		contentPane.add(lblSifreHastaGiris);
 
 		JButton butonGirisHastaGiris = new JButton("Giriş Yap");
@@ -122,7 +122,7 @@ public class HastaLogin extends JFrame {
 				}
 			}
 		});
-		butonGirisHastaGiris.setBounds(100, 187, 99, 35);
+		butonGirisHastaGiris.setBounds(553, 281, 99, 35);
 		contentPane.add(butonGirisHastaGiris);
 
 		JButton butonKayitOlHastaGiris = new JButton("Kayıt Ol");
@@ -135,22 +135,23 @@ public class HastaLogin extends JFrame {
 				dispose();				
 			}
 		});
-		butonKayitOlHastaGiris.setBounds(230, 187, 99, 35);
+		butonKayitOlHastaGiris.setBounds(689, 281, 99, 35);
 		contentPane.add(butonKayitOlHastaGiris);
 
 		fldTCHastaGiris = new JTextField();
-		fldTCHastaGiris.setBounds(243, 86, 113, 20);
+		fldTCHastaGiris.setBounds(690, 188, 135, 27);
 		contentPane.add(fldTCHastaGiris);
 		fldTCHastaGiris.setColumns(10);
 
 		JLabel baslik = new JLabel("HASTA GİRİŞ EKRANI");
+		baslik.setHorizontalAlignment(SwingConstants.CENTER);
 		baslik.setForeground(Color.BLUE);
 		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
-		baslik.setBounds(140, 28, 175, 20);
+		baslik.setBounds(499, 114, 326, 20);
 		contentPane.add(baslik);
 
 		fldSifreHastaGiris = new JPasswordField(); 
-		fldSifreHastaGiris.setBounds(243, 124, 113, 19);
+		fldSifreHastaGiris.setBounds(690, 227, 135, 26);
 		contentPane.add(fldSifreHastaGiris);
 		
 		
