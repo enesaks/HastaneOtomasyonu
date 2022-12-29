@@ -73,7 +73,7 @@ public class DoktorGenel extends JFrame {
 	 */
 	public DoktorGenel(Doktor doktor) throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 500);
+		setBounds(100, 100, 1350, 750);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -81,13 +81,13 @@ public class DoktorGenel extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd()+" "+doktor.getSoyad());
-		baslik.setBounds(50, 23, 547, 32);
+		baslik.setBounds(62, 55, 547, 46);
 		baslik.setForeground(Color.BLUE);
-		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 14));
 		contentPane.add(baslik);
 		
 		JButton butonHastaBilgiler = new JButton("Hasta Bilgileri");
-		butonHastaBilgiler.setBounds(50, 113, 144, 38);
+		butonHastaBilgiler.setBounds(111, 157, 224, 38);
 		butonHastaBilgiler.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonHastaBilgiler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -101,7 +101,7 @@ public class DoktorGenel extends JFrame {
 		
 		
 		JButton butonCalismaSaatleri = new JButton("Çalışma\r\n Saatleri");
-		butonCalismaSaatleri.setBounds(50, 174, 144, 38);
+		butonCalismaSaatleri.setBounds(111, 218, 224, 38);
 		butonCalismaSaatleri.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonCalismaSaatleri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,28 +112,32 @@ public class DoktorGenel extends JFrame {
 			}
 		});
 		contentPane.add(butonCalismaSaatleri);
-		iFHastaBilgileri.setBounds(215, 83, 559, 347);
+		iFHastaBilgileri.setBounds(621, 100, 674, 527);
 		contentPane.add(iFHastaBilgileri);
 		iFHastaBilgileri.getContentPane().setLayout(null);
 		
 		JList<String> list = new JList<>(hasta.hastaList());
-		list.setBounds(55, 44, 169, 262);
+		list.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		list.setBounds(51, 120, 169, 262);
 		iFHastaBilgileri.getContentPane().add(list);
 		
 		JLabel lblAd = new JLabel("AD:");
-		lblAd.setBounds(234, 32, 81, 50);
+		lblAd.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 12));
+		lblAd.setBounds(303, 120, 81, 50);
 		iFHastaBilgileri.getContentPane().add(lblAd);
 		iFHastaBilgileri.getContentPane().add(lblAd);
 
 		
 		JLabel lblSoyad = new JLabel("SOYAD:");
-		lblSoyad.setBounds(230, 76, 85, 50);
+		lblSoyad.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 12));
+		lblSoyad.setBounds(303, 181, 85, 50);
 		iFHastaBilgileri.getContentPane().add(lblSoyad);
 		iFHastaBilgileri.getContentPane().add(lblSoyad);
 
 		
 		JLabel lblDogumTarih = new JLabel("DOĞUM TARİHİ:");
-		lblDogumTarih.setBounds(230, 120, 85, 50);
+		lblDogumTarih.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 12));
+		lblDogumTarih.setBounds(303, 242, 85, 50);
 		iFHastaBilgileri.getContentPane().add(lblDogumTarih);
 		iFHastaBilgileri.getContentPane().add(lblDogumTarih);
 		
@@ -148,11 +152,12 @@ public class DoktorGenel extends JFrame {
 		JLabel lbDogumTarihi = new JLabel("");
 		lbDogumTarihi.setBounds(321, 120, 81, 50);
 		iFHastaBilgileri.getContentPane().add(lbDogumTarihi);
-		iFCalismaSaatleri.setBounds(215, 83, 559, 347);
+		iFCalismaSaatleri.setBounds(621, 100, 674, 527);
 		contentPane.add(iFCalismaSaatleri);
 
 		
 		JButton butonBilgileriGöster = new JButton("BİLGİLERİ GÖSTER");
+		butonBilgileriGöster.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 11));
 		butonBilgileriGöster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.print(list.getSelectedValue());
@@ -180,12 +185,12 @@ public class DoktorGenel extends JFrame {
 		
 			}
 		});
-		butonBilgileriGöster.setBounds(333, 203, 169, 43);
+		butonBilgileriGöster.setBounds(454, 371, 169, 43);
 		iFHastaBilgileri.getContentPane().add(butonBilgileriGöster);
 		
 		JLabel lblNewLabel_2 = new JLabel("Lütfen bir hasta seçiniz.");
-		lblNewLabel_2.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(55, 19, 169, 14);
+		lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 13));
+		lblNewLabel_2.setBounds(51, 95, 169, 14);
 		iFHastaBilgileri.getContentPane().add(lblNewLabel_2);
 		
 		
@@ -200,32 +205,33 @@ public class DoktorGenel extends JFrame {
 		
 			}
 		});
-		butonReceteYaz.setBounds(50, 235, 144, 38);
+		butonReceteYaz.setBounds(111, 279, 224, 38);
 		contentPane.add(butonReceteYaz);
 
 		
 		
-		iFReceteOlustur.setBounds(215, 83, 559, 347);
+		iFReceteOlustur.setBounds(621, 100, 674, 527);
 		contentPane.add(iFReceteOlustur);
 		iFReceteOlustur.getContentPane().setLayout(null);
 		
 		//BURAYLA UĞRASICAKSI LİSTE BURDA
 		JList receteHastaList = new JList(hasta.hastaList());
-		receteHastaList.setBounds(55, 44, 159, 262);
+		receteHastaList.setFont(new Font("Tahoma", Font.BOLD, 11));
+		receteHastaList.setBounds(51, 120, 169, 262);
 		iFReceteOlustur.getContentPane().add(receteHastaList);
 		
 		JLabel lblNewLabel = new JLabel("Reçeteyi Yazınız.");
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel.setBounds(220, 65, 236, 36);
+		lblNewLabel.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 13));
+		lblNewLabel.setBounds(252, 120, 236, 36);
 		iFReceteOlustur.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Lütfen bir hasta seçiniz.");
-		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(55, 19, 169, 14);
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 13));
+		lblNewLabel_1.setBounds(51, 95, 169, 14);
 		iFReceteOlustur.getContentPane().add(lblNewLabel_1);
 		
 		JEditorPane epRecete = new JEditorPane();
-		epRecete.setBounds(230, 112, 303, 90);
+		epRecete.setBounds(252, 169, 303, 90);
 		iFReceteOlustur.getContentPane().add(epRecete);
 		
 		JButton btnReceteGonder = new JButton("Gönder");
@@ -255,7 +261,7 @@ public class DoktorGenel extends JFrame {
 				}
 			}
 		});
-		btnReceteGonder.setBounds(287, 213, 89, 23);
+		btnReceteGonder.setBounds(467, 296, 89, 23);
 		iFReceteOlustur.getContentPane().add(btnReceteGonder);
 		
 		
@@ -267,7 +273,7 @@ public class DoktorGenel extends JFrame {
 				setVisible(false);
 			}
 		});
-		CikisButton.setBounds(617, 23, 125, 29);
+		CikisButton.setBounds(1199, 30, 125, 29);
 		contentPane.add(CikisButton);
 		
 		
