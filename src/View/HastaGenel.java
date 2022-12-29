@@ -41,6 +41,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextPane;
 
 public class HastaGenel extends JFrame {
 	private DBConnection conn = new DBConnection();
@@ -55,6 +56,7 @@ public class HastaGenel extends JFrame {
 	static Poliklinik poliklinik = new Poliklinik();
 	JButton btnPazartesi = new JButton("Pazartesi");
 	JComboBox dList = new JComboBox();
+	JTextPane textPane = new JTextPane();
 	
 	protected Component btnPersembe;
 	private JTextField fld_gun;
@@ -119,6 +121,20 @@ public class HastaGenel extends JFrame {
 		JButton butonRecete = new JButton("E-Recete");
 		butonRecete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					Connection con = conn.connDb();
+					Statement st = con.createStatement();
+					String query=("SELECT * FROM receteyaz "+" WHERE tcno='"+hasta.getTcno()+"' ");
+					ResultSet rs;
+					rs = st.executeQuery(query);
+					rs.next();
+					textPane.setText(rs.getString("recete"));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				iFRecete.setVisible(true);
 
 				iFHastaBilgisi.setVisible(false);
@@ -128,7 +144,7 @@ public class HastaGenel extends JFrame {
 		butonRecete.setBounds(38, 250, 161, 49);
 		contentPane.add(butonRecete);
 
-		iFRandevuAll.setBounds(221, 70, 609, 359);
+		iFRandevuAll.setBounds(221, 71, 609, 358);
 		contentPane.add(iFRandevuAll);
 
 		JPanel panel_1 = new JPanel();
@@ -244,7 +260,7 @@ public class HastaGenel extends JFrame {
 		
 		
 
-		iFHastaBilgisi.setBounds(221, 70, 609, 359);
+		iFHastaBilgisi.setBounds(221, 71, 609, 358);
 		contentPane.add(iFHastaBilgisi);
 		iFHastaBilgisi.getContentPane().setLayout(null);
 
@@ -333,6 +349,12 @@ public class HastaGenel extends JFrame {
 
 		iFRecete.setBounds(221, 70, 609, 359);
 		contentPane.add(iFRecete);
+		iFRecete.getContentPane().setLayout(null);
+		textPane.setEditable(false);
+		
+		
+		textPane.setBounds(70, 26, 311, 170);
+		iFRecete.getContentPane().add(textPane);
 
 		JLabel baslik = new JLabel("HOŞGELDİN " + hasta.getAd() + " " + hasta.getSoyad());
 		baslik.setBounds(38, 10, 547, 50);

@@ -83,7 +83,7 @@ public class DoktorGenel extends JFrame {
 		JLabel baslik = new JLabel("HOŞGELDİNİZ DOKTOR "+doktor.getAd()+" "+doktor.getSoyad());
 		baslik.setBounds(62, 55, 547, 46);
 		baslik.setForeground(Color.BLUE);
-		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 14));
+		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
 		contentPane.add(baslik);
 		
 		JButton butonHastaBilgiler = new JButton("Hasta Bilgileri");
@@ -112,7 +112,7 @@ public class DoktorGenel extends JFrame {
 			}
 		});
 		contentPane.add(butonCalismaSaatleri);
-		iFHastaBilgileri.setBounds(621, 100, 674, 527);
+		iFHastaBilgileri.setBounds(472, 100, 823, 527);
 		contentPane.add(iFHastaBilgileri);
 		iFHastaBilgileri.getContentPane().setLayout(null);
 		
@@ -152,7 +152,7 @@ public class DoktorGenel extends JFrame {
 		JLabel lbDogumTarihi = new JLabel("");
 		lbDogumTarihi.setBounds(321, 120, 81, 50);
 		iFHastaBilgileri.getContentPane().add(lbDogumTarihi);
-		iFCalismaSaatleri.setBounds(621, 100, 674, 527);
+		iFCalismaSaatleri.setBounds(472, 100, 823, 527);
 		contentPane.add(iFCalismaSaatleri);
 
 		
@@ -210,7 +210,7 @@ public class DoktorGenel extends JFrame {
 
 		
 		
-		iFReceteOlustur.setBounds(621, 100, 674, 527);
+		iFReceteOlustur.setBounds(472, 100, 823, 527);
 		contentPane.add(iFReceteOlustur);
 		iFReceteOlustur.getContentPane().setLayout(null);
 		

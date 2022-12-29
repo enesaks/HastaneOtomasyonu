@@ -6,18 +6,25 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+import javax.swing.JTextField;
 
 public class SecimLogin extends JFrame {
 
@@ -26,6 +33,10 @@ public class SecimLogin extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+
+	 
+	  
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,7 +55,8 @@ public class SecimLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SecimLogin() { 
+	public SecimLogin() {
+		
 		LocalDateTime tarih = LocalDateTime.now();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm");
 		
@@ -116,5 +128,11 @@ public class SecimLogin extends JFrame {
 		lblDoktorGiris.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDoktorGiris.setBounds(735, 349, 136, 14);
 		contentPane.add(lblDoktorGiris);
+		
+	
+		
+		
+			
+
 	} 
 }
