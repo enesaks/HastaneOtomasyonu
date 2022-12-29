@@ -2,6 +2,7 @@ package View;
 
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -46,7 +47,7 @@ public class HastaBilgileri extends JFrame {
 	 */
 	public HastaBilgileri(Hasta hasta) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1350, 750);
+		setBounds(100, 100, 1200, 750);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -97,5 +98,10 @@ public class HastaBilgileri extends JFrame {
 		lblNewLabel_10 = new JLabel("New label");
 		lblNewLabel_10.setBounds(109, 247, 79, 13);
 		contentPane.add(lblNewLabel_10);
+		
+		JLabel arkaplan = new JLabel(new ImageIcon(this.getClass().getResource("arka2.png")));
+		arkaplan.setBounds(0, 0, 1184, 711);
+		contentPane.add(arkaplan);
+		
 	}
 }

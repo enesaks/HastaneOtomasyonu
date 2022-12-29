@@ -90,7 +90,7 @@ public class BHGenel extends JFrame {
 	 */
 	public BHGenel(Bashekim bshekim) throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1350, 750);
+		setBounds(100, 100, 1200, 750);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(204, 255, 255));
 		contentPane.setBackground(new Color(255, 204, 102));
@@ -142,38 +142,38 @@ public class BHGenel extends JFrame {
 	
 		
 		JLabel lblNewLabel = new JLabel("Soyad : ");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 24));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setBounds(338, 138, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblNewLabel);
 		
 		JLabel lblTcNo = new JLabel("T.C. No : ");
-		lblTcNo.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblTcNo.setFont(new Font("Arial", Font.PLAIN, 24));
 		lblTcNo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTcNo.setBounds(338, 195, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblTcNo);
 		
 		JLabel lblPoliklinik = new JLabel("Poliklinik : ");
-		lblPoliklinik.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblPoliklinik.setFont(new Font("Arial", Font.PLAIN, 24));
 		lblPoliklinik.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPoliklinik.setBounds(338, 321, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblPoliklinik);
 		
 		JLabel lblifre = new JLabel("Şifre : ");
-		lblifre.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblifre.setFont(new Font("Arial", Font.PLAIN, 24));
 		lblifre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblifre.setBounds(338, 257, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblifre);
 		
 		JLabel lblDogumTarihi = new JLabel("Dogum Tarihi : ");
-		lblDogumTarihi.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblDogumTarihi.setFont(new Font("Arial", Font.PLAIN, 24));
 		lblDogumTarihi.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDogumTarihi.setBounds(338, 383, 224, 27);
 		iFDoktorBilgi.getContentPane().add(lblDogumTarihi);
 		
 		JButton btnbilgiler = new JButton("Bilgileri Göster");
 		btnbilgiler.setBorder(UIManager.getBorder("Button.border"));
-		btnbilgiler.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnbilgiler.setFont(new Font("Segoe Print", Font.BOLD, 16));
 		btnbilgiler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(list.getSelectedValue().equals(null))
@@ -233,7 +233,7 @@ public class BHGenel extends JFrame {
 		
 		JLabel lblAd = new JLabel(" Ad : ");
 		lblAd.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAd.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblAd.setFont(new Font("Arial", Font.PLAIN, 24));
 		lblAd.setBounds(334, 91, 228, 27);
 		iFDoktorBilgi.getContentPane().add(lblAd);
 		
@@ -279,7 +279,7 @@ public class BHGenel extends JFrame {
 				
 			}
 		});
-		btnBilgileriGncelle.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnBilgileriGncelle.setFont(new Font("Segoe Print", Font.BOLD, 16));
 		btnBilgileriGncelle.setBorder(UIManager.getBorder("Button.border"));
 		btnBilgileriGncelle.setBounds(774, 444, 176, 54);
 		iFDoktorBilgi.getContentPane().add(btnBilgileriGncelle);
@@ -514,6 +514,12 @@ public class BHGenel extends JFrame {
 		lblNewLabel_1_4_1_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblNewLabel_1_4_1_1.setBounds(10, 145, 145, 36);
 		panel_1.add(lblNewLabel_1_4_1_1);
+		
+		JLabel arkaplan = new JLabel(new ImageIcon(this.getClass().getResource("arka2.png")));
+		arkaplan.setBackground(new Color(255, 255, 255));
+		arkaplan.setBounds(0, 0, 1184, 711);
+		contentPane.add(arkaplan);
+		
 		
 		
 		JList<String> listid = new JList(polikilinik.poliklinikListId());

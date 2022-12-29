@@ -55,7 +55,7 @@ public class DoktorLogin extends JFrame {
 	 */
 	public DoktorLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1350, 750);
+		setBounds(100, 100, 1200, 750);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -63,17 +63,17 @@ public class DoktorLogin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lbl_TC = new JLabel("TC KİMLİK NO:\r\n");
-		lbl_TC.setBounds(554, 186, 118, 23);
-		lbl_TC.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lbl_TC.setBounds(430, 230, 169, 23);
+		lbl_TC.setFont(new Font("Arial", Font.PLAIN, 20));
 		contentPane.add(lbl_TC);
 		
 		JLabel lblSifre = new JLabel("ŞİFRE:");
-		lblSifre.setBounds(554, 228, 118, 23);
-		lblSifre.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblSifre.setBounds(430, 272, 169, 23);
+		lblSifre.setFont(new Font("Arial", Font.PLAIN, 20));
 		contentPane.add(lblSifre);
 		
 		JButton butonGiris = new JButton("GİRİŞ");
-		butonGiris.setBounds(637, 288, 152, 31);
+		butonGiris.setBounds(529, 334, 152, 40);
 		butonGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		butonGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -145,19 +145,19 @@ public class DoktorLogin extends JFrame {
 		contentPane.add(butonGiris);
 		
 		fldTC = new JTextField();
-		fldTC.setBounds(700, 187, 139, 20);
+		fldTC.setBounds(627, 231, 188, 31);
 		contentPane.add(fldTC);
 		fldTC.setColumns(10);
 		
 		fldSifre = new JPasswordField();
-		fldSifre.setBounds(700, 231, 139, 20);
+		fldSifre.setBounds(627, 271, 188, 31);
 		contentPane.add(fldSifre);
 		
 		JLabel baslik = new JLabel("DOKTOR GİRİŞİ");
 		baslik.setHorizontalAlignment(SwingConstants.CENTER);
-		baslik.setBounds(554, 105, 285, 31);
+		baslik.setBounds(455, 152, 285, 31);
 		baslik.setForeground(Color.BLUE);
-		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
+		baslik.setFont(new Font("Segoe Print", Font.BOLD, 26));
 		contentPane.add(baslik);
 		
 		JButton geri_buton = new JButton(new ImageIcon(this.getClass().getResource("return.png")));
@@ -165,6 +165,9 @@ public class DoktorLogin extends JFrame {
 		geri_buton.setBounds(20, 11, 34, 31);
 		contentPane.add(geri_buton);
 		
+		JLabel arkaplan = new JLabel(new ImageIcon(this.getClass().getResource("arka2.png")));
+		arkaplan.setBounds(0, 0, 1184, 711);
+		contentPane.add(arkaplan);
 		
 		
 		geri_buton.setBackground(Color.LIGHT_GRAY);

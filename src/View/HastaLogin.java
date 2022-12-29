@@ -65,18 +65,18 @@ public class HastaLogin extends JFrame {
 
 		JLabel lbl_TCHastaGiris = new JLabel("T.C NUMARASI:");
 		lbl_TCHastaGiris.setHorizontalAlignment(SwingConstants.RIGHT);
-		lbl_TCHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lbl_TCHastaGiris.setBounds(499, 186, 113, 35);
+		lbl_TCHastaGiris.setFont(new Font("Arial", Font.PLAIN, 21));
+		lbl_TCHastaGiris.setBounds(289, 266, 334, 35);
 		contentPane.add(lbl_TCHastaGiris);
 
 		JLabel lblSifreHastaGiris = new JLabel("ŞİFRE:");
 		lblSifreHastaGiris.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblSifreHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblSifreHastaGiris.setBounds(499, 218, 113, 35);
+		lblSifreHastaGiris.setFont(new Font("Arial", Font.PLAIN, 21));
+		lblSifreHastaGiris.setBounds(289, 298, 334, 35);
 		contentPane.add(lblSifreHastaGiris);
 
 		JButton butonGirisHastaGiris = new JButton("Giriş Yap");
-		butonGirisHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		butonGirisHastaGiris.setFont(new Font("Arial", Font.PLAIN, 21));
 		butonGirisHastaGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fldTCHastaGiris.getText().length() == 0 || fldSifreHastaGiris.getText().length() == 0) {
@@ -123,11 +123,11 @@ public class HastaLogin extends JFrame {
 				}
 			}
 		});
-		butonGirisHastaGiris.setBounds(553, 281, 99, 35);
+		butonGirisHastaGiris.setBounds(643, 351, 144, 35);
 		contentPane.add(butonGirisHastaGiris);
 
 		JButton butonKayitOlHastaGiris = new JButton("Kayıt Ol");
-		butonKayitOlHastaGiris.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		butonKayitOlHastaGiris.setFont(new Font("Arial", Font.PLAIN, 21));
 		butonKayitOlHastaGiris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -136,23 +136,23 @@ public class HastaLogin extends JFrame {
 				dispose();				
 			}
 		});
-		butonKayitOlHastaGiris.setBounds(689, 281, 99, 35);
+		butonKayitOlHastaGiris.setBounds(475, 351, 144, 35);
 		contentPane.add(butonKayitOlHastaGiris);
 
 		fldTCHastaGiris = new JTextField();
-		fldTCHastaGiris.setBounds(690, 188, 135, 27);
+		fldTCHastaGiris.setBounds(643, 266, 158, 27);
 		contentPane.add(fldTCHastaGiris);
 		fldTCHastaGiris.setColumns(10);
 
 		JLabel baslik = new JLabel("HASTA GİRİŞ EKRANI");
 		baslik.setHorizontalAlignment(SwingConstants.CENTER);
 		baslik.setForeground(Color.BLUE);
-		baslik.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
-		baslik.setBounds(499, 114, 326, 20);
+		baslik.setFont(new Font("Segoe Print", Font.BOLD, 26));
+		baslik.setBounds(453, 188, 326, 35);
 		contentPane.add(baslik);
 
 		fldSifreHastaGiris = new JPasswordField(); 
-		fldSifreHastaGiris.setBounds(690, 227, 135, 26);
+		fldSifreHastaGiris.setBounds(643, 305, 158, 26);
 		contentPane.add(fldSifreHastaGiris);
 		
 		
