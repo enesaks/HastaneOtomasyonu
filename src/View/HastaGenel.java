@@ -205,7 +205,7 @@ public class HastaGenel extends JFrame {
 
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(383, 53, 182, 20);
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "1 Ocak 2023", "2 Ocak 2023", "3 Ocak 2023" }));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1 Ocak 2023", "2 Ocak 2023", "3 Ocak 2023", "4 Ocak 2023", "5 Ocak 2023", "6 Ocak 2023", "7 Ocak 2023"}));
 		panel_1.add(comboBox_1);
 
 		iFHastaBilgisi.setBounds(221, 70, 609, 359);
