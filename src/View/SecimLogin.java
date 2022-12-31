@@ -82,7 +82,7 @@ public class SecimLogin extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Giriş Tarihi: "+dtf.format(tarih));
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 19));
-		lblNewLabel.setBounds(959, 11, 296, 48);
+		lblNewLabel.setBounds(878, 0, 296, 48);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnhastaGiris  = new JButton(new ImageIcon(this.getClass().getResource("hasta.png")));
